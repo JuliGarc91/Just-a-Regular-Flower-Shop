@@ -1,11 +1,15 @@
 {
   "name": "just-a-regular-flower-shop-project",
   "version": "1.0.0",
-  "description": "FlowerShop",
+  "description": "PlantShop",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "showInventory": "node index.js showInventory",
+    "donateNewItem": "node index.js donate",
+    "showItem": "node index.js show",
+    "createOrder": "node index.js order",
+    "updateOrder": "node index.js update",
+    "deleteOrder": "node index.js delete"
   },
   "author": "Julissa Garcia",
   "license": "ISC",
