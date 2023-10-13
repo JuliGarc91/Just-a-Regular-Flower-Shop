@@ -6,9 +6,10 @@ lolcats.print('Lorem ipsum dolor sit amet')
 
 user can do these things:
 
-showInventory": "node index.js showInventory",
-    "donateNewItem": "node index.js donate",
-    "showItem": "node index.js show",
-    "createOrder": "node index.js order",
-    "updateOrder": "node index.js update",
-    "deleteOrder": "node index.js delete"
+    "Inventory": "node index.js Inventory",
+    "donatePlant": "node index.js donatePlant",
+    "showItem": "node index.js showItem",
+    "newOrder": "node index.js newOrder",
+    "update": "node index.js updateOrder",
+    "delete": "node index.js deleteOrder",
+    "bundle": "node index.js bundle"

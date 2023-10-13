@@ -27,27 +27,31 @@ const inform = console.log;
 function run() {
   const action = process.argv[2];
   const plant = process.argv[3];
+  const bundle = process.argv[4];
   switch (action) {
-    case 'showInventory':
+    case 'Inventory': // shows entire store inventory
       inform(action);
       break;
-    case 'donateNewItem':
+    case 'donatePlant': // adds new plant donation to store inventory
       inform(action, plant);
       break;
-    case 'showItem':
+    case 'showItem': // shows item based on name, if it doesn't exist it should show it doesn't exist, create it while returning "Not available, check back later"
       inform(action, plant);
       break;
-    case 'createOrder':
+    case 'newOrder':
       inform(action, plant);
       break;
-    case 'updateOrder':
+    case 'update':
       inform(action, plant);
       break;
-    case 'deleteOrder':
+    case 'delete':
       inform(action);
+      break;
+    case 'bundle':
+      inform(action, bundle); // customer can request an order of 3 plants for a discounted price
       break;
     default:
-      inform('There was an error.');
+      inform('There was an error.'); // error input (invalid argument)
   }
 }
 
