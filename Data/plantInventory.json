@@ -231,6 +231,6 @@
     "plantName": "Cork oak",
     "dominantColor": "Indigo",
     "priceInCents": 3757,
-    "inStock": true
+    "inStock": false
   }
 ]

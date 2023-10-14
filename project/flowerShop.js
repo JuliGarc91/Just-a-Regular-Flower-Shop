@@ -49,10 +49,42 @@ const donatePlant = (plantInventory, plantName, color) => {
     return plantInventory; // updated inventory
 };  
 
-const showItem = (plantInventory, plantName) => {
-    const lowerCasePlantName = plantName.toLowerCase();
+// const showItem = (plantInventory, plantName) => {
+//     const lowerCasePlantName = plantName.toLowerCase();
+//     return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName);
+// }
+// const showItem = (plantInventory, plantName, inStock = true) => {
+//   // Convert the provided plantName to lowercase for case-insensitive matching
+//   const lowerCasePlantName = plantName.toLowerCase();
+
+//   const filteredPlants = plantInventory.filter(plant => (
+//     // Check if the lowercase plant name matches
+//     plant.plantName.toLowerCase() === lowerCasePlantName &&
+//     // Only include plants in stock if inStock is true, otherwise include all
+//     (inStock ? plant.inStock : true)
+//   ));
+
+//   return filteredPlants;
+// };
+const showItem = (plantInventory, plantName, inStock) => {
+  // Convert the provided plantName to lowercase for case-insensitive matching
+  const lowerCasePlantName = plantName.toLowerCase();
+
+  // Interpret string values "true" and "false" as booleans
+  if (inStock === "true") {
+    inStock = true;
+  } else if (inStock === "false") {
+    inStock = false;
+  }
+
+  if (typeof inStock === "boolean") {
+    return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName && plant.inStock === inStock);
+  } else {
     return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName);
-}
+  }
+};
+
+  
 const newOrder = () => {
 
 }

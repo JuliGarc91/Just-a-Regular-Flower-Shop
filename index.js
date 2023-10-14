@@ -16,6 +16,7 @@ function run() {
   const action = process.argv[2]; //Customer input 1
   const plant = process.argv[3]; //Customer input 2
   const color = process.argv[4]; //Customer input 3
+  const inStock = process.argv[4]; //Customer input 3
 
 //writToFile, will hold a boolean value that acts as a toggle. The other variable,updateAnimals, will hold an array of the updated or created animals
 let writeToFile = false;
@@ -33,9 +34,9 @@ let updatedPlants = [];
     writeToFile = true;
     break;
     case 'showItem': // shows item based on name, if it doesn't exist it should show it doesn't exist, create it while returning "Not available, check back later"
-    const viewInventoryItem = showItem(plantInventory, plant);
+    const viewInventoryItem = showItem(plantInventory, plant, inStock);
       inform(viewInventoryItem);  
-    inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant}`);
+    inform(`\nCustomer Input:\n------\nAction: ${action} Plant: ${plant} In Stock? ${inStock}`);
       break;
     case 'newOrder':
         inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant}`);
