@@ -60,8 +60,8 @@ const donatePlant = (plantInventory, plantName, color) => {
     ))) {
       // If the plant name matches but color doesn't match any plant in stock then add it to inventory (plant species of new color, so cool!)
       const plantDonated = {
-        plantName: plantName,
-        dominantColor: color, // Set the color property as provided
+        plantName: plantName.charAt(0).toUpperCase() + plantName.slice(1),
+        dominantColor: color.charAt(0).toUpperCase() + color.slice(1), // Set the color property as provided (capitalize first letter)
         priceInCents: faker.number.int({ min: 100, max: 4500 }),
         inStock: true,
       };
