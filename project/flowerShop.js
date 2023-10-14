@@ -22,55 +22,38 @@ const donatePlant = (plantInventory, plantName, color) => {
   
     // Check if any plant in the inventory matches the given plantName and color
     const matchingPlants = plantInventory.filter(plant => (
-      plant.plantName.toLowerCase() === lowerCasePlantName &&
-      plant.dominantColor.toLowerCase() === lowerCaseColor
-    ));
-  
-    if (matchingPlants.length > 0) { // Matching plant(s) found
-      matchingPlants.forEach(plant => {
-        if (plant.inStock === false) {
-          plant.inStock = true; // Change inStock to true
-          inform(`------\nThe plant "${plantName}" with color "${color}" is now back in stock.\n${lolcats.rainbow("THANK YOU kindly for your contribution")}!\nPlease come again ${lolcats.rainbow("<(^_^)>")}\n------`) // plant of the given color was not in stock but is now instock after contribution
-        } else inform(`------\nThe plant "${plantName}" with color "${color}" is in stock.\n${lolcats.rainbow("THANK YOU kindly for your contribution")}!\nPlease come again ${lolcats.rainbow("<(^_^)>")}\n------`) // plant of given color is in stock and still in stock after contribution
-      });
+        plant.plantName.toLowerCase() === lowerCasePlantName &&
+        plant.dominantColor.toLowerCase() === lowerCaseColor
+        ));
+        
+        if (matchingPlants.length > 0) { // Matching plant(s) found
+            matchingPlants.forEach(plant => {
+                if (plant.inStock === false) 
+                {plant.inStock = true; // Change inStock to true
+                inform(`------\nThe plant "${plantName}" with color "${color}" is now back in stock.\n${lolcats.rainbow("THANK YOU kindly for your contribution")}!\nPlease come again ${lolcats.rainbow("<(^_^)>")}\n------`) // plant of the given color was not in stock but is now instock after contribution
+            } else inform(`------\nThe plant "${plantName}" with color "${color}" is in stock.\n${lolcats.rainbow("THANK YOU kindly for your contribution")}!\nPlease come again ${lolcats.rainbow("<(^_^)>")}\n------`) // plant of given color is in stock and still in stock after contribution
+        });
     } else if (plantInventory.find(plant => (plant.plantName.toLowerCase() === lowerCasePlantName && plant.dominantColor.toLowerCase() !== lowerCaseColor))) {
-      // If the plant name matches but color doesn't match any plant in stock then add it to inventory (plant species of new color, so cool!)
-      const plantDonated = {
-        plantName: plantName.charAt(0).toUpperCase() + plantName.slice(1),
-        dominantColor: color.charAt(0).toUpperCase() + color.slice(1), // Set the color property as provided (capitalize first letter)
-        priceInCents: faker.number.int({ min: 100, max: 4500 }),
-        inStock: true,
-      };
-      plantInventory.push(plantDonated);
-      inform(`------\nThe plant "${plantName}" with color "${color}" has been added to the inventory!\n${lolcats.rainbow("THANK YOU kindly for your contribution")}!\nPlease come again ${lolcats.rainbow("<(^_^)>")}\n------`);
+        // If the plant name matches but color doesn't match any plant in stock then add it to inventory (plant species of new color, so cool!)
+        const plantDonated = {
+            plantName: plantName.charAt(0).toUpperCase() + plantName.slice(1),
+            dominantColor: color.charAt(0).toUpperCase() + color.slice(1), // Set the color property as provided (capitalize first letter)
+            priceInCents: faker.number.int({ min: 100, max: 4500 }),
+            inStock: true
+        };
+        plantInventory.push(plantDonated);
+        inform(`------\nThe plant "${plantName}" with color "${color}" has been added to the inventory!\n${lolcats.rainbow("THANK YOU kindly for your contribution")}!\nPlease come again ${lolcats.rainbow("<(^_^)>")}\n------`);
     } else { // if it doesn't match plant name already in inventory we don't take it as a donation
         inform (`------\nAbove is a list of the plant species we carry.\nWe prioritize the preservation of our local ecosystem,\nand we kindly request that only locally-sourced plants be introduced.\n${lolcats.rainbow("THANK YOU kindly for your contribution")}!\nPlease come again ${lolcats.rainbow("<(^_^)>")}\n------`);
     }
     return plantInventory; // updated inventory
 };  
 
-// const showItem = (plantInventory, plantName) => {
-//     const lowerCasePlantName = plantName.toLowerCase();
-//     return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName);
-// }
-// const showItem = (plantInventory, plantName, inStock = true) => {
-//   // Convert the provided plantName to lowercase for case-insensitive matching
-//   const lowerCasePlantName = plantName.toLowerCase();
-
-//   const filteredPlants = plantInventory.filter(plant => (
-//     // Check if the lowercase plant name matches
-//     plant.plantName.toLowerCase() === lowerCasePlantName &&
-//     // Only include plants in stock if inStock is true, otherwise include all
-//     (inStock ? plant.inStock : true)
-//   ));
-
-//   return filteredPlants;
-// };
 const showItem = (plantInventory, plantName, inStock) => {
   // Convert the provided plantName to lowercase for case-insensitive matching
   const lowerCasePlantName = plantName.toLowerCase();
 
-  // Interpret string values "true" and "false" as booleans
+  // Interpret string values "true" and "false" as booleans so function works properly with customer inputs
   if (inStock === "true") {
     inStock = true;
   } else if (inStock === "false") {
@@ -78,11 +61,19 @@ const showItem = (plantInventory, plantName, inStock) => {
   }
 
   if (typeof inStock === "boolean") {
-    return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName && plant.inStock === inStock);
-  } else {
+    return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName && plant.inStock === inStock); 
+  } else if (!inStock) { // if inStock has falsy value like undefined (bc customer didnt input anything)
     return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName);
   }
 };
+// --- for test cases ---
+// fx should be able to return all items of specified plant name regardless of inStock property
+// fx should be able to return all items of specified plant with property key value pair `inStock: false`
+// fx should be able to return all items of specified plant with property key value pair `inStock: true`
+// plantInventory and plantName are required parameters,  instock parameter is optional
+// user should be able to return all items of specified plant name regardless of inStock property by inputting `npm run showItem "cork oak"` for example
+// user should be able to return all items with property key value pair `inStock: false` of specified plant name by inputting `npm run showItem "cork oak" false`
+// user should be able to return all items with property key value pair `inStock: true` of specified plant name by inputting `npm run showItem "cork oak" true`
 
   
 const newOrder = () => {
