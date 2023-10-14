@@ -21,8 +21,10 @@ function run() {
   const quantity = process.argv[5]; // Customer fx arg 3
 
 //writToFile, will hold a boolean value that acts as a toggle. The other variable,updateAnimals, will hold an array of the updated or created animals
-let writeToFile = false;
+let writeToPlantInventory = false;
 let updatedPlants = [];
+let writeToCustomerTransactions = false;
+let customerTransactions = [];
 
 
 
@@ -35,7 +37,7 @@ let updatedPlants = [];
     case 'donatePlant': // adds new plant donation to store inventory (if species is local)
     updatedPlants = donatePlant(plantInventory, plant, color);
     inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant} Color: ${color}`);
-    writeToFile = true;
+    writeToPlantInventory = true;
     break;
 
     case 'showItem': // shows item based on name, if it doesn't exist it should show it doesn't exist, create it while returning "Not available, check back later"
@@ -52,7 +54,7 @@ let updatedPlants = [];
 
     // in progress ....  
     case 'update':
-        writeToFile = true;
+      writeToCustomerTransactions = true;
         inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant}`);
       break;
     case 'cancel':
@@ -61,9 +63,11 @@ let updatedPlants = [];
     default:
       inform('There was an error.'); // error input (invalid argument)
   }
-  if (writeToFile) { // At the end of the function, we now need write logic to check the writeToFile variable. If the variable is true, we update the animals.json file with the new animal.
+  if (writeToPlantInventory) { // At the end of the function, we now need write logic to check the writeToFile variable. If the variable is true, we update the animals.json file with the new animal.
     writeJSONFile('./data', 'plantInventory.json', updatedPlants);
+  } else if (writeToCustomerTransactions) {
+    writeJSONFile('./data', 'customerTransactions.js', customerTransactions);
   }
-}
+};
 
 run();
