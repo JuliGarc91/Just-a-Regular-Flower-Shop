@@ -1,14 +1,11 @@
 // ---  I M P O R T S ---
-
 // --- mods ---
 const { faker } = require("@faker-js/faker"); // generate data based on user input to Create or update JSON
 const lolcats = require("lolcats"); // importing lolcats mod
-// --- helpers --- READS and WRITES JSON files
-const { readJSONFile, writeJSONFile } = require('./helpers');  // writes/reads JSON file data
 // --- data ---
-const plantInventory = readJSONFile('./Data', 'plantInventory.json'); // imports data to this file
-
-// --- U S E R   C O N T R O L L E R   F U N C T I O N S ---
+const  plantInventory  = require('../Data/plantInventory.json');
+console.log (plantInventory);
+// --- BACKEND: U S E R   C O N T R O L L E R   F U N C T I O N S ---
 
 const inform = console.log; // GLOBAL SCOPE - used to print out stylized info for User
 
