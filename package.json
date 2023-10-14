@@ -7,7 +7,7 @@
     "inventory": "node index.js inventory",
     "donatePlant": "node index.js donatePlant",
     "showItem": "node index.js showItem",
-    "newOrder": "node index.js newOrder",
+    "purchasePlant": "node index.js purchasePlant",
     "update": "node index.js updateOrder",
     "cancel": "node index.js cancelOrder"
   },

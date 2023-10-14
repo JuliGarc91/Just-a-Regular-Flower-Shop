@@ -3,7 +3,8 @@ const { readJSONFile, writeJSONFile } = require('./project/helpers');  // Import
 // --- Import Data ---
 const plantInventory = readJSONFile('./data', 'plantInventory.json');
 // console.log (plantInventory); // test if data imported successfully
-const { inventory, donatePlant, showItem, newOrder, update, cancel } = require('./project/flowerShop');
+const { inventory, donatePlant, showItem, purchasePlant, update, cancel } = require('./project/flowerShop');
+
 
 // --- R U N Function ---
 // create an alias called inform to store the console.log function
@@ -17,10 +18,12 @@ function run() {
   const plant = process.argv[3]; //Customer input 2
   const color = process.argv[4]; //Customer input 3
   const inStock = process.argv[4]; //Customer input 3
+  const quantity = process.argv[5]; // Customer input 4
 
 //writToFile, will hold a boolean value that acts as a toggle. The other variable,updateAnimals, will hold an array of the updated or created animals
 let writeToFile = false;
 let updatedPlants = [];
+
 
 
   switch (action) {
@@ -28,19 +31,26 @@ let updatedPlants = [];
       const viewInventory = inventory(plantInventory)
       inform(`Customer Input:\n------\nAction: ${viewInventory}`);
       break;
+
     case 'donatePlant': // adds new plant donation to store inventory (if species is local)
     updatedPlants = donatePlant(plantInventory, plant, color);
     inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant} Color: ${color}`);
     writeToFile = true;
     break;
+
     case 'showItem': // shows item based on name, if it doesn't exist it should show it doesn't exist, create it while returning "Not available, check back later"
     const viewInventoryItem = showItem(plantInventory, plant, inStock);
-      inform(viewInventoryItem);  
+    inform(viewInventoryItem);  
     inform(`\nCustomer Input:\n------\nAction: ${action} Plant: ${plant} In Stock? ${inStock}`);
+    break;
+
+    case 'purchasePlant':
+        const totalCost = purchasePlant(plant, color, quantity);
+        inform(totalCost);
+        inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant} Color: ${color} Quantity: ${quantity}`);
       break;
-    case 'newOrder':
-        inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant}`);
-      break;
+
+    // in progress ....  
     case 'update':
         writeToFile = true;
         inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant}`);

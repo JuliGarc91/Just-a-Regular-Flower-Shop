@@ -4,9 +4,9 @@ const { faker } = require("@faker-js/faker"); // generate data based on user inp
 const lolcats = require("lolcats"); // importing lolcats mod
 // --- data ---
 const  plantInventory  = require('../Data/plantInventory.json');
-//console.log (plantInventory);
+// --- cashier functions ---
+const { selectPlant } = require('./cashier');
 // --- BACKEND: U S E R   C O N T R O L L E R   F U N C T I O N S ---
-
 const inform = console.log; // GLOBAL SCOPE - used to print out info for User
 
 const inventory = (plantInventory) => { // returns an object of plantInventory objects with keys item1, item2 so on and so forth
@@ -76,9 +76,19 @@ const showItem = (plantInventory, plantName, inStock) => {
 // user should be able to return all items with property key value pair `inStock: true` of specified plant name by inputting `npm run showItem "cork oak" true`
 
   
-const newOrder = () => {
+const purchasePlant = (plantName, color, quantity) => {
+    const order = [];
+    for (let i = 0; i < quantity; i++) {
+      const addPlantToCart = selectPlant(plantInventory, plantName, color);
+      const inStockPlants = addPlantToCart.filter(plant => plant.inStock === true);
+      if (inStockPlants.length > 0) {
+        order.push(inStockPlants[0]);
+      }
+    }
+    const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
+    return `Total Cost: ${totalCostInCents}`;
+  };
 
-}
 const update = () => {
     
 }
@@ -93,7 +103,7 @@ module.exports = {
     inventory, 
     donatePlant, 
     showItem, 
-    newOrder, 
+    purchasePlant, 
     update, 
     cancel
 };
