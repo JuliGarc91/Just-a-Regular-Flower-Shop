@@ -13,9 +13,9 @@ const { inventory, donatePlant, showItem, newOrder, update, cancel } = require('
 const inform = console.log;
 
 function run() {
-  const action = process.argv[2];
-  const plant = process.argv[3];
-  const color = process.argv[4];
+  const action = process.argv[2]; //Customer input 1
+  const plant = process.argv[3]; //Customer input 2
+  const color = process.argv[4]; //Customer input 3
 
 //writToFile, will hold a boolean value that acts as a toggle. The other variable,updateAnimals, will hold an array of the updated or created animals
 let writeToFile = false;
@@ -25,23 +25,27 @@ let updatedPlants = [];
   switch (action) {
     case 'inventory': // shows entire store inventory
       const viewInventory = inventory(plantInventory)
-      inform(`User Input\n------\nAction: ${viewInventory}`);
+      inform(`Customer Input:\n------\nAction: ${viewInventory}`);
       break;
     case 'donatePlant': // adds new plant donation to store inventory (if species is local)
     updatedPlants = donatePlant(plantInventory, plant, color);
+    inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant} Color: ${color}`);
     writeToFile = true;
+    break;
     case 'showItem': // shows item based on name, if it doesn't exist it should show it doesn't exist, create it while returning "Not available, check back later"
-      inform(`User Input\n------\nAction: ${action} Plant: ${plant}`);
+    const viewInventoryItem = showItem(plantInventory, plant);
+      inform(viewInventoryItem);  
+    inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant}`);
       break;
     case 'newOrder':
-        inform(`User Input\n------\nAction: ${action} Plant: ${plant}`);
+        inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant}`);
       break;
     case 'update':
         writeToFile = true;
-        inform(`User Input\n------\nAction: ${action} Plant: ${plant}`);
+        inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant}`);
       break;
     case 'cancel':
-        inform(`User Input\n------\nAction: ${action} Plant: ${plant}`);
+        inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant}`);
       break;
     default:
       inform('There was an error.'); // error input (invalid argument)

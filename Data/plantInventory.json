@@ -201,7 +201,7 @@
     "plantName": "Cork Oak",
     "dominantColor": "Khaki",
     "priceInCents": 808,
-    "inStock": true
+    "inStock": false
   },
   {
     "plantName": "Ovate Marsh Fern",
@@ -216,9 +216,21 @@
     "inStock": true
   },
   {
-    "plantName": "cork oak",
-    "dominantColor": "orange",
-    "priceInCents": 264,
+    "plantName": "Cork oak",
+    "dominantColor": "Violet",
+    "priceInCents": 2355,
+    "inStock": true
+  },
+  {
+    "plantName": "Cork oak",
+    "dominantColor": "Magenta",
+    "priceInCents": 3899,
+    "inStock": true
+  },
+  {
+    "plantName": "Cork oak",
+    "dominantColor": "Indigo",
+    "priceInCents": 3757,
     "inStock": true
   }
 ]
