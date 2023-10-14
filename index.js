@@ -14,11 +14,11 @@ const { inventory, donatePlant, showItem, purchasePlant, update, cancel } = requ
 const inform = console.log;
 
 function run() {
-  const action = process.argv[2]; //Customer input 1
-  const plant = process.argv[3]; //Customer input 2
-  const color = process.argv[4]; //Customer input 3
-  const inStock = process.argv[4]; //Customer input 3
-  const quantity = process.argv[5]; // Customer input 4
+  const action = process.argv[2]; // Command stored in first index
+  const plant = process.argv[3]; //Customer fx arg 1
+  const color = process.argv[4]; //Customer fx arg 2 
+  const inStock = process.argv[4]; //Customer fx arg 2
+  const quantity = process.argv[5]; // Customer fx arg 3
 
 //writToFile, will hold a boolean value that acts as a toggle. The other variable,updateAnimals, will hold an array of the updated or created animals
 let writeToFile = false;

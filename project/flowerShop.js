@@ -9,8 +9,20 @@ const { selectPlant } = require('./cashier');
 
 
 // --- BACKEND: U S E R   C O N T R O L L E R   F U N C T I O N S ---
+
+// --- RUNNING Fx ---
+// Type npm run <command> <input1> <input2><input3>
+/// --- Commands: ---
+// inventory
+// donatePlant - node index.js donatePlant
+// showItem - node index.js showItem
+// purchasePlant - node index.js purchasePlant
+// update - node index.js updateOrder
+// cancel - node index.js cancelOrder
 const inform = console.log; // GLOBAL SCOPE - used to print out info for User
 
+// --- To RUN: ---
+// npm run inventory
 const inventory = (plantInventory) => { // returns an object of plantInventory objects with keys item1, item2 so on and so forth
     return plantInventory.reduce((result, obj, index) => {
         return { ...result, [`item${index + 1}`]: obj }; // .reduce() iterates through array to collect all properties in result obj using spread operator and labeling each obj "item" with it's index number plus 1
@@ -18,7 +30,7 @@ const inventory = (plantInventory) => { // returns an object of plantInventory o
 };
 
 // --- TO RUN: ---
-// npm run donatePlant <plantName> <color>
+// npm run donatePlant <plantName> <color> must have 2 args after command
 const donatePlant = (plantInventory, plantName, color) => {
   if (color) { // if user input color proceed with fx
     const lowerCasePlantName = plantName.toLowerCase(); // Convert user input to lowercase to match case-insensitively
@@ -48,12 +60,12 @@ const donatePlant = (plantInventory, plantName, color) => {
     }
     return plantInventory; // updated inventory
   } else {
-    inform (`Error: Must include plant color.`); //otherwise user must input color
+    inform (`Oopsie! Must include ${lolcats.rainbow("plant color")}.`); //otherwise user must input color
     return plantInventory; // inventory w/o changes
   } 
 };
 
-// --- TO RUN: ---
+// --- TO RUN: --- 2nd arg after command is optional
 // npm run showItem <plantName> Shows all plant items of given plant name if any
 // npm run showItem <plantName> <false> Shows all plant items of given plant name that are in stock
 // npm run showItem <plantName> <true> Shows all plant items of given plant name that are in stock
@@ -80,19 +92,61 @@ const showItem = (plantInventory, plantName, inStock) => {
 // user should be able to return all items with property key value pair `inStock: false` of specified plant name by inputting `npm run showItem "cork oak" false`
 // user should be able to return all items with property key value pair `inStock: true` of specified plant name by inputting `npm run showItem "cork oak" true`
 
-  
+// --- TO RUN: ---
+
+// const purchasePlant = (plantName, color, quantity) => {
+//   if (color && typeof color === 'string' && quantity && typeof quantity === 'number') {
+//     color = color.toLowerCase(); // Convert color to lowercase
+//     const order = [];
+//     for (let i = 0; i < quantity; i++) {
+//       const addPlantToCart = selectPlant(plantInventory, plantName, color);
+//       const inStockPlants = addPlantToCart.filter(plant => plant.inStock === true);
+//       if (inStockPlants.length > 0) {
+//         order.push(inStockPlants[0]);
+//       } else {
+//         return `We apologize we don't have this plant in stock at the moment.\nPlease view our wide selection of local plant varieties by entering npm run inventory`
+//       }
+//     }
+//     const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
+//     return `Total Cost: ${totalCostInCents}`;
+//   } else {
+//     return `------\nItems in cart: 0\nTotal Cost: 0\n------\nTo select plants to purchase enter npm run purchasePlant <plantName> <color> <quantity>\nTo view our large selection of local plants enter: npm run inventory\n`;
+//   }
+// };
 const purchasePlant = (plantName, color, quantity) => {
-    const order = [];
-    for (let i = 0; i < quantity; i++) {
-      const addPlantToCart = selectPlant(plantInventory, plantName, color);
-      const inStockPlants = addPlantToCart.filter(plant => plant.inStock === true);
-      if (inStockPlants.length > 0) {
-        order.push(inStockPlants[0]);
-      }
+  const lowerCasePlantName = plantName.toLowerCase(); // Convert plantName to lowercase
+  color = color.toLowerCase(); // Convert color to lowercase
+
+  const matchingPlants = plantInventory.filter(plant => (
+    plant.plantName.toLowerCase() === lowerCasePlantName &&
+    plant.dominantColor.toLowerCase() === color
+  ));
+
+  if (matchingPlants.length === 0) {
+    if (plantInventory.find(plant => plant.plantName.toLowerCase() === lowerCasePlantName)) {
+      return `We don't carry that plant, only local plants`;
+    } else {
+      return `We apologize, the plant "${plantName}" in the color "${color}" is not available in our inventory.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
     }
-    const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
-    return `Total Cost: ${totalCostInCents}`;
-  };
+  }
+
+  const order = [];
+  for (let i = 0; i < quantity; i++) {
+    const addPlantToCart = selectPlant(plantInventory, plantName, color);
+    const inStockPlants = addPlantToCart.filter(plant => plant.inStock === true);
+    if (inStockPlants.length > 0) {
+      order.push(inStockPlants[0]);
+    } else {
+      return `We apologize we don't have this plant in stock at the moment.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
+    }
+  }
+
+  const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
+  return `Total Cost: ${totalCostInCents}`;
+};
+
+
+
 
 const update = () => {
     
