@@ -10,7 +10,6 @@ const { inventory, donatePlant, showItem, newOrder, update, cancel, bundle } = r
 // When providing user feedback in the terminal use `inform`
 // When developing/debugging use `console.log`
 
-
 const inform = console.log;
 
 function run() {
@@ -25,24 +24,24 @@ let updatedPlants = [];
 
   switch (action) {
     case 'inventory': // shows entire store inventory
-      const viewInventory = inventory(action)
-      inform(viewInventory);
+      const viewInventory = inventory(plantInventory)
+      inform(`User Input\n------\nAction: ${viewInventory}`);
       break;
-    case 'donatePlant': // adds new plant donation to store inventory
-      inform(action, plant);
-      break;
+    case 'donatePlant': // adds new plant donation to store inventory (if species is local)
+    updatedPlants = donatePlant(plantInventory, plant);
+    writeToFile = true;
     case 'showItem': // shows item based on name, if it doesn't exist it should show it doesn't exist, create it while returning "Not available, check back later"
-      inform(action, plant);
+      inform(`User Input\n------\nAction: ${action} Plant: ${plant}`);
       break;
     case 'newOrder':
-      inform(action, plant);
+        inform(`User Input\n------\nAction: ${action} Plant: ${plant}`);
       break;
     case 'update':
         writeToFile = true;
-      inform(action, plant);
+        inform(`User Input\n------\nAction: ${action} Plant: ${plant}`);
       break;
     case 'cancel':
-      inform(action);
+        inform(`User Input\n------\nAction: ${action} Plant: ${plant}`);
       break;
     case 'bundle':
       inform(action, bundle); // customer can request an order of 3 plants for a discounted price

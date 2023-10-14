@@ -13,3 +13,5 @@ user can do these things:
     "update": "node index.js updateOrder",
     "cancel": "node index.js cancelOrder",
     "bundle": "node index.js bundle"
+
+    npm run to view all user actions

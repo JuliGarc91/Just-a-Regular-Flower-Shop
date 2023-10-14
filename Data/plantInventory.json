@@ -1,20 +1,212 @@
-[{"plantName":"Fall Dandelion","color":"Blue","price":10.63,"amountInStock":78},
-{"plantName":"Prairie Cordgrass","color":"Puce","price":3.72,"amountInStock":0},
-{"plantName":"Marble Mountain Catchfly","color":"Maroon","price":11.44,"amountInStock":10},
-{"plantName":"Bloomer's Buttercup","color":"Khaki","price":2.66,"amountInStock":39},
-{"plantName":"Florestina","color":"Yellow","price":17.57,"amountInStock":91},
-{"plantName":"Cup Lichen","color":"Green","price":17.16,"amountInStock":74},
-{"plantName":"Cassumunar Ginger","color":"Maroon","price":13.45,"amountInStock":20},
-{"plantName":"Arctic Bluegrass","color":"Red","price":3.77,"amountInStock":20},
-{"plantName":"Pachyphiale Lichen","color":"Puce","price":12.01,"amountInStock":97},
-{"plantName":"Largeleaf Springparsley","color":"Khaki","price":2.94,"amountInStock":85},
-{"plantName":"Undulate Atrichum Moss","color":"Crimson","price":7.78,"amountInStock":35},
-{"plantName":"Tarweed","color":"Orange","price":10.00,"amountInStock":31},
-{"plantName":"Pine Green Gentian","color":"Yellow","price":3.75,"amountInStock":100},
-{"plantName":"Deer Indian Paintbrush","color":"Goldenrod","price":17.83,"amountInStock":40},
-{"plantName":"Cahaba Indian Paintbrush","color":"Pink","price":14.2,"amountInStock":88},
-{"plantName":"Thaumatococcus","color":"Khaki","price":7.38,"amountInStock":58},
-{"plantName":"Onesided Monkeyflower","color":"Goldenrod","price":13.7,"amountInStock":19},
-{"plantName":"Arizona Boxelder","color":"Pink","price":0.47,"amountInStock":44},
-{"plantName":"Gregg's Buckwheat","color":"Aquamarine","price":18.17,"amountInStock":82},
-{"plantName":"Rice","color":"Goldenrod","price":0.34,"amountInStock":42}]
+[
+  {
+    "plantName": "Davidson's Penstemon",
+    "dominantColor": "Blue",
+    "priceInUSDollars": 9.47,
+    "inStock": true
+  },
+  {
+    "plantName": "Marlin Beaksedge",
+    "dominantColor": "Yellow",
+    "priceInUSDollars": 16,
+    "inStock": false
+  },
+  {
+    "plantName": "Pale Serviceberry",
+    "dominantColor": "Teal",
+    "priceInUSDollars": 4.3,
+    "inStock": false
+  },
+  {
+    "plantName": "Hinoki False Cypress",
+    "dominantColor": "Indigo",
+    "priceInUSDollars": 5.01,
+    "inStock": true
+  },
+  {
+    "plantName": "Yellow Rabbitbrush",
+    "dominantColor": "Violet",
+    "priceInUSDollars": 14.6,
+    "inStock": true
+  },
+  {
+    "plantName": "Carrasco",
+    "dominantColor": "Purple",
+    "priceInUSDollars": 14.33,
+    "inStock": false
+  },
+  {
+    "plantName": "Ground Orchid",
+    "dominantColor": "Goldenrod",
+    "priceInUSDollars": 16.85,
+    "inStock": false
+  },
+  {
+    "plantName": "Oneflower Flatsedge",
+    "dominantColor": "Pink",
+    "priceInUSDollars": 3.94,
+    "inStock": true
+  },
+  {
+    "plantName": "Colza",
+    "dominantColor": "Indigo",
+    "priceInUSDollars": 19.62,
+    "inStock": false
+  },
+  {
+    "plantName": "Tracy's Desertparsley",
+    "dominantColor": "Maroon",
+    "priceInUSDollars": 14.16,
+    "inStock": true
+  },
+  {
+    "plantName": "Low Silverbush",
+    "dominantColor": "Blue",
+    "priceInUSDollars": 0.57,
+    "inStock": false
+  },
+  {
+    "plantName": "Arrowfeather Threeawn",
+    "dominantColor": "Pink",
+    "priceInUSDollars": 2.61,
+    "inStock": true
+  },
+  {
+    "plantName": "Pringle's Goosefoot",
+    "dominantColor": "Red",
+    "priceInUSDollars": 4.31,
+    "inStock": true
+  },
+  {
+    "plantName": "Hall's Suncup",
+    "dominantColor": "Violet",
+    "priceInUSDollars": 11.36,
+    "inStock": false
+  },
+  {
+    "plantName": "Western Tansymustard",
+    "dominantColor": "Mauv",
+    "priceInUSDollars": 5.21,
+    "inStock": false
+  },
+  {
+    "plantName": "Neofuscelia Lichen",
+    "dominantColor": "Pink",
+    "priceInUSDollars": 15.38,
+    "inStock": true
+  },
+  {
+    "plantName": "Duran's Rush",
+    "dominantColor": "Aquamarine",
+    "priceInUSDollars": 9.31,
+    "inStock": false
+  },
+  {
+    "plantName": "Cretan Viper's Bugloss",
+    "dominantColor": "Blue",
+    "priceInUSDollars": 8.89,
+    "inStock": false
+  },
+  {
+    "plantName": "Licorice",
+    "dominantColor": "Pink",
+    "priceInUSDollars": 15.24,
+    "inStock": false
+  },
+  {
+    "plantName": "Crested Cinquefoil",
+    "dominantColor": "Turquoise",
+    "priceInUSDollars": 10.55,
+    "inStock": true
+  },
+  {
+    "plantName": "Shoeblackplant",
+    "dominantColor": "Yellow",
+    "priceInUSDollars": 16.77,
+    "inStock": false
+  },
+  {
+    "plantName": "Clubmoss",
+    "dominantColor": "Khaki",
+    "priceInUSDollars": 9.31,
+    "inStock": false
+  },
+  {
+    "plantName": "Hoary Mock Orange",
+    "dominantColor": "Fuscia",
+    "priceInUSDollars": 5.94,
+    "inStock": true
+  },
+  {
+    "plantName": "Graceful Lipfern",
+    "dominantColor": "Khaki",
+    "priceInUSDollars": 11.9,
+    "inStock": true
+  },
+  {
+    "plantName": "Sweetwater Draba",
+    "dominantColor": "Turquoise",
+    "priceInUSDollars": 0.71,
+    "inStock": true
+  },
+  {
+    "plantName": "Royal Palm",
+    "dominantColor": "Red",
+    "priceInUSDollars": 16.38,
+    "inStock": true
+  },
+  {
+    "plantName": "Ophioparma Lichen",
+    "dominantColor": "Red",
+    "priceInUSDollars": 5.69,
+    "inStock": true
+  },
+  {
+    "plantName": "Parry's Mallow",
+    "dominantColor": "Turquoise",
+    "priceInUSDollars": 12.45,
+    "inStock": true
+  },
+  {
+    "plantName": "Birdwing Treefern",
+    "dominantColor": "Pink",
+    "priceInUSDollars": 7.61,
+    "inStock": true
+  },
+  {
+    "plantName": "Rydberg's Horkelia",
+    "dominantColor": "Violet",
+    "priceInUSDollars": 16.02,
+    "inStock": false
+  },
+  {
+    "plantName": "Jumping Cholla",
+    "dominantColor": "Crimson",
+    "priceInUSDollars": 6.87,
+    "inStock": false
+  },
+  {
+    "plantName": "Canadian White Violet",
+    "dominantColor": "Aquamarine",
+    "priceInUSDollars": 7.33,
+    "inStock": true
+  },
+  {
+    "plantName": "Norway Hygrohypnum Moss",
+    "dominantColor": "Violet",
+    "priceInUSDollars": 19.78,
+    "inStock": true
+  },
+  {
+    "plantName": "Northern Ryegrass",
+    "dominantColor": "Pink",
+    "priceInUSDollars": 16.54,
+    "inStock": true
+  },
+  {
+    "plantName": "Rimmed Lichen",
+    "dominantColor": "Pink",
+    "priceInUSDollars": 17.73,
+    "inStock": false
+  }
+]
