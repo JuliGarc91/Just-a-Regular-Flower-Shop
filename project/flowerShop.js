@@ -6,6 +6,8 @@ const lolcats = require("lolcats"); // importing lolcats mod
 const  plantInventory  = require('../Data/plantInventory.json');
 // --- cashier functions ---
 const { selectPlant } = require('./cashier');
+
+
 // --- BACKEND: U S E R   C O N T R O L L E R   F U N C T I O N S ---
 const inform = console.log; // GLOBAL SCOPE - used to print out info for User
 
@@ -15,17 +17,16 @@ const inventory = (plantInventory) => { // returns an object of plantInventory o
     }, {});
 };
 
+// --- TO RUN: ---
+// npm run donatePlant <plantName> <color>
 const donatePlant = (plantInventory, plantName, color) => {
-    // Convert user input to lowercase to match case-insensitively
-    const lowerCasePlantName = plantName.toLowerCase();
+  if (color) { // if user input color proceed with fx
+    const lowerCasePlantName = plantName.toLowerCase(); // Convert user input to lowercase to match case-insensitively
     const lowerCaseColor = color.toLowerCase();
-  
-    // Check if any plant in the inventory matches the given plantName and color
-    const matchingPlants = plantInventory.filter(plant => (
+    const matchingPlants = plantInventory.filter(plant => ( // Check if any plant in the inventory matches the given plantName and color
         plant.plantName.toLowerCase() === lowerCasePlantName &&
         plant.dominantColor.toLowerCase() === lowerCaseColor
-        ));
-        
+        ));        
         if (matchingPlants.length > 0) { // Matching plant(s) found
             matchingPlants.forEach(plant => {
                 if (plant.inStock === false) 
@@ -33,8 +34,7 @@ const donatePlant = (plantInventory, plantName, color) => {
                 inform(`------\nThe plant "${plantName}" with color "${color}" is now back in stock.\n${lolcats.rainbow("THANK YOU kindly for your contribution")}!\nPlease come again ${lolcats.rainbow("<(^_^)>")}\n------`) // plant of the given color was not in stock but is now instock after contribution
             } else inform(`------\nThe plant "${plantName}" with color "${color}" is in stock.\n${lolcats.rainbow("THANK YOU kindly for your contribution")}!\nPlease come again ${lolcats.rainbow("<(^_^)>")}\n------`) // plant of given color is in stock and still in stock after contribution
         });
-    } else if (plantInventory.find(plant => (plant.plantName.toLowerCase() === lowerCasePlantName && plant.dominantColor.toLowerCase() !== lowerCaseColor))) {
-        // If the plant name matches but color doesn't match any plant in stock then add it to inventory (plant species of new color, so cool!)
+    } else if (plantInventory.find(plant => (plant.plantName.toLowerCase() === lowerCasePlantName && plant.dominantColor.toLowerCase() !== lowerCaseColor))) { // If the plant name matches but color doesn't match any plant in stock then add it to inventory (plant species of new color, so cool!)
         const plantDonated = {
             plantName: plantName.charAt(0).toUpperCase() + plantName.slice(1),
             dominantColor: color.charAt(0).toUpperCase() + color.slice(1), // Set the color property as provided (capitalize first letter)
@@ -47,14 +47,19 @@ const donatePlant = (plantInventory, plantName, color) => {
         inform (`------\nAbove is a list of the plant species we carry.\nWe prioritize the preservation of our local ecosystem,\nand we kindly request that only locally-sourced plants be introduced.\n${lolcats.rainbow("THANK YOU kindly for your contribution")}!\nPlease come again ${lolcats.rainbow("<(^_^)>")}\n------`);
     }
     return plantInventory; // updated inventory
-};  
+  } else {
+    inform (`Error: Must include plant color.`); //otherwise user must input color
+    return plantInventory; // inventory w/o changes
+  } 
+};
 
+// --- TO RUN: ---
+// npm run showItem <plantName> Shows all plant items of given plant name if any
+// npm run showItem <plantName> <false> Shows all plant items of given plant name that are in stock
+// npm run showItem <plantName> <true> Shows all plant items of given plant name that are in stock
 const showItem = (plantInventory, plantName, inStock) => {
-  // Convert the provided plantName to lowercase for case-insensitive matching
-  const lowerCasePlantName = plantName.toLowerCase();
-
-  // Interpret string values "true" and "false" as booleans so function works properly with customer inputs
-  if (inStock === "true") {
+  const lowerCasePlantName = plantName.toLowerCase(); // Convert the provided plantName to lowercase for case-insensitive matching
+  if (inStock === "true") { // Interpret string values "true" and "false" as booleans so function works properly with customer inputs
     inStock = true;
   } else if (inStock === "false") {
     inStock = false;
