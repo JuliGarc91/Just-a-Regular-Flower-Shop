@@ -95,37 +95,101 @@ const showItem = (plantInventory, plantName, inStock) => {
 // --- TO RUN: ---
 
 // const purchasePlant = (plantName, color, quantity) => {
-//   if (color && typeof color === 'string' && quantity && typeof quantity === 'number') {
-//     color = color.toLowerCase(); // Convert color to lowercase
-//     const order = [];
-//     for (let i = 0; i < quantity; i++) {
-//       const addPlantToCart = selectPlant(plantInventory, plantName, color);
-//       const inStockPlants = addPlantToCart.filter(plant => plant.inStock === true);
-//       if (inStockPlants.length > 0) {
-//         order.push(inStockPlants[0]);
-//       } else {
-//         return `We apologize we don't have this plant in stock at the moment.\nPlease view our wide selection of local plant varieties by entering npm run inventory`
-//       }
+//   if (!plantName || typeof plantName !== 'string' || !color || typeof color !== 'string' || !quantity || typeof quantity !== 'number') {`Error: must enter plant name, color, and amount you would like to purchase.\n------\nTo select plants to purchase enter npm run purchasePlant <plantName> <color> <quantity>\nTo view our large selection of local plants enter: npm run inventory\n`}
+  
+//   const lowerCasePlantName = plantName.toLowerCase(); // Convert plantName to lowercase
+//   color = color.toLowerCase(); // Convert color to lowercase
+
+//   const matchingPlants = plantInventory.filter(plant => (
+//     plant.plantName.toLowerCase() === lowerCasePlantName &&
+//     plant.dominantColor.toLowerCase() === color
+//   ));
+
+//   if (matchingPlants.length === 0) {
+//     if (plantInventory.find(plant => plant.plantName.toLowerCase() === lowerCasePlantName)) {
+//       return `We appreciate your interest in this plant, and we want to emphasize that our commitment to preserving our local ecosystem and native plant species is at the core of our business. \nRegrettably, we cannot provide this item, as it may pose a risk to our local environment as an invasive species. \nWe hope you understand our dedication to environmental responsibility and conservation. \nWe appreciate and value your business, and hope to see you soon! \nPlease feel free to view our inventory by entering: npm run inventory`;
+//     } else {
+//       return `We apologize, the plant "${plantName}" in the color "${color}" is not available in our inventory.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
 //     }
-//     const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
-//     return `Total Cost: ${totalCostInCents}`;
-//   } else {
-//     return `------\nItems in cart: 0\nTotal Cost: 0\n------\nTo select plants to purchase enter npm run purchasePlant <plantName> <color> <quantity>\nTo view our large selection of local plants enter: npm run inventory\n`;
 //   }
+
+//   const order = [];
+//   for (let i = 0; i < quantity; i++) {
+//     const addPlantToCart = selectPlant(plantInventory, plantName, color);
+//     const inStockPlants = addPlantToCart.filter(plant => plant.inStock === true);
+//     if (inStockPlants.length > 0) {
+//       order.push(inStockPlants[0]);
+//     } else {
+//       return `We apologize we don't have this plant in stock at the moment.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
+//     }
+//   }
+
+//   const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
+//   return `Total Cost: ${totalCostInCents}`;
 // };
+
+// const purchasePlant = (plantName, color, quantity) => {
+//   if (!plantName || typeof plantName !== 'string' || !color || typeof color !== 'string' || !quantity || typeof quantity !== 'number') {
+//     return `Error: Must enter plant name, color, and the amount you would like to purchase.\n------\nTo select plants to purchase, enter npm run purchasePlant <plantName> <color> <quantity>\nTo view our large selection of local plants, enter: npm run inventory\n`;
+//   }
+
+//   const lowerCasePlantName = plantName.toLowerCase(); // Convert plantName to lowercase
+//   color = color.toLowerCase(); // Convert color to lowercase
+
+//   const matchingPlants = plantInventory.filter(plant => (
+//     plant.plantName.toLowerCase() === lowerCasePlantName &&
+//     plant.dominantColor.toLowerCase() === color
+//   ));
+
+//   if (matchingPlants.length === 0) {
+//     if (plantInventory.find(plant => plant.plantName.toLowerCase() === lowerCasePlantName)) {
+//       return `We don't carry that plant, only local plants`;
+//     } else {
+//       return `We apologize, the plant "${plantName}" in the color "${color}" is not available in our inventory.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
+//     }
+//   }
+
+//   const order = [];
+//   for (let i = 0; i < quantity; i++) {
+//     const addPlantToCart = selectPlant(plantInventory, plantName, color);
+//     const inStockPlants = addPlantToCart.filter(plant => plant.inStock === true);
+//     if (inStockPlants.length > 0) {
+//       order.push(inStockPlants[0]);
+//     } else {
+//       return `We apologize we don't have this plant in stock at the moment.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
+//     }
+//   }
+
+//   const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
+//   return `Total Cost: ${totalCostInCents}`;
+// };
+
 const purchasePlant = (plantName, color, quantity) => {
-  const lowerCasePlantName = plantName.toLowerCase(); // Convert plantName to lowercase
-  color = color.toLowerCase(); // Convert color to lowercase
+  console.log('Received input:', plantName, color, quantity); // Debug statement
+
+  if (!plantName || typeof plantName !== 'string' || !color || typeof color !== 'string' || !quantity || typeof quantity !== 'number') {
+    console.log('Invalid input detected.'); // Debug statement
+    return `Error: Must enter plant name, color, and the amount you would like to purchase.\n------\nTo select plants to purchase, enter npm run purchasePlant <plantName> <color> <quantity>\nTo view our large selection of local plants, enter: npm run inventory\n`;
+  }
+
+  const lowerCasePlantName = plantName.toLowerCase();
+  color = color.toLowerCase();
+
+  console.log('Lowercased inputs:', lowerCasePlantName, color); // Debug statement
 
   const matchingPlants = plantInventory.filter(plant => (
     plant.plantName.toLowerCase() === lowerCasePlantName &&
     plant.dominantColor.toLowerCase() === color
   ));
 
+  console.log('Matching plants:', matchingPlants); // Debug statement
+
   if (matchingPlants.length === 0) {
     if (plantInventory.find(plant => plant.plantName.toLowerCase() === lowerCasePlantName)) {
-      return `We don't carry that plant, only local plants`;
+      console.log('Plant not in inventory but matching name found.'); // Debug statement
+      return `We don't carry that plant, only local plants that are compatible with our ecosystem.`;
     } else {
+      console.log('Plant not in inventory.'); // Debug statement
       return `We apologize, the plant "${plantName}" in the color "${color}" is not available in our inventory.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
     }
   }
@@ -137,6 +201,7 @@ const purchasePlant = (plantName, color, quantity) => {
     if (inStockPlants.length > 0) {
       order.push(inStockPlants[0]);
     } else {
+      console.log('Plant not in stock.'); // Debug statement
       return `We apologize we don't have this plant in stock at the moment.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
     }
   }
@@ -144,6 +209,9 @@ const purchasePlant = (plantName, color, quantity) => {
   const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
   return `Total Cost: ${totalCostInCents}`;
 };
+
+purchasePlant("orchid", "black", 5);
+
 
 
 
