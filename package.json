@@ -9,8 +9,7 @@
     "showItem": "node index.js showItem",
     "newOrder": "node index.js newOrder",
     "update": "node index.js updateOrder",
-    "cancel": "node index.js cancelOrder",
-    "bundle": "node index.js bundle"
+    "cancel": "node index.js cancelOrder"
   },
   "author": "Julissa Garcia",
   "license": "ISC",
