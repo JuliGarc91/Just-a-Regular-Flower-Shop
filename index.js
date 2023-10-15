@@ -4,6 +4,7 @@ const { readJSONFile, writeJSONFile } = require('./project/helpers');  // Import
 const plantInventory = readJSONFile('./data', 'plantInventory.json');
 // console.log (plantInventory); // test if data imported successfully
 const { inventory, donatePlant, showItem, purchasePlant, update, cancel } = require('./project/flowerShop');
+const { selectPlant, receipt } = require('./project/cashier');
 
 
 // --- R U N Function ---
@@ -31,6 +32,7 @@ let customerTransactions = [];
   switch (action) {
     case 'inventory': // shows entire store inventory
       const viewInventory = inventory(plantInventory)
+      inform(viewInventory)
       inform(`Customer Input:\n------\nAction: ${viewInventory}`);
       break;
 
@@ -47,20 +49,20 @@ let customerTransactions = [];
     break;
 
     case 'purchasePlant':
-        const totalCost = purchasePlant(plant, color, quantity);
+        const totalCost = purchasePlant(plantInventory, plant, color, quantity);
         inform(totalCost);
         inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant} Color: ${color} Quantity: ${quantity}`);
-      break;
-
-    // in progress ....  
+      break; 
+      // in progress - write fx for this in flowerShop.js
     case 'update':
       writeToCustomerTransactions = true;
         inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant}`);
+        // Add logic to update customer transactions (not provided in the code)
       break;
     case 'cancel':
         inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant}`);
       break;
-    default:
+     default:
       inform('There was an error.'); // error input (invalid argument)
   }
   if (writeToPlantInventory) { // At the end of the function, we now need write logic to check the writeToFile variable. If the variable is true, we update the animals.json file with the new animal.

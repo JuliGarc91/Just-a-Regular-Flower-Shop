@@ -25,7 +25,7 @@ const inform = console.log; // GLOBAL SCOPE - used to print out info for User
 // npm run inventory
 const inventory = (plantInventory) => { // returns an object of plantInventory objects with keys item1, item2 so on and so forth
     return plantInventory.reduce((result, obj, index) => {
-        return { ...result, [`item${index + 1}`]: obj }; // .reduce() iterates through array to collect all properties in result obj using spread operator and labeling each obj "item" with it's index number plus 1
+        return { ...result, [`id: item${index + 1}`]: obj }; // .reduce() iterates through array to collect all properties in result obj using spread operator and labeling each obj "item" with it's index number plus 1
     }, {});
 };
 
@@ -56,7 +56,7 @@ const donatePlant = (plantInventory, plantName, color) => {
         plantInventory.push(plantDonated);
         inform(`------\nThe plant "${plantName}" with color "${color}" has been added to the inventory!\n${lolcats.rainbow("THANK YOU kindly for your contribution")}!\nPlease come again ${lolcats.rainbow("<(^_^)>")}\n------`);
     } else { // if it doesn't match plant name already in inventory we don't take it as a donation
-        inform (`------\nAbove is a list of the plant species we carry.\nWe prioritize the preservation of our local ecosystem,\nand we kindly request that only locally-sourced plants be introduced.\n${lolcats.rainbow("THANK YOU kindly for your contribution")}!\nPlease come again ${lolcats.rainbow("<(^_^)>")}\n------`);
+        inform (`------\nEnter "npm run inventory" to see a list of the plant species we carry.\nWe prioritize the preservation of our local ecosystem,\nand we kindly request that only locally-sourced plants be introduced.\n${lolcats.rainbow("THANK YOU kindly for your contribution")}!\nPlease come again ${lolcats.rainbow("<(^_^)>")}\n------`);
     }
     return plantInventory; // updated inventory
   } else {
@@ -94,36 +94,32 @@ const showItem = (plantInventory, plantName, inStock) => {
 
 // --- TO RUN: --- User must input 3 args
 // npm run purchasePlant <plantName> <color> <quantity>
-const purchasePlant = (plantName, color, quantity) => {
-  console.log('Received input:', plantName, color, quantity); // Debug statement
+const purchasePlant = (plantInventory, plantName, color, quantity) => {
 
-  if (!plantName || typeof plantName !== 'string' || !color || typeof color !== 'string' || !quantity || typeof quantity !== 'number') {
-    console.log('Invalid input detected.'); // Debug statement
-    return `Error: Must enter plant name, color, and the amount you would like to purchase.\n------\nTo select plants to purchase, enter npm run purchasePlant <plantName> <color> <quantity>\nTo view our large selection of local plants, enter: npm run inventory\n`;
-  }
+
+  // if (!plantName || typeof plantName !== 'string' || !color || typeof color !== 'string' || !quantity || typeof quantity !== 'number') {
+
+  //   return `Error: Must enter plant name, color, and the amount you would like to purchase.\n------\nTo select plants to purchase, enter npm run purchasePlant <plantName> <color> <quantity>\nTo view our large selection of local plants, enter: npm run inventory\n`;
+  // }
 
   const lowerCasePlantName = plantName.toLowerCase();
   color = color.toLowerCase();
-
-  console.log('Lowercased inputs:', lowerCasePlantName, color); // Debug statement
 
   const matchingPlants = plantInventory.filter(plant => (
     plant.plantName.toLowerCase() === lowerCasePlantName &&
     plant.dominantColor.toLowerCase() === color
   ));
 
-  console.log('Matching plants:', matchingPlants); // Debug statement
 
   if (matchingPlants.length === 0) {
     // Check if the plant is in the inventory but not in stock
     if (plantInventory.some(plant => plant.plantName.toLowerCase() === lowerCasePlantName && !plant.inStock)) {
-      console.log('Plant not in stock.'); // Debug statement
+
       return `We apologize we don't have this plant in stock at the moment.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
     } else if (plantInventory.find(plant => plant.plantName.toLowerCase() === lowerCasePlantName && plant.inStock === true)) {
-      console.log('Plant not in inventory but matching name found.'); // Debug statement
       return `We apologize, the plant "${plantName}" in the color "${color}" is not available in our inventory.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
     } else {
-      console.log('Plant not in inventory.'); // Debug statement
+      console.log
       return `We don't carry that plant, only local plants that are compatible with our ecosystem.`;
     }
   }
@@ -135,30 +131,31 @@ const purchasePlant = (plantName, color, quantity) => {
     if (inStockPlants.length > 0) {
       order.push(inStockPlants[0]);
     } else {
-      console.log('Plant not in stock.'); // Debug statement
       return `We apologize we don't have this plant in stock at the moment.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
     }
   }
 
   const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
-  return `Total Cost: ${totalCostInCents}`;
+  return totalCostInCents; // gets console.log but also exported to cashier for recipt function
 };
 
-// purchasePlant(); // 'Invalid input detected.'
+ //purchasePlant(); // 'Invalid input detected.'
 // purchasePlant("Gray's Lily"); // Invalid input detected.'
 //purchasePlant("Gray's Lily", "black"); // Invalid input detected.'
 //purchasePlant("Gray's Lily", "black", 5); // 'Plant not in stock.'
 //purchasePlant("Argentinian Biddy-biddy", "black", 5) // Plant not in inventory but matching name found.
-//purchasePlant("Argentinian Biddy-biddy", "crimson", 5) // Total Cost: ${totalCostInCents}
+//console.log(purchasePlant(plantInventory, "Argentinian Biddy-biddy", "crimson", 5)); // Total Cost: ${totalCostInCents}
 //purchasePlant("orchid", "crimson", 5) // 'Plant not in inventory.
 
 
 
 const update = () => {
-    
+    // needs to delete a plant from cart
+    // or add a plant to existing order
+    // or delete a plant to add another one (replace)
 }
 const cancel = () => {
-    
+    // needs to delete entire order
 }
 
 let updatedPlants;

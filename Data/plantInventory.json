@@ -309,7 +309,7 @@
     "plantName": "Oahu Clermontia",
     "dominantColor": "Teal",
     "priceInCents": 4180,
-    "inStock": false
+    "inStock": true
   },
   {
     "plantName": "Caricature-plant",
@@ -598,5 +598,23 @@
     "dominantColor": "Purple",
     "priceInCents": 815,
     "inStock": false
+  },
+  {
+    "plantName": "Gray's Lily",
+    "dominantColor": "Black",
+    "priceInCents": 3881,
+    "inStock": true
+  },
+  {
+    "plantName": "Gray's Lily",
+    "dominantColor": "Magenta",
+    "priceInCents": 3730,
+    "inStock": true
+  },
+  {
+    "plantName": "Hartweg's Groundsel",
+    "dominantColor": "Black",
+    "priceInCents": 706,
+    "inStock": true
   }
 ]

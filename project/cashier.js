@@ -1,3 +1,8 @@
+// --- Use to write receipts
+const { readJSONFile, writeJSONFile } = require('../project/helpers');  // Import the readJSONFile and writeJSONFilefunctions from the helpers.js file into index.js.
+// import
+const { purchasePlant, update, cancel } = require('../project/flowerShop');
+
 // ------ C A S H I E R ------
 
 function selectPlant(plantInventory, plantName, color) {
@@ -21,8 +26,25 @@ function selectPlant(plantInventory, plantName, color) {
     return [];
   }
 };
+let writeToCustomerTransactions = false
+const receipt = () => {
+  writeToCustomerTransactions = true;
+  // use total from other purchasePlant fx
+  // use selectPlant fx
+  // export should have transaction id, name, priceInCents
+  // generate transaction id
+  if (writeToCustomerTransactions) { // At the end of the function, we now need write logic to check the writeToFile variable. If the variable is true, we update the animals.json file with the new animal.
+    writeJSONFile('./data', 'customerTransactions.js', customerTransactions); // using writesync export to customerTransaction.JSON to store so fx update and fx cancel can use data stored here using readsync
+
+  }
+}
+
 // ------ Thank you, come again! ------
+
+
+
 
 module.exports = {
   selectPlant,
+  receipt
 }
