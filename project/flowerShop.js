@@ -1,5 +1,6 @@
 // ---  I M P O R T S ---
 // --- mods ---
+const { inspect } = require("node:util");
 const { faker } = require("@faker-js/faker"); // generate data based on user input to Create or update JSON
 const lolcats = require("lolcats"); // importing lolcats mod
 // --- data ---
@@ -22,7 +23,7 @@ function generateRandomId(length) {
 // --- BACKEND: U S E R   C O N T R O L L E R   F U N C T I O N S ---
 
 // --- RUNNING Fx ---
-// Type npm run <command> <input1> <input2><input3>
+// Type npm run <command> <input1> <input2> <input3> <input4>
 /// --- Commands: ---
 // inventory
 // donatePlant - node index.js donatePlant
@@ -144,11 +145,9 @@ const purchasePlant = (plantInventory, plantName, color, quantity, customerFullN
   }
 
   const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
-  return `\n------\ntransactionID: ${generateRandomId (5)}\n
-    customerFullName: ${customerFullName}\n
-    totalCost: ${totalCostInCents}\n
-    itemPurchased: ${addPlantToCart}\n
-    ${lolcats.rainbow("THANK YOU FOR YOUR PURCHASE! Have a wonderful day!")}`; // gets console.logged
+  return `\n${new Date()}\n------\n\n${lolcats.rainbow("WELCOME To Our Botanic Shop!")}\nFind a variety of local plant species that enrich our ecosystem :-)\n\n------\nTransactionID: ${generateRandomId (5)}\nCustomer Full Name: ${customerFullName}\nTotal Cost USD: $${(totalCostInCents/100).toFixed(2)}\n---\nItem(s) Purchased\n---\n${order.map((plant) => {
+    return `Plant Name: '${plant.plantName}' Dominant Color: '${plant.dominantColor}' Price In USD: $${(plant.priceInCents / 100).toFixed(2)}\n`;
+}).join('')}\n------\nRefunds or exchanges for same day purchases only\n\n${lolcats.rainbow("THANK YOU FOR YOUR PURCHASE! Have a wonderful day!")}`;
 };
 
  //purchasePlant(); // 'Invalid input detected.'
@@ -156,7 +155,7 @@ const purchasePlant = (plantInventory, plantName, color, quantity, customerFullN
 //purchasePlant("Gray's Lily", "black"); // Invalid input detected.'
 //purchasePlant("Gray's Lily", "black", 5); // 'Plant not in stock.'
 //purchasePlant("Argentinian Biddy-biddy", "black", 5) // Plant not in inventory but matching name found.
-//console.log(purchasePlant(plantInventory, "Argentinian Biddy-biddy", "crimson", 5)); // Total Cost: ${totalCostInCents}
+console.log(purchasePlant(plantInventory, "Argentinian Biddy-biddy", "crimson", 5)); // Total Cost: ${totalCostInCents}
 //purchasePlant("orchid", "crimson", 5) // 'Plant not in inventory.
 
 const update = () => {

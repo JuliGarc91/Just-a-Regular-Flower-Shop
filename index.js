@@ -4,7 +4,7 @@ const { readJSONFile, writeJSONFile } = require('./project/helpers');  // Import
 const plantInventory = readJSONFile('./data', 'plantInventory.json');
 // console.log (plantInventory); // test if data imported successfully
 const { inventory, donatePlant, showItem, purchasePlant, update, cancel } = require('./project/flowerShop');
-const { selectPlant, generateReceipt } = require('./project/cashier');
+const { selectPlant } = require('./project/cashier');
 
 
 // --- R U N Function ---
