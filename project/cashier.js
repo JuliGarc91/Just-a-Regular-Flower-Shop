@@ -27,9 +27,11 @@ function selectPlant(plantInventory, plantName, color) {
   }
 };
 let writeToCustomerTransactions = false
-const receipt = () => {
+let receipt = []
+const generateReceipt = () => {
+  const total = purchasePlant(plantInventory, plantName, color, quantity);   // use total from other purchasePlant fx
   writeToCustomerTransactions = true;
-  // use total from other purchasePlant fx
+
   // use selectPlant fx
   // export should have transaction id, name, priceInCents
   // generate transaction id
@@ -46,5 +48,5 @@ const receipt = () => {
 
 module.exports = {
   selectPlant,
-  receipt
+  generateReceipt
 }
