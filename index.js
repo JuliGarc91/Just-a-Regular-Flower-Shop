@@ -20,6 +20,7 @@ function run() {
   const color = process.argv[4]; //Customer fx arg 2 
   const inStock = process.argv[4]; //Customer fx arg 2
   const quantity = process.argv[5]; // Customer fx arg 3
+  const customer = process.argv[6]; // Customer fx arg 4
 
 //writToFile, will hold a boolean value that acts as a toggle. The other variable,updateAnimals, will hold an array of the updated or created animals
 let writeToPlantInventory = false;
@@ -49,9 +50,9 @@ let customerTransactions = [];
     break;
 
     case 'purchasePlant':
-        const totalCost = purchasePlant(plantInventory, plant, color, quantity);
+        const totalCost = purchasePlant(plantInventory, plant, color, quantity, customer);
         inform(totalCost);
-        inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant} Color: ${color} Quantity: ${quantity}`);
+        inform(`Customer Input:\n------\nAction: ${action} Plant: ${plant} Color: ${color} Quantity: ${quantity} Full Name: ${customer}`);
       break; 
       // in progress - write fx for this in flowerShop.js
     case 'update':

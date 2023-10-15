@@ -7,6 +7,17 @@ const  plantInventory  = require('../Data/plantInventory.json');
 // --- cashier functions ---
 const { selectPlant } = require('./cashier');
 
+// --- ID generator ---
+const inform = console.log; // GLOBAL SCOPE - used to print out info for User
+function generateRandomId(length) {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let id = '';
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    id += characters.charAt(randomIndex);
+  }
+  return id;
+};
 
 // --- BACKEND: U S E R   C O N T R O L L E R   F U N C T I O N S ---
 
@@ -19,7 +30,8 @@ const { selectPlant } = require('./cashier');
 // purchasePlant - node index.js purchasePlant
 // update - node index.js updateOrder
 // cancel - node index.js cancelOrder
-const inform = console.log; // GLOBAL SCOPE - used to print out info for User
+
+
 
 // --- To RUN: ---
 // npm run inventory
@@ -94,22 +106,17 @@ const showItem = (plantInventory, plantName, inStock) => {
 
 // --- TO RUN: --- User must input 3 args
 // npm run purchasePlant <plantName> <color> <quantity>
-const purchasePlant = (plantInventory, plantName, color, quantity) => {
-
-
+const purchasePlant = (plantInventory, plantName, color, quantity, customerFullName) => {
   // if (!plantName || typeof plantName !== 'string' || !color || typeof color !== 'string' || !quantity || typeof quantity !== 'number') {
 
   //   return `Error: Must enter plant name, color, and the amount you would like to purchase.\n------\nTo select plants to purchase, enter npm run purchasePlant <plantName> <color> <quantity>\nTo view our large selection of local plants, enter: npm run inventory\n`;
   // }
-
   const lowerCasePlantName = plantName.toLowerCase();
   color = color.toLowerCase();
-
   const matchingPlants = plantInventory.filter(plant => (
     plant.plantName.toLowerCase() === lowerCasePlantName &&
     plant.dominantColor.toLowerCase() === color
   ));
-
 
   if (matchingPlants.length === 0) {
     // Check if the plant is in the inventory but not in stock
@@ -125,8 +132,9 @@ const purchasePlant = (plantInventory, plantName, color, quantity) => {
   }
 
   const order = [];
+  let addPlantToCart = null;
   for (let i = 0; i < quantity; i++) {
-    const addPlantToCart = selectPlant(plantInventory, plantName, color);
+    addPlantToCart = selectPlant(plantInventory, plantName, color);
     const inStockPlants = addPlantToCart.filter(plant => plant.inStock === true);
     if (inStockPlants.length > 0) {
       order.push(inStockPlants[0]);
@@ -136,7 +144,11 @@ const purchasePlant = (plantInventory, plantName, color, quantity) => {
   }
 
   const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
-  return totalCostInCents; // gets console.log but also exported to cashier for recipt function
+  return `\n------\ntransactionID: ${generateRandomId (5)}\n
+    customerFullName: ${customerFullName}\n
+    totalCost: ${totalCostInCents}\n
+    itemPurchased: ${addPlantToCart}\n
+    ${lolcats.rainbow("THANK YOU FOR YOUR PURCHASE! Have a wonderful day!")}`; // gets console.logged
 };
 
  //purchasePlant(); // 'Invalid input detected.'
@@ -146,8 +158,6 @@ const purchasePlant = (plantInventory, plantName, color, quantity) => {
 //purchasePlant("Argentinian Biddy-biddy", "black", 5) // Plant not in inventory but matching name found.
 //console.log(purchasePlant(plantInventory, "Argentinian Biddy-biddy", "crimson", 5)); // Total Cost: ${totalCostInCents}
 //purchasePlant("orchid", "crimson", 5) // 'Plant not in inventory.
-
-
 
 const update = () => {
     // needs to delete a plant from cart

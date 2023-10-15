@@ -1,11 +1,12 @@
 // --- Use to write receipts
 const { readJSONFile, writeJSONFile } = require('../project/helpers');  // Import the readJSONFile and writeJSONFilefunctions from the helpers.js file into index.js.
-// import
-const { purchasePlant, update, cancel } = require('../project/flowerShop');
 
 // ------ C A S H I E R ------
 
-function selectPlant(plantInventory, plantName, color) {
+//to test if fx works properly
+const plantInventory = readJSONFile('./data', 'plantInventory.json');
+
+function selectPlant(plantInventory, plantName, color) { // add a way for customer to add their name
   const lowerCasePlantName = plantName.toLowerCase();
   const lowerCaseColor = color.toLowerCase();
   const matchingPlants = plantInventory.filter(plant => (
@@ -26,27 +27,11 @@ function selectPlant(plantInventory, plantName, color) {
     return [];
   }
 };
-let writeToCustomerTransactions = false
-let receipt = []
-const generateReceipt = () => {
-  const total = purchasePlant(plantInventory, plantName, color, quantity);   // use total from other purchasePlant fx
-  writeToCustomerTransactions = true;
-
-  // use selectPlant fx
-  // export should have transaction id, name, priceInCents
-  // generate transaction id
-  if (writeToCustomerTransactions) { // At the end of the function, we now need write logic to check the writeToFile variable. If the variable is true, we update the animals.json file with the new animal.
-    writeJSONFile('./data', 'customerTransactions.js', customerTransactions); // using writesync export to customerTransaction.JSON to store so fx update and fx cancel can use data stored here using readsync
-
-  }
-}
-
 // ------ Thank you, come again! ------
 
 
 
 
 module.exports = {
-  selectPlant,
-  generateReceipt
+  selectPlant
 }
