@@ -4,10 +4,12 @@ const lolcats = require("lolcats"); // Importing lolcats mod
 
 // Data
 const plantInventory = require('../Data/plantInventory.json');
-const customerTransactions = require('../Data/customerTransactions.json')
+//const customerTransactions = require('../Data/customerTransactions.json')
 
-// ID generator
+// Alias for console.log to differentiate between debugging code and what's for the user
 const inform = console.log; // GLOBAL SCOPE - used to print out info for User
+
+// ID Generator
 function generateRandomId(length) {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let id = '';
@@ -19,9 +21,9 @@ function generateRandomId(length) {
 };
 generateRandomId(5); // to use for purchase fx
 
-// ------ C A S H I E R ------
+// -------------------------------------------------------- C A S H I E R --------------------------------------------------------
 
-// WORKS as a callback fx WITH purchasePlant fx and purchasePlantResultFX
+// WORKS as a callback fx WITH purchasePlant fx and purchasePlantResultFX. Works with index.js to read data of plantInventory.json file
 function selectPlant(plantInventory, plantName, color) {
   if (
     Array.isArray(plantInventory) &&
@@ -56,7 +58,8 @@ function selectPlant(plantInventory, plantName, color) {
   }
 };
 
-// purchasePlant function - allows customer to make a purchase. Calculates total and makes a reciept to print in console. Customer can only purchase one plant species per transaction
+// ------ Requires user input ------
+// purchasePlant function - allows customer to make a purchase. Calculates total and makes a reciept to print in console. Customer can only purchase one plant species per transaction. Works with index.js to read data of plantInventory.json file and uses selectPlant fx as call back fx.
 // npm run purchasePlant <plantName> <color> <quantity> <customerFullName>
 const purchasePlant = (plantInventory, plantName, color, quantity, customerFullName) => {
   if (
@@ -107,7 +110,7 @@ const purchasePlant = (plantInventory, plantName, color, quantity, customerFullN
   }).join('')}\n------\nRefunds or exchanges for same day purchases only\n\n${lolcats.rainbow("THANK YOU FOR YOUR PURCHASE! Have a wonderful day!")}`;
 };
 
-//fx that stores customer transactions in customerTransaction.json 
+//fx that stores customer transactions in customerTransaction.json. Works with index.js to write data onto customerTransactions.json file
 let updatedCustomerTransactions = [];
 const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFullName) => {
 
@@ -162,7 +165,23 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
   return updatedCustomerTransactions;
 };
 
-//--- I N V E N T O R Y FX ---
+
+
+
+// ------ Requires user input ------
+const update = () => {};
+// ------ Requires user input ------
+const cancel = () => {};
+
+
+
+
+
+
+
+//-------------------------------------------------------- I N V E N T O R Y --------------------------------------------------------
+// inventory FX - Shows Shop inventory. Works with index.js to read data of plantInventory.json file
+// ------ Requires user input ------
 // npm run inventory
 const inventory = (plantInventory) => {
   return plantInventory.reduce((result, obj, index) => {
@@ -170,7 +189,8 @@ const inventory = (plantInventory) => {
   }, {});
 };
 
-// donatePlant function
+// donatePlant FX - Allows user to add a plant of a different color to plantInventory.json or update value of inStock key to true if plant of same color exists in inventory but is out of stock. Works with index.js to write data onto plantInventory.json file
+// ------ Requires user input ------
 // npm run donatePlant <plantName> <color>
 const donatePlant = (plantInventory, plantName, color) => {
   if (color) { // if user input color proceed with fx
@@ -206,8 +226,9 @@ const donatePlant = (plantInventory, plantName, color) => {
   } 
 };
 
-// showItem function
-// npm run showItem <plantName> <inStock> (inStock input is optional)
+// showItem FX - shows items of given plantName. Works with index.js to read data of plantInventory.json file
+// ------ Requires user input ------
+// npm run showItem <plantName> <inStock> (inStock input is optional and allows user to view if item is in stock or not instock by inputting true or false)
 const showItem = (plantInventory, plantName, inStock) => {
   const lowerCasePlantName = plantName.toLowerCase(); // Makes user input case insensitive
 
@@ -223,10 +244,7 @@ const showItem = (plantInventory, plantName, inStock) => {
   }
 };
 
-const update = () => {};
-const cancel = () => {};
-
-// Exporting functions
+// Exporting functions to index.js so user can input and run fx from terminal
 module.exports = {
   generateRandomId,
   inventory,

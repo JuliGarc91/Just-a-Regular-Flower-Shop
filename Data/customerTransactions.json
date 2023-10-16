@@ -342,5 +342,39 @@
         "priceInUSD": "$37.30"
       }
     ]
+  },
+  {
+    "transactionId": "KXCUd",
+    "customerFullName": "Paris Hilton",
+    "totalCostUSD": "$74.60",
+    "itemsPurchased": [
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      },
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      }
+    ]
+  },
+  {
+    "transactionId": "DwIjC",
+    "customerFullName": "Doge",
+    "totalCostUSD": "$74.60",
+    "itemsPurchased": [
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      },
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      }
+    ]
   }
 ]

@@ -5,7 +5,6 @@ const { readJSONFile, writeJSONFile } = require('./project/helpers');
 
 // --- Import Data ---
 const plantInventory = readJSONFile('./data', 'plantInventory.json');
-const customerTransactions = readJSONFile('./data', 'plantInventory.json');
 
 // console.log (plantInventory); // test if data imported successfully
 const { inventory, donatePlant, showItem, purchasePlant, purchaseResultFX, update, cancel } = require('./project/flowerShop');
@@ -71,7 +70,7 @@ function run() {
     default:
       inform('There was an error.'); // error input (invalid argument)
   }
-// --- original ---
+// uses fx on helpers.js
   if (writeToPlantInventory) {
     writeJSONFile('./data', 'plantInventory.json', updatedPlants); // At the end of the function, we now need write logic to check the writeToPlantInventory variable. If the variable is true, we update the plantInventory.json file with the new plant data.
   } 
@@ -80,15 +79,10 @@ function run() {
     if (!Array.isArray(existingData)) {     // Ensure that existingData is an array; if not, initialize it as an empty array
       existingData = [];
     }
-
-//test code lines 84 - 88
     if (typeof updatedCustomerTransactions === "object" && Object.keys(updatedCustomerTransactions).length !== 0) { // checks if variable contains object that is not empty:  Object.keys(updatedCustomerTransactions).length !== 0
-      existingData = existingData.concat(updatedCustomerTransactions);
-      writeJSONFile('./data', 'customerTransactions.json', existingData);
-    }
-
-    // existingData = existingData.concat(updatedCustomerTransactions);     // Merge the existing data with the new transactions
-    // writeJSONFile('./data', 'customerTransactions.json', existingData);     // Update customerTransactions.json with the merged data
+      existingData = existingData.concat(updatedCustomerTransactions); // Merge the existing data with the new transactions
+      writeJSONFile('./data', 'customerTransactions.json', existingData); // Update customerTransactions.json with the merged data
+    }  
   }
 };
 
