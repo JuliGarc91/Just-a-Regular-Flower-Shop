@@ -58,8 +58,8 @@ function selectPlant(plantInventory, plantName, color) {
   }
 };
 
-// ------ Requires user input ------
 // purchasePlant function - allows customer to make a purchase. Calculates total and makes a reciept to print in console. Customer can only purchase one plant species per transaction. Works with index.js to read data of plantInventory.json file and uses selectPlant fx as call back fx.
+// ------ Requires user input ------
 // npm run purchasePlant <plantName> <color> <quantity> <customerFullName>
 const purchasePlant = (plantInventory, plantName, color, quantity, customerFullName) => {
   if (
@@ -164,9 +164,6 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
   });
   return updatedCustomerTransactions;
 };
-
-
-
 
 // ------ Requires user input ------
 const update = () => {};
