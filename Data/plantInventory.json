@@ -597,13 +597,13 @@
     "plantName": "Gray's Lily",
     "dominantColor": "Purple",
     "priceInCents": 815,
-    "inStock": true
+    "inStock": false
   },
   {
     "plantName": "Gray's Lily",
     "dominantColor": "Black",
     "priceInCents": 3881,
-    "inStock": true
+    "inStock": false
   },
   {
     "plantName": "Gray's Lily",

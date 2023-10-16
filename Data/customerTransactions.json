@@ -286,5 +286,61 @@
         "priceInUSD": "$11.22"
       }
     ]
+  },
+  {
+    "transactionId": "t6ciK",
+    "customerFullName": "Hello Kitty",
+    "totalCostUSD": "$56.10",
+    "itemsPurchased": [
+      {
+        "plantName": "Leatherleaf Cyanea",
+        "dominantColor": "Orange",
+        "priceInUSD": "$11.22"
+      },
+      {
+        "plantName": "Leatherleaf Cyanea",
+        "dominantColor": "Orange",
+        "priceInUSD": "$11.22"
+      },
+      {
+        "plantName": "Leatherleaf Cyanea",
+        "dominantColor": "Orange",
+        "priceInUSD": "$11.22"
+      },
+      {
+        "plantName": "Leatherleaf Cyanea",
+        "dominantColor": "Orange",
+        "priceInUSD": "$11.22"
+      },
+      {
+        "plantName": "Leatherleaf Cyanea",
+        "dominantColor": "Orange",
+        "priceInUSD": "$11.22"
+      }
+    ]
+  },
+  {
+    "transactionId": "ygS01",
+    "customerFullName": "Light Yagami",
+    "totalCostUSD": "$11.22",
+    "itemsPurchased": [
+      {
+        "plantName": "Leatherleaf Cyanea",
+        "dominantColor": "Orange",
+        "priceInUSD": "$11.22"
+      }
+    ]
+  },
+  {
+    "transactionId": "BPtcz",
+    "customerFullName": "Oliver Twist",
+    "totalCostUSD": "$37.30",
+    "itemsPurchased": [
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      }
+    ]
   }
 ]

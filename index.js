@@ -72,31 +72,24 @@ function run() {
       inform('There was an error.'); // error input (invalid argument)
   }
 // --- original ---
-//   if (writeToPlantInventory) {
-//     writeJSONFile('./data', 'plantInventory.json', updatedPlants); // At the end of the function, we now need write logic to check the writeToPlantInventory variable. If the variable is true, we update the plantInventory.json file with the new plant data.
-//   } 
-//   if (writeToCustomerTransactions) {
-//     let existingData = readJSONFile('./data', 'customerTransactions.json'); // Read the existing data from customerTransactions.json
-//     if (!Array.isArray(existingData)) {     // Ensure that existingData is an array; if not, initialize it as an empty array
-//       existingData = [];
-//     }
-//     existingData = existingData.concat(updatedCustomerTransactions);     // Merge the existing data with the new transactions
-//     writeJSONFile('./data', 'customerTransactions.json', existingData);     // Update customerTransactions.json with the merged data
-//   }
-// };
+  if (writeToPlantInventory) {
+    writeJSONFile('./data', 'plantInventory.json', updatedPlants); // At the end of the function, we now need write logic to check the writeToPlantInventory variable. If the variable is true, we update the plantInventory.json file with the new plant data.
+  } 
+  if (writeToCustomerTransactions) {
+    let existingData = readJSONFile('./data', 'customerTransactions.json'); // Read the existing data from customerTransactions.json
+    if (!Array.isArray(existingData)) {     // Ensure that existingData is an array; if not, initialize it as an empty array
+      existingData = [];
+    }
 
-// --- test ---
-if (writeToPlantInventory) {
-  writeJSONFile('./data', 'plantInventory.json', updatedPlants);
-}
+//test code lines 84 - 88
+    if (typeof updatedCustomerTransactions === "object" && Object.keys(updatedCustomerTransactions).length !== 0) { // checks if variable contains object that is not empty:  Object.keys(updatedCustomerTransactions).length !== 0
+      existingData = existingData.concat(updatedCustomerTransactions);
+      writeJSONFile('./data', 'customerTransactions.json', existingData);
+    }
 
-if (writeToCustomerTransactions) {
-  let existingData = readJSONFile('./data', 'customerTransactions.json') || []; // Use an empty array as the default value if the readJSONFile result is falsy
-  if (!Array.isArray(existingData)) {
-    existingData = [];
+    // existingData = existingData.concat(updatedCustomerTransactions);     // Merge the existing data with the new transactions
+    // writeJSONFile('./data', 'customerTransactions.json', existingData);     // Update customerTransactions.json with the merged data
   }
-  existingData = existingData.concat(updatedCustomerTransactions);
-  writeJSONFile('./data', 'customerTransactions.json', existingData);
-}
-}
+};
+
 run();

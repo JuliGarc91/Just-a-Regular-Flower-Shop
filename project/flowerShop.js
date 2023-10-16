@@ -111,15 +111,13 @@ const purchasePlant = (plantInventory, plantName, color, quantity, customerFullN
 let updatedCustomerTransactions = [];
 const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFullName) => {
 
-  if (
-    typeof plantName !== 'string' ||
-    typeof color !== 'string' ||
-    typeof quantity !== 'number' ||
-    typeof customerFullName !== 'string'
-  ) {
-    return; // Return an empty object for invalid input
-  } else {
-
+    // Check for invalid input data types
+    if (
+      typeof quantity !== 'number' &&
+      typeof customerFullName !== 'string'
+    ) {
+      return {}; // Return an empty object for invalid input (fx run in index.js will not add empty object to customerTransactions.js)
+    };
   const lowerCasePlantName = plantName.toLowerCase();
   color = color.toLowerCase();
   const matchingPlants = plantInventory.filter(plant => (
@@ -128,26 +126,14 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
   ));
   if (matchingPlants.length === 0) {
     if (plantInventory.some(plant => plant.plantName.toLowerCase() === lowerCasePlantName && !plant.inStock)) {
-      return {
-        "transactionId": generateRandomId(5),
-        "customerFullName": customerFullName,
-        "totalCostUSD": "$0.00",
-        "itemsPurchased": []
-      };
+      inform ("Error: Out of stock item.");
+      return {};
     } else if (plantInventory.find(plant => plant.plantName.toLowerCase() === lowerCasePlantName && plant.inStock === true)) {
-      return {
-        "transactionId": generateRandomId(5),
-        "customerFullName": customerFullName,
-        "totalCostUSD": "$0.00",
-        "itemsPurchased": []
-      };
+      inform ("Error: We do not have that item in the color specified.")
+      return {};
     } else {
-      return {
-        "transactionId": generateRandomId(5),
-        "customerFullName": customerFullName,
-        "totalCostUSD": "$0.00",
-        "itemsPurchased": []
-      };
+      inform ("Error: We do not carry item.")
+      return {};
     }
   }
   const order = [];
@@ -157,12 +143,8 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
     if (inStockPlants.length > 0) {
       order.push(inStockPlants[0]);
     } else {
-      return {
-        "transactionId": generateRandomId(5),
-        "customerFullName": customerFullName,
-        "totalCostUSD": "$0.00",
-        "itemsPurchased": []
-      };
+      inform ('Error: Out of stock item.')
+      return {};
     }
   }
   const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
@@ -171,7 +153,6 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
     "dominantColor": plant.dominantColor,
     "priceInUSD": `$${(plant.priceInCents / 100).toFixed(2)}`
   }));
-
   updatedCustomerTransactions.push({
     "transactionId": generateRandomId(5),
     "customerFullName": customerFullName,
@@ -179,7 +160,6 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
     "itemsPurchased": itemsPurchased
   });
   return updatedCustomerTransactions;
-}
 };
 
 //--- I N V E N T O R Y FX ---
@@ -227,19 +207,21 @@ const donatePlant = (plantInventory, plantName, color) => {
 };
 
 // showItem function
-// npm run showItem <plantName> <inStock>
+// npm run showItem <plantName> <inStock> (inStock input is optional)
 const showItem = (plantInventory, plantName, inStock) => {
-  const lowerCasePlantName = plantName.toLowerCase();
+  const lowerCasePlantName = plantName.toLowerCase(); // Makes user input case insensitive
 
-  if (inStock.toLowerCase() === "true" || inStock.toLowerCase() === "in stock") { // input for 3rd parameter can be "true" or "in stock" to view plantName input that's in stock
-    inStock = true; // interprets user input as boolean
-  } else if (inStock === "false" || inStock === "not in stock") { // input for 3rd parameter can be "false" or "not in stock" to view plantName input that's not in stock
-    inStock = false;
+  if (inStock === undefined) { // If user didn't make input
+    return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName);
+  } else {
+    if (inStock.toLowerCase() === "true") {
+      inStock = true; // Interpret user input as boolean
+    } else if (inStock.toLowerCase() === "false") {
+      inStock = false; // Interpret user input as boolean
+    } 
+    return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName && plant.inStock === inStock);
   }
-  return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName && (inStock === undefined || plant.inStock === inStock));
 };
-
-
 
 const update = () => {};
 const cancel = () => {};
