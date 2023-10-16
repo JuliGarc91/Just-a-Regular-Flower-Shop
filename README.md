@@ -14,4 +14,4 @@ user can do these things:
 
 
 WORK IN PROGRESS .....
-[url=https://ibb.co/vB2vB7f][img]https://i.ibb.co/vB2vB7f/moontree-goddard.jpg[/img][/url]
+![alt text](http://url/to/img.png)
