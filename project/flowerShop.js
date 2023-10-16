@@ -4,9 +4,7 @@ const lolcats = require("lolcats"); // Importing lolcats mod
 
 // Data
 const plantInventory = require('../Data/plantInventory.json');
-
-// Cashier functions
-
+const customerTransactions = require('../Data/customerTransactions.json')
 
 // ID generator
 const inform = console.log; // GLOBAL SCOPE - used to print out info for User
@@ -23,8 +21,20 @@ generateRandomId(5); // to use for purchase fx
 
 // ------ C A S H I E R ------
 
-// WORKS as a callback fx WITH purchasePlant fx
+// WORKS as a callback fx WITH purchasePlant fx and purchasePlantResultFX
 function selectPlant(plantInventory, plantName, color) {
+  if (
+    Array.isArray(plantInventory) &&
+    typeof plantName === 'string' &&
+    typeof color === 'string'
+  ) {
+    // All data types are valid, you can proceed with the function.
+    // Your code for purchasing the plant can go here.
+  } else {
+    // Data types are not valid. Return an error message or handle the invalid input as needed.
+    inform ('Invalid input data types. Please provide valid data types for all parameters.');
+  }
+
   const lowerCasePlantName = plantName.toLowerCase();
   const lowerCaseColor = color.toLowerCase();
   const matchingPlants = plantInventory.filter(plant => (
@@ -45,17 +55,26 @@ function selectPlant(plantInventory, plantName, color) {
     return [];
   }
 };
-// purchasePlant function
+
+// purchasePlant function - allows customer to make a purchase. Calculates total and makes a reciept to print in console. Customer can only purchase one plant species per transaction
 // npm run purchasePlant <plantName> <color> <quantity> <customerFullName>
 const purchasePlant = (plantInventory, plantName, color, quantity, customerFullName) => {
+  if (
+    typeof Number(quantity) === 'number' &&
+    typeof customerFullName === 'string'
+  ) {
+    // All data types are valid, you can proceed with the function.
+    // Your code for purchasing the plant can go here.
+  } else {
+    // Data types are not valid. Return an error message or handle the invalid input as needed.
+    return 'Invalid input data types. Please provide valid data types for all parameters.';
+  }
   const lowerCasePlantName = plantName.toLowerCase(); // makes inputs case insensitive
   color = color.toLowerCase();
-  
   const matchingPlants = plantInventory.filter(plant => ( // can only buy plants in inventory so filters them out
     plant.plantName.toLowerCase() === lowerCasePlantName &&
     plant.dominantColor.toLowerCase() === color
   ));
-
   if (matchingPlants.length === 0) { // if matchingPlants array from .filter is empty
     if (plantInventory.some(plant => plant.plantName.toLowerCase() === lowerCasePlantName && !plant.inStock)) { // If customer tries to input plant not in stock (inStock value is false):  
       // If no matching plants were found, check if there's any plant in the inventory
@@ -71,7 +90,6 @@ const purchasePlant = (plantInventory, plantName, color, quantity, customerFullN
       return `We don't carry that plant, only local plants that are compatible with our ecosystem.`; // If no matching or suitable plants are found in the inventory, return this generic message.
     }
   }
-
   const order = [];
   let addPlantToCart = null;
   for (let i = 0; i < quantity; i++) { // uses quantity input to push this quantity of elements into order array
@@ -83,24 +101,31 @@ const purchasePlant = (plantInventory, plantName, color, quantity, customerFullN
       return `We apologize we don't have this plant in stock at the moment.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
     }
   }
-
   const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0); // calculates total to later format a receipt for the user to see in terminal as an output
   return `\n${new Date()}\n------\n\n${lolcats.rainbow("WELCOME To Our Botanic Shop!")}\nFind a variety of local plant species that enrich our ecosystem :-)\n\n------\nTransactionID: ${generateRandomId(5)}\nCustomer Full Name: ${customerFullName}\nTotal Cost USD: $${(totalCostInCents/100).toFixed(2)}\n---\nItem(s) Purchased\n---\n${order.map((plant) => {
     return `Plant Name: '${plant.plantName}' Dominant Color: '${plant.dominantColor}' Price In USD: $${(plant.priceInCents / 100).toFixed(2)}\n`;
   }).join('')}\n------\nRefunds or exchanges for same day purchases only\n\n${lolcats.rainbow("THANK YOU FOR YOUR PURCHASE! Have a wonderful day!")}`;
 };
 
-
+//fx that stores customer transactions in customerTransaction.json 
 let updatedCustomerTransactions = [];
 const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFullName) => {
+
+  if (
+    typeof plantName !== 'string' ||
+    typeof color !== 'string' ||
+    typeof quantity !== 'number' ||
+    typeof customerFullName !== 'string'
+  ) {
+    return; // Return an empty object for invalid input
+  } else {
+
   const lowerCasePlantName = plantName.toLowerCase();
   color = color.toLowerCase();
-
   const matchingPlants = plantInventory.filter(plant => (
     plant.plantName.toLowerCase() === lowerCasePlantName &&
     plant.dominantColor.toLowerCase() === color
   ));
-
   if (matchingPlants.length === 0) {
     if (plantInventory.some(plant => plant.plantName.toLowerCase() === lowerCasePlantName && !plant.inStock)) {
       return {
@@ -125,7 +150,6 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
       };
     }
   }
-
   const order = [];
   for (let i = 0; i < quantity; i++) {
     const addPlantToCart = selectPlant(plantInventory, plantName, color);
@@ -141,9 +165,7 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
       };
     }
   }
-
   const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
-
   const itemsPurchased = order.map(plant => ({
     "plantName": plant.plantName,
     "dominantColor": plant.dominantColor,
@@ -157,18 +179,10 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
     "itemsPurchased": itemsPurchased
   });
   return updatedCustomerTransactions;
+}
 };
 
-
-
-
-
-
-
-
-
-
-// inventory function
+//--- I N V E N T O R Y FX ---
 // npm run inventory
 const inventory = (plantInventory) => {
   return plantInventory.reduce((result, obj, index) => {
