@@ -6,7 +6,7 @@ const { readJSONFile, writeJSONFile } = require('../project/helpers');  // Impor
 //to test if fx works properly
 const plantInventory = readJSONFile('./data', 'plantInventory.json');
 
-function selectPlant(plantInventory, plantName, color) { // add a way for customer to add their name
+function selectPlant(plantInventory, plantName, color) {
   const lowerCasePlantName = plantName.toLowerCase();
   const lowerCaseColor = color.toLowerCase();
   const matchingPlants = plantInventory.filter(plant => (
@@ -28,10 +28,6 @@ function selectPlant(plantInventory, plantName, color) { // add a way for custom
   }
 };
 // ------ Thank you, come again! ------
-
-
-
-
 module.exports = {
   selectPlant
 }

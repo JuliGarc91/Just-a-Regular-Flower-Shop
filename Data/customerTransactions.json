@@ -1,1 +1,98 @@
-[]
+[
+  {
+    "transactionId": "jbjtO",
+    "customerFullName": "Molly Simmons",
+    "totalCostUSD": "$117.70",
+    "itemsPurchased": [
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      },
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      },
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      },
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      },
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      }
+    ]
+  },
+  {
+    "transactionId": "Yqarf",
+    "customerFullName": "Molly Simmons",
+    "totalCostUSD": "$117.70",
+    "itemsPurchased": [
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      },
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      },
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      },
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      },
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      }
+    ]
+  },
+  {
+    "transactionId": "DFaZO",
+    "customerFullName": "Hannah Barbara",
+    "totalCostUSD": "$117.70",
+    "itemsPurchased": [
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      },
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      },
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      },
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      },
+      {
+        "plantName": "Dot Lichen",
+        "dominantColor": "Crimson",
+        "priceInUSD": "$23.54"
+      }
+    ]
+  }
+]

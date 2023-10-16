@@ -27,7 +27,7 @@
     "plantName": "Dot Lichen",
     "dominantColor": "Crimson",
     "priceInCents": 2354,
-    "inStock": false
+    "inStock": true
   },
   {
     "plantName": "Southern Swamp Aster",
@@ -111,7 +111,7 @@
     "plantName": "Stinking Milkvetch",
     "dominantColor": "Mauv",
     "priceInCents": 254,
-    "inStock": false
+    "inStock": true
   },
   {
     "plantName": "Wild Plantain",
@@ -597,7 +597,7 @@
     "plantName": "Gray's Lily",
     "dominantColor": "Purple",
     "priceInCents": 815,
-    "inStock": false
+    "inStock": true
   },
   {
     "plantName": "Gray's Lily",
@@ -615,6 +615,12 @@
     "plantName": "Hartweg's Groundsel",
     "dominantColor": "Black",
     "priceInCents": 706,
+    "inStock": false
+  },
+  {
+    "plantName": "Hana Forest Silversword",
+    "dominantColor": "Violet",
+    "priceInCents": 3219,
     "inStock": true
   }
 ]

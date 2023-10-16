@@ -1,14 +1,14 @@
-// ---  I M P O R T S ---
-// --- mods ---
-const { inspect } = require("node:util");
-const { faker } = require("@faker-js/faker"); // generate data based on user input to Create or update JSON
-const lolcats = require("lolcats"); // importing lolcats mod
-// --- data ---
-const  plantInventory  = require('../Data/plantInventory.json');
-// --- cashier functions ---
+// I M P O R T S
+const { faker } = require("@faker-js/faker"); // Generate data based on user input to Create or update JSON
+const lolcats = require("lolcats"); // Importing lolcats mod
+
+// Data
+const plantInventory = require('../Data/plantInventory.json');
+
+// Cashier functions
 const { selectPlant } = require('./cashier');
 
-// --- ID generator ---
+// ID generator
 const inform = console.log; // GLOBAL SCOPE - used to print out info for User
 function generateRandomId(length) {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -19,31 +19,16 @@ function generateRandomId(length) {
   }
   return id;
 };
+generateRandomId(5); // to use for purchase fx
 
-// --- BACKEND: U S E R   C O N T R O L L E R   F U N C T I O N S ---
-
-// --- RUNNING Fx ---
-// Type npm run <command> <input1> <input2> <input3> <input4>
-/// --- Commands: ---
-// inventory
-// donatePlant - node index.js donatePlant
-// showItem - node index.js showItem
-// purchasePlant - node index.js purchasePlant
-// update - node index.js updateOrder
-// cancel - node index.js cancelOrder
-
-
-
-// --- To RUN: ---
-// npm run inventory
-const inventory = (plantInventory) => { // returns an object of plantInventory objects with keys item1, item2 so on and so forth
-    return plantInventory.reduce((result, obj, index) => {
-        return { ...result, [`id: item${index + 1}`]: obj }; // .reduce() iterates through array to collect all properties in result obj using spread operator and labeling each obj "item" with it's index number plus 1
-    }, {});
+// inventory function
+const inventory = (plantInventory) => {
+  return plantInventory.reduce((result, obj, index) => {
+    return { ...result, [`id: item${index + 1}`]: obj };
+  }, {});
 };
 
-// --- TO RUN: ---
-// npm run donatePlant <plantName> <color> must have 2 args after command
+// donatePlant function
 const donatePlant = (plantInventory, plantName, color) => {
   if (color) { // if user input color proceed with fx
     const lowerCasePlantName = plantName.toLowerCase(); // Convert user input to lowercase to match case-insensitively
@@ -78,56 +63,34 @@ const donatePlant = (plantInventory, plantName, color) => {
   } 
 };
 
-// --- TO RUN: --- 2nd arg after command is optional
-// npm run showItem <plantName> Shows all plant items of given plant name if any
-// npm run showItem <plantName> <false> Shows all plant items of given plant name that are in stock
-// npm run showItem <plantName> <true> Shows all plant items of given plant name that are in stock
+// showItem function
 const showItem = (plantInventory, plantName, inStock) => {
-  const lowerCasePlantName = plantName.toLowerCase(); // Convert the provided plantName to lowercase for case-insensitive matching
-  if (inStock === "true") { // Interpret string values "true" and "false" as booleans so function works properly with customer inputs
+  const lowerCasePlantName = plantName.toLowerCase();
+
+  if (inStock.toLowerCase() === "true" || inStock.toLowerCase() === "in stock") {
     inStock = true;
-  } else if (inStock === "false") {
+  } else if (inStock === "false" || inStock === "not in stock") {
     inStock = false;
   }
-
-  if (typeof inStock === "boolean") {
-    return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName && plant.inStock === inStock); 
-  } else if (!inStock) { // if inStock has falsy value like undefined (bc customer didnt input anything)
-    return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName);
-  }
+  return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName && (inStock === undefined || plant.inStock === inStock));
 };
-// --- for test cases ---
-// fx should be able to return all items of specified plant name regardless of inStock property
-// fx should be able to return all items of specified plant with property key value pair `inStock: false`
-// fx should be able to return all items of specified plant with property key value pair `inStock: true`
-// plantInventory and plantName are required parameters,  instock parameter is optional
-// user should be able to return all items of specified plant name regardless of inStock property by inputting `npm run showItem "cork oak"` for example
-// user should be able to return all items with property key value pair `inStock: false` of specified plant name by inputting `npm run showItem "cork oak" false`
-// user should be able to return all items with property key value pair `inStock: true` of specified plant name by inputting `npm run showItem "cork oak" true`
 
-// --- TO RUN: --- User must input 3 args
-// npm run purchasePlant <plantName> <color> <quantity>
+// purchasePlant function
 const purchasePlant = (plantInventory, plantName, color, quantity, customerFullName) => {
-  // if (!plantName || typeof plantName !== 'string' || !color || typeof color !== 'string' || !quantity || typeof quantity !== 'number') {
-
-  //   return `Error: Must enter plant name, color, and the amount you would like to purchase.\n------\nTo select plants to purchase, enter npm run purchasePlant <plantName> <color> <quantity>\nTo view our large selection of local plants, enter: npm run inventory\n`;
-  // }
   const lowerCasePlantName = plantName.toLowerCase();
   color = color.toLowerCase();
+  
   const matchingPlants = plantInventory.filter(plant => (
     plant.plantName.toLowerCase() === lowerCasePlantName &&
     plant.dominantColor.toLowerCase() === color
   ));
 
   if (matchingPlants.length === 0) {
-    // Check if the plant is in the inventory but not in stock
     if (plantInventory.some(plant => plant.plantName.toLowerCase() === lowerCasePlantName && !plant.inStock)) {
-
       return `We apologize we don't have this plant in stock at the moment.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
     } else if (plantInventory.find(plant => plant.plantName.toLowerCase() === lowerCasePlantName && plant.inStock === true)) {
       return `We apologize, the plant "${plantName}" in the color "${color}" is not available in our inventory.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
     } else {
-      console.log
       return `We don't carry that plant, only local plants that are compatible with our ecosystem.`;
     }
   }
@@ -145,36 +108,21 @@ const purchasePlant = (plantInventory, plantName, color, quantity, customerFullN
   }
 
   const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
-  return `\n${new Date()}\n------\n\n${lolcats.rainbow("WELCOME To Our Botanic Shop!")}\nFind a variety of local plant species that enrich our ecosystem :-)\n\n------\nTransactionID: ${generateRandomId (5)}\nCustomer Full Name: ${customerFullName}\nTotal Cost USD: $${(totalCostInCents/100).toFixed(2)}\n---\nItem(s) Purchased\n---\n${order.map((plant) => {
+  return `\n${new Date()}\n------\n\n${lolcats.rainbow("WELCOME To Our Botanic Shop!")}\nFind a variety of local plant species that enrich our ecosystem :-)\n\n------\nTransactionID: ${generateRandomId(5)}\nCustomer Full Name: ${customerFullName}\nTotal Cost USD: $${(totalCostInCents/100).toFixed(2)}\n---\nItem(s) Purchased\n---\n${order.map((plant) => {
     return `Plant Name: '${plant.plantName}' Dominant Color: '${plant.dominantColor}' Price In USD: $${(plant.priceInCents / 100).toFixed(2)}\n`;
-}).join('')}\n------\nRefunds or exchanges for same day purchases only\n\n${lolcats.rainbow("THANK YOU FOR YOUR PURCHASE! Have a wonderful day!")}`;
+  }).join('')}\n------\nRefunds or exchanges for same day purchases only\n\n${lolcats.rainbow("THANK YOU FOR YOUR PURCHASE! Have a wonderful day!")}`;
 };
 
- //purchasePlant(); // 'Invalid input detected.'
-// purchasePlant("Gray's Lily"); // Invalid input detected.'
-//purchasePlant("Gray's Lily", "black"); // Invalid input detected.'
-//purchasePlant("Gray's Lily", "black", 5); // 'Plant not in stock.'
-//purchasePlant("Argentinian Biddy-biddy", "black", 5) // Plant not in inventory but matching name found.
-console.log(purchasePlant(plantInventory, "Argentinian Biddy-biddy", "crimson", 5)); // Total Cost: ${totalCostInCents}
-//purchasePlant("orchid", "crimson", 5) // 'Plant not in inventory.
+const update = () => {};
+const cancel = () => {};
 
-const update = () => {
-    // needs to delete a plant from cart
-    // or add a plant to existing order
-    // or delete a plant to add another one (replace)
-}
-const cancel = () => {
-    // needs to delete entire order
-}
-
-let updatedPlants;
-let writeToFile;
-
+// Exporting functions
 module.exports = {
-    inventory, 
-    donatePlant, 
-    showItem, 
-    purchasePlant, 
-    update, 
-    cancel
+  generateRandomId,
+  inventory,
+  donatePlant,
+  showItem,
+  purchasePlant,
+  update,
+  cancel
 };
