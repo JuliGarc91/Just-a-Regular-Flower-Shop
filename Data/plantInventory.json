@@ -622,5 +622,11 @@
     "dominantColor": "Violet",
     "priceInCents": 3219,
     "inStock": true
+  },
+  {
+    "plantName": "Parrot-lily",
+    "dominantColor": "Orange",
+    "priceInCents": 2096,
+    "inStock": true
   }
 ]

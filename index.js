@@ -8,8 +8,7 @@ const plantInventory = readJSONFile('./data', 'plantInventory.json');
 const customerTransactions = readJSONFile('./data', 'plantInventory.json');
 
 // console.log (plantInventory); // test if data imported successfully
-const { generateRandomId ,inventory, donatePlant, showItem, purchasePlant, update, cancel } = require('./project/flowerShop');
-const { selectPlant } = require('./project/cashier');
+const { generateRandomId ,inventory, donatePlant, showItem, selectPlant, purchasePlant, purchaseResultFX, update, cancel } = require('./project/flowerShop');
 
 // --- R U N Function ---
 // create an alias called inform to store the console.log function
@@ -19,79 +18,73 @@ const { selectPlant } = require('./project/cashier');
 const inform = console.log;
 
 
-let updatedCustomerTransactions = [];
-const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFullName) => {
-  const lowerCasePlantName = plantName.toLowerCase();
-  color = color.toLowerCase();
+// let updatedCustomerTransactions = [];
+// const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFullName) => {
+//   const lowerCasePlantName = plantName.toLowerCase();
+//   color = color.toLowerCase();
 
-  const matchingPlants = plantInventory.filter(plant => (
-    plant.plantName.toLowerCase() === lowerCasePlantName &&
-    plant.dominantColor.toLowerCase() === color
-  ));
+//   const matchingPlants = plantInventory.filter(plant => (
+//     plant.plantName.toLowerCase() === lowerCasePlantName &&
+//     plant.dominantColor.toLowerCase() === color
+//   ));
 
-  if (matchingPlants.length === 0) {
-    if (plantInventory.some(plant => plant.plantName.toLowerCase() === lowerCasePlantName && !plant.inStock)) {
-      return {
-        "transactionId": generateRandomId(5),
-        "customerFullName": customerFullName,
-        "totalCostUSD": "$0.00",
-        "itemsPurchased": []
-      };
-    } else if (plantInventory.find(plant => plant.plantName.toLowerCase() === lowerCasePlantName && plant.inStock === true)) {
-      return {
-        "transactionId": generateRandomId(5),
-        "customerFullName": customerFullName,
-        "totalCostUSD": "$0.00",
-        "itemsPurchased": []
-      };
-    } else {
-      return {
-        "transactionId": generateRandomId(5),
-        "customerFullName": customerFullName,
-        "totalCostUSD": "$0.00",
-        "itemsPurchased": []
-      };
-    }
-  }
+//   if (matchingPlants.length === 0) {
+//     if (plantInventory.some(plant => plant.plantName.toLowerCase() === lowerCasePlantName && !plant.inStock)) {
+//       return {
+//         "transactionId": generateRandomId(5),
+//         "customerFullName": customerFullName,
+//         "totalCostUSD": "$0.00",
+//         "itemsPurchased": []
+//       };
+//     } else if (plantInventory.find(plant => plant.plantName.toLowerCase() === lowerCasePlantName && plant.inStock === true)) {
+//       return {
+//         "transactionId": generateRandomId(5),
+//         "customerFullName": customerFullName,
+//         "totalCostUSD": "$0.00",
+//         "itemsPurchased": []
+//       };
+//     } else {
+//       return {
+//         "transactionId": generateRandomId(5),
+//         "customerFullName": customerFullName,
+//         "totalCostUSD": "$0.00",
+//         "itemsPurchased": []
+//       };
+//     }
+//   }
 
-  const order = [];
-  for (let i = 0; i < quantity; i++) {
-    const addPlantToCart = selectPlant(plantInventory, plantName, color);
-    const inStockPlants = addPlantToCart.filter(plant => plant.inStock === true);
-    if (inStockPlants.length > 0) {
-      order.push(inStockPlants[0]);
-    } else {
-      return {
-        "transactionId": generateRandomId(5),
-        "customerFullName": customerFullName,
-        "totalCostUSD": "$0.00",
-        "itemsPurchased": []
-      };
-    }
-  }
+//   const order = [];
+//   for (let i = 0; i < quantity; i++) {
+//     const addPlantToCart = selectPlant(plantInventory, plantName, color);
+//     const inStockPlants = addPlantToCart.filter(plant => plant.inStock === true);
+//     if (inStockPlants.length > 0) {
+//       order.push(inStockPlants[0]);
+//     } else {
+//       return {
+//         "transactionId": generateRandomId(5),
+//         "customerFullName": customerFullName,
+//         "totalCostUSD": "$0.00",
+//         "itemsPurchased": []
+//       };
+//     }
+//   }
 
-  const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
+//   const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0);
 
-  const itemsPurchased = order.map(plant => ({
-    "plantName": plant.plantName,
-    "dominantColor": plant.dominantColor,
-    "priceInUSD": `$${(plant.priceInCents / 100).toFixed(2)}`
-  }));
+//   const itemsPurchased = order.map(plant => ({
+//     "plantName": plant.plantName,
+//     "dominantColor": plant.dominantColor,
+//     "priceInUSD": `$${(plant.priceInCents / 100).toFixed(2)}`
+//   }));
 
-  // return {
-  //   "transactionId": generateRandomId(5),
-  //   "customerFullName": customerFullName,
-  //   "totalCostUSD": `$${(totalCostInCents / 100).toFixed(2)}`,
-  //   "itemsPurchased": itemsPurchased
-  // };
-  updatedCustomerTransactions.push({
-    "transactionId": generateRandomId(5),
-    "customerFullName": customerFullName,
-    "totalCostUSD": `$${(totalCostInCents / 100).toFixed(2)}`,
-    "itemsPurchased": itemsPurchased
-  });
-  return updatedCustomerTransactions;
-};
+//   updatedCustomerTransactions.push({
+//     "transactionId": generateRandomId(5),
+//     "customerFullName": customerFullName,
+//     "totalCostUSD": `$${(totalCostInCents / 100).toFixed(2)}`,
+//     "itemsPurchased": itemsPurchased
+//   });
+//   return updatedCustomerTransactions;
+// };
 
 function run() {
   let action = process.argv[2]; // Command stored in the first index
