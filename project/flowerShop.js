@@ -4,14 +4,14 @@ const lolcats = require("lolcats"); // Importing lolcats mod
 
 // Data
 const plantInventory = require('../Data/plantInventory.json');
-//const customerTransactions = require('../Data/customerTransactions.json')
+const customerTransactions = require('../Data/customerTransactions.json') // to use for update and cancel fx
 
 // Alias for console.log to differentiate between debugging code and what's for the user
 const inform = console.log; // GLOBAL SCOPE - used to print out info for User
 
 // ID Generator
 function generateRandomId(length) {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   let id = '';
   for (let i = 0; i < length; i++) {
     const randomIndex = Math.floor(Math.random() * characters.length);
@@ -110,8 +110,8 @@ const purchasePlant = (plantInventory, plantName, color, quantity, customerFullN
   }).join('')}\n------\nRefunds or exchanges for same day purchases only\n\n${lolcats.rainbow("THANK YOU FOR YOUR PURCHASE! Have a wonderful day!")}`;
 };
 
-//fx that stores customer transactions in customerTransaction.json. Works with index.js to write data onto customerTransactions.json file
-let updatedCustomerTransactions = [];
+//fx that stores customer transactions in customerTransactions.json. Works with index.js to write data onto customerTransactions.json file
+let customerTransaction = [];
 const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFullName) => {
 
     // Check for invalid input data types
@@ -156,17 +156,131 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
     "dominantColor": plant.dominantColor,
     "priceInUSD": `$${(plant.priceInCents / 100).toFixed(2)}`
   }));
-  updatedCustomerTransactions.push({
+  customerTransaction.push({
     "transactionId": generateRandomId(5),
     "customerFullName": customerFullName,
     "totalCostUSD": `$${(totalCostInCents / 100).toFixed(2)}`,
     "itemsPurchased": itemsPurchased
   });
-  return updatedCustomerTransactions;
+  return customerTransaction;
 };
 
 // ------ Requires user input ------
-const update = () => {};
+// const update = (customerTransactions, plantName, color, quantity, customerFullName) => {
+//   const index = customerTransactions.findIndex((transaction) => transaction.customerFullName === customerFullName);
+
+//   if (index !== -1) {
+//     const totalCostString = customerTransactions[index].totalCostUSD.slice(1); // Remove the dollar sign
+//     const totalCost = parseInt(totalCostString, 10); // Convert the string to an integer
+
+//     const newItemPrice = totalCost / quantity;
+
+//     // Create an array of updated items with the new plantName, color, and price using a for loop
+//     const updatedItems = [];
+//     for (let i = 0; i < quantity; i++) {
+//       updatedItems.push({
+//         plantName: plantName,
+//         dominantColor: color,
+//         priceInUSD: `$${newItemPrice.toFixed(2)}`,
+//       });
+//     }
+
+//     customerTransactions[index].itemsPurchased = updatedItems;
+//     customerTransactions[index].totalCostUSD = `$${(newItemPrice * quantity).toFixed(2)}`;
+
+//     return true;
+//   }
+
+//   return false;
+// };
+
+
+// const customerFullName = "Doge";
+// const plantName = "Gray's Lily";
+// const color = "Magenta";
+// const quantity = 3;
+
+// if (update(customerTransactions, plantName, color, quantity, customerFullName)) {
+//   console.log(`Transaction for ${customerFullName} updated successfully.`);
+// } else {
+//   console.log(`Transaction for ${customerFullName} not found.`);
+// }
+// const update = (customerTransactions, plantName, color, quantity, customerFullName) => {
+//   const index = customerTransactions.findIndex((transaction) => transaction.customerFullName === customerFullName);
+
+//   if (index !== -1) {
+//     const totalCostString = customerTransactions[index].totalCostUSD.slice(1); // Remove the dollar sign
+//     const totalCost = parseFloat(totalCostString); // Convert the string to a floating-point number
+
+//     const newItemPrice = totalCost / quantity;
+
+//     // Create an array of updated items with the new plantName, color, and price
+//     const updatedItems = Array.from({ length: quantity }, () => ({
+//       plantName,
+//       dominantColor: color,
+//       priceInUSD: `$${newItemPrice.toFixed(2)}`,
+//     }));
+
+//     customerTransactions[index].itemsPurchased = updatedItems;
+//     customerTransactions[index].totalCostUSD = `$${(newItemPrice * quantity).toFixed(2)}`;
+
+//     return console.log(customerTransactions[index]); // Return the updated transaction
+//   }
+
+//   return {};
+// };
+
+const update = (customerTransactions, identifier, newQuantity, newPlantName, newColor, customerFullName) => {
+  const transactionIndex = customerTransactions.findIndex((transaction) => {
+    if (customerFullName) {
+      return transaction.customerFullName.toLowerCase() === customerFullName.toLowerCase();
+    } else {
+      return transaction.transactionId.toLowerCase() === identifier;
+    }
+  });
+
+  if (transactionIndex !== -1) {
+    const updatedTransaction = customerTransactions[transactionIndex];
+    const updatedItemsPurchased = [];
+    
+    for (let i = 0; i < newQuantity; i++) {
+      updatedItemsPurchased.push(selectPlant(plantInventory, newPlantName, newColor).filter(obj=> obj));
+    }
+    
+    updatedTransaction.itemsPurchased = updatedItemsPurchased;
+    
+    customerTransactions[transactionIndex] = updatedTransaction;
+  }
+
+  return customerTransactions;
+};
+
+// // Example usage:
+// const customerTransactions = [...]; // Your data array
+// const updatedTransactions = updateTransaction(customerTransactions, "hP8fK", 3);
+// console.log(updatedTransactions);
+
+
+
+const customerFullName = "Doge";
+const plantName = "Gray's Lily";
+const color = "Magenta";
+const quantity = 3;
+
+if (update(customerTransactions, plantName, color, quantity, customerFullName)) {
+  console.log(`Transaction for ${customerFullName} updated successfully.`);
+} else {
+  console.log(`Transaction for ${customerFullName} not found.`);
+}
+
+
+
+
+
+
+
+
+
 // ------ Requires user input ------
 const cancel = () => {};
 

@@ -5,6 +5,7 @@ const { readJSONFile, writeJSONFile } = require('./project/helpers');
 
 // --- Import Data ---
 const plantInventory = readJSONFile('./data', 'plantInventory.json');
+const customerTransactions = require('./Data/customerTransactions.json') // for purchasePlant, update, and cancel fx
 
 // console.log (plantInventory); // test if data imported successfully
 const { inventory, donatePlant, showItem, purchasePlant, purchaseResultFX, update, cancel } = require('./project/flowerShop');
@@ -19,8 +20,8 @@ const inform = console.log;
 function run() {
   let action = process.argv[2]; // Command stored in the first index
   let plantName = process.argv[3]; // Customer fx arg 1
-  let color = process.argv[4]; // Customer fx arg 2
-  let inStock = process.argv[4]; // Customer fx arg 2
+  let color = process.argv[4];
+  let inStock = process.argv[4]; // Customer fx arg 2 - color and inStock will be separate variables containing the values needed for run fx.
   let quantity = process.argv[5]; // Customer fx arg 3
   let customerFullName = process.argv[6]; // Customer fx arg 4
 
@@ -51,17 +52,30 @@ function run() {
     case 'purchasePlant': // customer can purchase 1 or more plants of a type per transaction
       const receipt = purchasePlant(plantInventory, plantName, color, quantity, customerFullName);
       // Add the code to extract transaction details and populate customerTransactions
-      updatedCustomerTransactions = (purchaseResultFX(plantInventory, plantName, color, quantity, customerFullName));
+      customerTransaction = (purchaseResultFX(plantInventory, plantName, color, quantity, customerFullName));
       inform(receipt);
       inform(`Customer Input:\n------\nAction: ${action} Plant: ${plantName} Color: ${color} Quantity: ${quantity} Full Name: ${customerFullName}`);
       writeToCustomerTransactions = true;
       break;
 
+
+
+
+
+
+      
     case 'update':
+      updatedCustomerTransaction = update(customerTransactions, identifier, quantity, customerFullName)
       writeToCustomerTransactions = true;
       inform(`Customer Input:\n------\nAction: ${action} Plant: ${plantName}`);
       // Add logic to update customer transactions (not provided in the code)
       break;
+
+
+
+
+
+
 
     case 'cancel':
       inform(`Customer Input:\n------\nAction: ${action} Plant: ${plantName}`);
@@ -70,6 +84,11 @@ function run() {
     default:
       inform('There was an error.'); // error input (invalid argument)
   }
+
+
+
+
+
 // uses fx on helpers.js
   if (writeToPlantInventory) {
     writeJSONFile('./data', 'plantInventory.json', updatedPlants); // At the end of the function, we now need write logic to check the writeToPlantInventory variable. If the variable is true, we update the plantInventory.json file with the new plant data.
@@ -79,11 +98,20 @@ function run() {
     if (!Array.isArray(existingData)) {     // Ensure that existingData is an array; if not, initialize it as an empty array
       existingData = [];
     }
-    if (typeof updatedCustomerTransactions === "object" && Object.keys(updatedCustomerTransactions).length !== 0) { // checks if variable contains object that is not empty:  Object.keys(updatedCustomerTransactions).length !== 0
-      existingData = existingData.concat(updatedCustomerTransactions); // Merge the existing data with the new transactions
+    if (typeof customerTransaction === "object" && Object.keys(customerTransaction).length !== 0) { // checks if variable contains object that is not empty:  Object.keys(updatedCustomerTransaction).length !== 0
+      existingData = existingData.concat(customerTransaction); // Merge the existing data with the new transactions
       writeJSONFile('./data', 'customerTransactions.json', existingData); // Update customerTransactions.json with the merged data
     }  
+    // --- fix --
+    // if (typeof updatedCustomerTransaction === "object" && Object.keys(updatedCustomerTransaction).length !== 0) { // checks if variable contains object that is not empty:  Object.keys(updatedCustomerTransaction).length !== 0
+    //   existingData = existingData.replace(updatedCustomerTransaction); // Merge the existing data with the new transactions
+    //   writeJSONFile('./data', 'customerTransactions.json', existingData); // Update customerTransactions.json with the merged data
+    // }  
+  
   }
 };
 
 run();
+
+// updatedCustomerTransaction = update(customerTransactions, identifier, quantity, customerFullName)
+//use these variables because im using this function 
