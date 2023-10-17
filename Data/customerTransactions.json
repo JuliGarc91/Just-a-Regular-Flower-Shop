@@ -30,5 +30,34 @@
         "priceInUSD": "$37.30"
       }
     ]
+  },
+  {
+    "transactionId": "APmRT",
+    "customerFullName": "Tony Soprano",
+    "totalCostUSD": "$74.60",
+    "itemsPurchased": [
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      },
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      }
+    ]
+  },
+  {
+    "transactionId": "GctvP",
+    "customerFullName": "Tony 'Scarface' Montana",
+    "totalCostUSD": "$35.67",
+    "itemsPurchased": [
+      {
+        "plantName": "Dentate False Pennyroyal",
+        "dominantColor": "Red",
+        "priceInUSD": "$35.67"
+      }
+    ]
   }
 ]

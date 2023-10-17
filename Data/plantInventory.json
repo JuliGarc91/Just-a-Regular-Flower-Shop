@@ -21,7 +21,7 @@
     "plantName": "Dentate False Pennyroyal",
     "dominantColor": "Red",
     "priceInCents": 3567,
-    "inStock": false
+    "inStock": true
   },
   {
     "plantName": "Dot Lichen",

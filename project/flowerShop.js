@@ -166,113 +166,40 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
 };
 
 // ------ Requires user input ------
-// const update = (customerTransactions, plantName, color, quantity, customerFullName) => {
-//   const index = customerTransactions.findIndex((transaction) => transaction.customerFullName === customerFullName);
 
-//   if (index !== -1) {
-//     const totalCostString = customerTransactions[index].totalCostUSD.slice(1); // Remove the dollar sign
-//     const totalCost = parseInt(totalCostString, 10); // Convert the string to an integer
+const identifier = "FaUtE"
+const newPlantName = "Dentate False Pennyroyal";
+const newColor = "red";
+const newQuantity = 3;
+const editCustomerFullName = "Matilda"
+const update = (customerTransactions, identifier, newQuantity, newPlantName, newColor, editCustomerFullName) => {
+  const index = customerTransactions.findIndex((transaction) => transaction.transactionId.toLowerCase() === identifier.toLowerCase());
 
-//     const newItemPrice = totalCost / quantity;
-
-//     // Create an array of updated items with the new plantName, color, and price using a for loop
-//     const updatedItems = [];
-//     for (let i = 0; i < quantity; i++) {
-//       updatedItems.push({
-//         plantName: plantName,
-//         dominantColor: color,
-//         priceInUSD: `$${newItemPrice.toFixed(2)}`,
-//       });
-//     }
-
-//     customerTransactions[index].itemsPurchased = updatedItems;
-//     customerTransactions[index].totalCostUSD = `$${(newItemPrice * quantity).toFixed(2)}`;
-
-//     return true;
-//   }
-
-//   return false;
-// };
-
-
-// const customerFullName = "Doge";
-// const plantName = "Gray's Lily";
-// const color = "Magenta";
-// const quantity = 3;
-
-// if (update(customerTransactions, plantName, color, quantity, customerFullName)) {
-//   console.log(`Transaction for ${customerFullName} updated successfully.`);
-// } else {
-//   console.log(`Transaction for ${customerFullName} not found.`);
-// }
-// const update = (customerTransactions, plantName, color, quantity, customerFullName) => {
-//   const index = customerTransactions.findIndex((transaction) => transaction.customerFullName === customerFullName);
-
-//   if (index !== -1) {
-//     const totalCostString = customerTransactions[index].totalCostUSD.slice(1); // Remove the dollar sign
-//     const totalCost = parseFloat(totalCostString); // Convert the string to a floating-point number
-
-//     const newItemPrice = totalCost / quantity;
-
-//     // Create an array of updated items with the new plantName, color, and price
-//     const updatedItems = Array.from({ length: quantity }, () => ({
-//       plantName,
-//       dominantColor: color,
-//       priceInUSD: `$${newItemPrice.toFixed(2)}`,
-//     }));
-
-//     customerTransactions[index].itemsPurchased = updatedItems;
-//     customerTransactions[index].totalCostUSD = `$${(newItemPrice * quantity).toFixed(2)}`;
-
-//     return console.log(customerTransactions[index]); // Return the updated transaction
-//   }
-
-//   return {};
-// };
-
-const update = (customerTransactions, identifier, newQuantity, newPlantName, newColor, customerFullName) => {
-  const transactionIndex = customerTransactions.findIndex((transaction) => {
-    if (customerFullName) {
-      return transaction.customerFullName.toLowerCase() === customerFullName.toLowerCase();
-    } else {
-      return transaction.transactionId.toLowerCase() === identifier;
-    }
-  });
-
-  if (transactionIndex !== -1) {
-    const updatedTransaction = customerTransactions[transactionIndex];
-    const updatedItemsPurchased = [];
+  if (index > -1) {
+    customerTransactions[index].transactionId = identifier; // Use customerTransactions[index] instead of transaction[index]
+    customerTransactions[index].customerFullName = editCustomerFullName; // Use customerTransactions[index] instead of transaction[index]
+    customerTransactions[index].itemsPurchased = customerTransactions[index].itemsPurchased.filter((plant) => plant.plantName.toLowerCase() === newPlantName.toLowerCase());
     
     for (let i = 0; i < newQuantity; i++) {
-      updatedItemsPurchased.push(selectPlant(plantInventory, newPlantName, newColor).filter(obj=> obj));
+      const addPlantToCart = selectPlant(plantInventory, newPlantName, newColor);
+      const inStockPlants = addPlantToCart.filter(plant => plant.inStock === true);
+      if (inStockPlants.length > 0) {
+        customerTransactions[index].itemsPurchased.push(inStockPlants[0]);
+      } else {
+        return `We apologize we don't have this plant in stock at the moment.\nPlease view our wide selection of local plant varieties by entering npm run inventory`;
+      }
     }
     
-    updatedTransaction.itemsPurchased = updatedItemsPurchased;
-    
-    customerTransactions[transactionIndex] = updatedTransaction;
+    inform('Transaction successfully updated');
+    return customerTransactions[index];
+  } else {
+    inform('Existing order not found. No action taken');
+    return customerTransactions;
   }
-
-  return customerTransactions;
-};
-
-// // Example usage:
-// const customerTransactions = [...]; // Your data array
-// const updatedTransactions = updateTransaction(customerTransactions, "hP8fK", 3);
-// console.log(updatedTransactions);
-
-
-
-const customerFullName = "Doge";
-const plantName = "Gray's Lily";
-const color = "Magenta";
-const quantity = 3;
-
-if (update(customerTransactions, plantName, color, quantity, customerFullName)) {
-  console.log(`Transaction for ${customerFullName} updated successfully.`);
-} else {
-  console.log(`Transaction for ${customerFullName} not found.`);
 }
 
+
+console.log((update(customerTransactions, identifier, newQuantity, newPlantName, newColor, editCustomerFullName)))
 
 
 
