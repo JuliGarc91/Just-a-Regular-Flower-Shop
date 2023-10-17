@@ -639,7 +639,7 @@
     "plantName": "Globe Cactus",
     "dominantColor": "Black",
     "priceInCents": 3297,
-    "inStock": true
+    "inStock": false
   },
   {
     "plantName": "Globe Cactus",
