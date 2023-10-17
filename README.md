@@ -197,9 +197,11 @@ Feel free to use this command to explore and retrieve information about differen
      ```
 
 7. **Other Functions**
-   - In addition to the core commands, you can also run tests using Jest for quality assurance by running:
+   - To see a list of supported npm commands run:
+  
      ```bash
-     npm test
+     npm run
+     npm help
      ```
 
 With these commands at your disposal, you can efficiently manage our plant shop's inventory, donate plants, access plant details, make purchases, update transactions, and cancel transactions. Thank you for supporting our mission! 🌿

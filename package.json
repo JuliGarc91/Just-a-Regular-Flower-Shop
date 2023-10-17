@@ -4,7 +4,6 @@
   "description": "PlantShop",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
     "inventory": "node index.js inventory",
     "donatePlant": "node index.js donatePlant",
     "showItem": "node index.js showItem",
@@ -18,7 +17,6 @@
     "lolcats": "^2.0.1"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.1.0",
-    "jest": "^29.7.0"
+    "@faker-js/faker": "^8.1.0"
   }
 }
