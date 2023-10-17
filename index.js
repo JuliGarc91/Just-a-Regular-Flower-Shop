@@ -142,21 +142,33 @@ if (writeToCustomerTransactions) {
   let existingData = readJSONFile('./data', 'customerTransactions.json');
 
   // Find the index of the transaction to update
-  const indexToUpdate = existingData.findIndex(transaction => transaction.itemsPurchased === customerTransactionIdToUpdate);
+ // const indexToUpdate = existingData.findIndex(transaction => transaction.itemsPurchased === customerTransactionIdToUpdate);
+
+  // Find the index of the transaction to update
+  const indexToUpdate = existingData.findIndex(transaction => transaction.transactionId === customerTransactionIdToUpdate);
 
   if (indexToUpdate !== -1) {
     // Update the object properties as needed
-    existingData[indexToUpdate].plantName = plantName;
-    existingData[indexToUpdate].dominantColor = color;
-    existingData[indexToUpdate].quantity = selectPlant(plantInventory, plantName, color) * quantity;
-    existingData[transaction].customerFullName = process.argv[7]; // Assuming it should be updated as well
-    }
+    existingData[indexToUpdate].customerFullName = process.argv[7]; // Assuming it should be updated as well
+
+    // Update the itemsPurchased object to match your desired structure
+    // existingData[indexToUpdate].itemsPurchased[0] = {
+    //   plantName: plantName,
+    //   dominantColor: color,
+    //   priceInUSD: `$${selectPlant(plantInventory, plantName, color)[0].priceInCents * quantity / 100}`
+    // };
+    const priceInUSD = selectPlant(plantInventory, plantName, color)[0].priceInCents * quantity / 100;
+    existingData[indexToUpdate].itemsPurchased[0] = {
+      plantName: plantName,
+      dominantColor: color,
+      priceInUSD: `$${priceInUSD.toFixed(2)}`
+    };
     // Write the modified array back to the JSON file
     writeJSONFile('./data', 'customerTransactions.json', existingData);
     inform("Data successfully updated.");
   } else {
     inform("Transaction not found for the provided transactionId.");
   }
-}
+}}
 
   run();

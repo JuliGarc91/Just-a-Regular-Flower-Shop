@@ -1,13 +1,13 @@
 [
   {
     "transactionId": "GctvP",
-    "customerFullName": "Tony 'Scarface' Montana",
+    "customerFullName": "Kat",
     "totalCostUSD": "$35.67",
     "itemsPurchased": [
       {
-        "plantName": "Dentate False Pennyroyal",
-        "dominantColor": "Red",
-        "priceInUSD": "$35.67"
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
       }
     ]
   }
