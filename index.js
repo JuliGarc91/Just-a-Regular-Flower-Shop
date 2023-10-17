@@ -64,7 +64,7 @@ function run() {
 
     case 'cancel': // customer can delete entire transaction using case sensitive id
       deletedTransaction = cancel(customerTransactions, process.argv[3])
-      inform(`Customer Input:\n------\nAction: ${action} Transaction Id: ${process.argv[3]}`);
+      inform(`\nYour transaction has been cancelled successfully.\nPlease expect a refund in 3 business days; this can vary based on your finanacial institution.\nTo modify existing transaction enter: npm run update\nWe appreciate your business; have a wonderful day!\nCustomer Input:\n------\nAction: ${action} Transaction Id: ${process.argv[3]}`);
       writeToCustomerTransactions = true;
       break;
 
