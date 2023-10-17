@@ -1,4 +1,4 @@
-# Welcome to our Botanic Haven!
+# Welcome to *Botanic Haven*!
 <img src="https://www.bbg.org/img/uploads/lightbox/_lightbox_retina/Chrysanthemum_50509390263_MS.jpg" alt="Chrysanthemum" width="500">
 
 ###### photo credit: *Chrysanthemum* 'Hillside Sheffield Pink' in the Rose Arc Pool by Michael Stewart
