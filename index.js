@@ -26,7 +26,7 @@ function run() {
   let writeToPlantInventory = false;
   let updatedPlants = [];
   let writeToCustomerTransactions = false;
-  let updatedCustomerTransaction = [];
+  let updatedCustomerTransaction = null;
   let deletedTransaction = null;
   
 
@@ -64,14 +64,14 @@ function run() {
 
     case 'update':
       updatedCustomerTransaction = update(customerTransactions, plantName,  color, quantity, process.argv[6], process.argv[7]) // process.argv[7] input is for editing or entering customer name
-      inform(`Customer Input:\n------\nAction: ${action} Plant: ${plantName} Color: ${color} Quantity: ${quantity}, transactionId: ${process.argv[6]}, Full Name: ${process.argv[7]}`);
+      inform(`Customer Input:\n------\nAction: ${action} Plant: ${plantName} Color: ${color} Quantity: ${quantity}, Transaction Id: ${process.argv[6]}, Full Name: ${process.argv[7]}`);
       writeToCustomerTransactions = true;
       console.log('error 5')
       break;
 
     case 'cancel':
-      deletedTransaction = cancel(customerTransactions, transactionId)
-      inform(`Customer Input:\n------\nAction: ${action} Plant: ${plantName}`);
+      deletedTransaction = cancel(customerTransactions, process.argv[3])
+      inform(`Customer Input:\n------\nAction: ${action} Transaction Id: ${process.argv[3]}`);
       writeToCustomerTransactions = true;
       console.log('error 6')
       break;
@@ -123,37 +123,24 @@ function run() {
       inform("Data successfully updated.");
     } else {
       inform("Transaction not found for the provided transactionId.");
-    }}
-
-
-
-  // --- for cancel fx ---
-  // if (writeToCustomerTransactions) {
-  //   let existingData = readJSONFile('./data', 'customerTransactions.json');
-  //   const indexToDelete = existingData.findIndex(transaction => transaction.transactionId === procees.argv[3]); // Find the index of the transaction to delete
-  
-  //   if (indexToDelete !== -1) { // Value is -1 if the transaction to delete doesn't exist in the array
-  //     // Remove the transaction from the array
-  //     existingData.splice(indexToDelete, 1);
-      
-  //     // Write the modified array back to the JSON file
-  //     writeJSONFile('./data', 'customerTransactions.json', existingData);
-  //     inform("Transaction successfully deleted.");
-  //   } else {
-  //     inform("Transaction not found for the provided transactionId.");
-  //   }
-  // }
+    }
+  }
+  //--- for cancel fx ---
   if (writeToCustomerTransactions) {
     let existingData = readJSONFile('./data', 'customerTransactions.json');
-  if (deletedTransaction && action === 'cancel') {
-    if (deleteTransaction(existingData, process.argv[3])) {
+    const indexToDelete = existingData.findIndex(transaction => transaction.transactionId === process.argv[3]); // Find the index of the transaction to delete
+  
+    if (indexToDelete !== -1) { // Value is -1 if the transaction to delete doesn't exist in the array
+      // Remove the transaction from the array
+      existingData.splice(indexToDelete, 1);
+      
+      // Write the modified array back to the JSON file
       writeJSONFile('./data', 'customerTransactions.json', existingData);
       inform("Transaction successfully deleted.");
     } else {
       inform("Transaction not found for the provided transactionId.");
-    }}
+    }
+  }
+};
 
-
-}}
-
-  run();
+run();

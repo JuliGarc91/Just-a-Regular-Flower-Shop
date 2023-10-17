@@ -93,68 +93,6 @@
     ]
   },
   {
-    "transactionId": "jmhRh",
-    "customerFullName": "Madonna",
-    "totalCostUSD": "$50.28 + $75.42 + $75.42 + $75.42",
-    "itemsPurchased": [
-      {
-        "plantName": "Southern Swamp Aster",
-        "dominantColor": "Pink",
-        "priceInUSD": "$25.14"
-      },
-      {
-        "plantName": "Southern Swamp Aster",
-        "dominantColor": "Pink",
-        "priceInUSD": "$25.14"
-      },
-      {
-        "plantName": "Southern Swamp Aster",
-        "dominantColor": "pink",
-        "priceInUSD": "$75.42"
-      },
-      {
-        "plantName": "Southern Swamp Aster",
-        "dominantColor": "pink",
-        "priceInUSD": "$75.42"
-      },
-      {
-        "plantName": "Southern Swamp Aster",
-        "dominantColor": "pink",
-        "priceInUSD": "$75.42"
-      },
-      {
-        "plantName": "Southern Swamp Aster",
-        "dominantColor": "pink",
-        "priceInUSD": "$75.42"
-      },
-      {
-        "plantName": "Southern Swamp Aster",
-        "dominantColor": "pink",
-        "priceInUSD": "$75.42"
-      },
-      {
-        "plantName": "Southern Swamp Aster",
-        "dominantColor": "pink",
-        "priceInUSD": "$75.42"
-      },
-      {
-        "plantName": "Southern Swamp Aster",
-        "dominantColor": "pink",
-        "priceInUSD": "$75.42"
-      },
-      {
-        "plantName": "Southern Swamp Aster",
-        "dominantColor": "pink",
-        "priceInUSD": "$75.42"
-      },
-      {
-        "plantName": "Southern Swamp Aster",
-        "dominantColor": "pink",
-        "priceInUSD": "$75.42"
-      }
-    ]
-  },
-  {
     "transactionId": "dSqUJ",
     "customerFullName": "The Notorious B.I.G",
     "totalCostUSD": "$50.28",
@@ -172,7 +110,7 @@
     ]
   },
   {
-    "transactionId": "qxQUw",
+    "transactionId": "fQPfp",
     "customerFullName": "The Notorious B.I.G",
     "totalCostUSD": "$50.28",
     "itemsPurchased": [

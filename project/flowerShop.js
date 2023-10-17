@@ -197,13 +197,14 @@ const update = (customerTransactions, newPlantName,  newColor, newQuantity, iden
   }
 };
 
-
+// cancel FX - uses case sensitive transaction Id to delete transaction and receive refund
 // ------ Requires user input ------
+// npm run cancel <transactionId>
 const cancel = (customerTransactions, transactionId) => {
-  const indexToDelete = existingData.findIndex(transaction => transaction.transactionId === transactionId);
+  const indexToDelete = customerTransactions.findIndex(transaction => transaction.transactionId === transactionId);
 
   if (indexToDelete !== -1) {
-    existingData.splice(indexToDelete, 1);
+    customerTransactions.splice(indexToDelete, 1);
     return true; // Indicate success
   }
   return false; // Indicate transaction not found
