@@ -45,31 +45,31 @@ function run() {
       console.log('error 2')
       break;
 
-    case 'showItem': // shows an item based on name, if it doesn't exist, it should show it doesn't exist, create it while returning "Not available, check back later"
+    case 'showItem': // shows an item based on name, can filter in stock vs not in stock depending on whether customer indicates true or false 
       const viewInventoryItem = showItem(plantInventory, plantName, process.argv[4]);
       inform(viewInventoryItem);
       inform(`\nCustomer Input:\n------\nAction: ${action} Plant: ${plantName} In Stock? ${process.argv[4]}`);
       console.log('error 3')
       break;
 
-    case 'purchasePlant': // customer can purchase 1 or more plants of a type per transaction
+    case 'purchasePlant': // customer can purchase 1 or more plants of a type per transaction; id is generated per transaction
       const receipt = purchasePlant(plantInventory, plantName, color, quantity, process.argv[6]);
       // Add the code to extract transaction details and populate customerTransactions
-      customerTransaction = (purchaseResultFX(plantInventory, plantName, color, quantity, process.argv[6]));
+      customerTransaction = (purchaseResultFX(plantInventory, plantName, color, quantity, process.argv[6])); // uses this fx as call back to write transaction to customerTransactions.json
       inform(receipt);
       inform(`Customer Input:\n------\nAction: ${action} Plant: ${plantName} Color: ${color} Quantity: ${quantity} Full Name: ${process.argv[6]}`);
       writeToCustomerTransactions = true;
       console.log('error 4')
       break;
 
-    case 'update':
+    case 'update': // customer can add different plant item to existing transaction using case sensitive transaction Id, or can edit other details of their order like plantName, color, quantity, or remove their name for privacy
       updatedCustomerTransaction = update(customerTransactions, plantName,  color, quantity, process.argv[6], process.argv[7]) // process.argv[7] input is for editing or entering customer name
       inform(`Customer Input:\n------\nAction: ${action} Plant: ${plantName} Color: ${color} Quantity: ${quantity}, Transaction Id: ${process.argv[6]}, Full Name: ${process.argv[7]}`);
       writeToCustomerTransactions = true;
       console.log('error 5')
       break;
 
-    case 'cancel':
+    case 'cancel': // customer can delete entire transaction using case sensitive id
       deletedTransaction = cancel(customerTransactions, process.argv[3])
       inform(`Customer Input:\n------\nAction: ${action} Transaction Id: ${process.argv[3]}`);
       writeToCustomerTransactions = true;
@@ -77,7 +77,7 @@ function run() {
       break;
 
     default:
-      inform('There was an error.'); // error input (invalid argument)
+      inform('There was an error.'); // error input (invalid argument inputted by customer)
   };
   if (writeToPlantInventory) {
     writeJSONFile('./data', 'plantInventory.json', updatedPlants); // At the end of the function, we now need write logic to check the writeToPlantInventory variable. If the variable is true, we update the plantInventory.json file with the new plant data.

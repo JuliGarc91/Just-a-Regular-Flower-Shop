@@ -4,7 +4,7 @@
   "description": "PlantShop",
   "main": "index.js",
   "scripts": {
-    "test" : "jest --verbose",
+    "test": "jest --verbose",
     "inventory": "node index.js inventory",
     "donatePlant": "node index.js donatePlant",
     "showItem": "node index.js showItem",

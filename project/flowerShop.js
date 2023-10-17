@@ -142,7 +142,7 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
   }
   const order = [];
   for (let i = 0; i < quantity; i++) {
-    const addPlantToCart = selectPlant(plantInventory, plantName, color);
+    const addPlantToCart = selectPlant(plantInventory, plantName, color); // uses selectPlant as call back to select plant based on customer's input in terminal for purchasePlant fx (the run fx in index.js connects this purchasePlant which takes input from terminal and prints to the console for the user then purchasePlant fx's result get used for purchasePlantResultFX function to write to customerTransactions.json)
     const inStockPlants = addPlantToCart.filter(plant => plant.inStock === true);
     if (inStockPlants.length > 0) {
       order.push(inStockPlants[0]);
@@ -158,7 +158,7 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
     "priceInUSD": `$${(plant.priceInCents / 100).toFixed(2)}`
   }));
   customerTransaction.push({
-    "transactionId": generateRandomId(5),
+    "transactionId": generateRandomId(5), // uses id geerator as call back
     "customerFullName": customerFullName,
     "totalCostUSD": `$${(totalCostInCents / 100).toFixed(2)}`,
     "itemsPurchased": itemsPurchased
@@ -287,6 +287,7 @@ const showItem = (plantInventory, plantName, inStock) => {
 
 
 // Exporting functions to index.js so user can input and run fx from terminal
+// also exporting to test file
 module.exports = {
   generateRandomId,
   inventory,

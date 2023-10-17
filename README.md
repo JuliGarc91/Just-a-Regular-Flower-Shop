@@ -1,19 +1,200 @@
 # Just-a-Regular-Flower-Shop
-NOT FLOWER SHOP. PLANT SHOP NOW
 
-user can do these things:
+Welcome to our Botanic Haven!
+## Description
+At our plant shop, you'll discover a diverse and vibrant collection of botanical wonders that encompass a wide spectrum of colors, shapes, and sizes. Whether you're an avid green thumb or just beginning your journey into the world of plants, we have something for everyone.
 
-    "inventory": "node index.js inventory",
-    "donatePlant": "node index.js donatePlant",
-    "showItem": "node index.js showItem",
-    "purchasePlant": "node index.js purchasePlant",
-    "update": "node index.js updateOrder",
-    "cancel": "node index.js cancelOrder"
+Our inventory includes a rich selection of plant species, each with its own unique characteristics:
 
-    npm run to view all user actions
+1. **Rosy Pussytoes:** These maroon-hued beauties add a touch of elegance to any garden.
 
+2. **Parrot-lily:** Vibrant turquoise blooms that evoke the lushness of the tropics.
 
-WORK IN PROGRESS .....
-Moon tree from NASA.gov:
-[![moontree-goddard](https://i.ibb.co/kyY6yRz/moontree-goddard.jpg)](https://ibb.co/vB2vB7f)
+3. **Hudson Bay Currant:** Sporting striking fuchsia shades, this plant is both captivating and elegant.
+
+4. **Dentate False Pennyroyal:** Fiery red leaves that bring a burst of color to your landscape.
+
+5. **Dot Lichen:** With deep crimson hues, these lichens are nature's artwork.
+
+6. **Southern Swamp Aster:** Delicate pink petals that brighten up any outdoor space.
+
+7. **Forest Naupaka:** The subtle khaki tones of this plant blend seamlessly with natural surroundings.
+
+8. **Madrone:** Blue-green foliage and intricate branches make this a standout in any garden.
+
+9. **Globe Cactus:** Bold and striking in various shades, from black and gray to vibrant orange.
+
+10. **Talh:** A lovely green addition that brings a sense of freshness to your space.
+
+We offer a range of plants, from flowering marvels to lush greenery, to suit your specific preferences and gardening needs. Whether you're looking to create a colorful, blooming oasis or a serene, green sanctuary, our diverse collection has you covered.
+
+While some of our plants are currently out of stock, our dedicated team is always on hand to assist you in finding the perfect addition to your plant family. We understand that plants bring life and beauty to your environment, and we're committed to providing you with the highest quality botanicals.
+
+So, whether you're a seasoned horticulturist or a novice gardener, our botanical shop is the ideal destination for all your plant-related desires. Explore our vast array of plants, and let nature's splendor fill your life with color and serenity.
+
+## Botanical Shop Features
+### our plant shop provides a range of services to cater to your botanical needs. Here's how you can interact with our store:
+Inventory: To explore our complete inventory, simply use the inventory command. This will provide you with a comprehensive list of all the plants available in our store.
+
+Donate a Plant: If you have a local plant species to contribute, you can use the donatePlant command to add it to our inventory. We appreciate your efforts in preserving local flora.
+
+Show a Plant: If you're looking for a specific plant or want to filter plants based on their availability, you can use the showItem command. Just specify the plant name and, if desired, an in-stock filter to narrow down your search.
+
+Purchase a Plant: Ready to bring some greenery into your life? The purchasePlant command allows you to buy plants from our store. Select the plant you desire, and our team will assist you with the purchase process.
+
+Update Transaction: In case you need to modify a previous transaction, the update command comes in handy. Provide the transaction ID, and we'll help you make the necessary adjustments.
+
+Cancel Transaction: If, for any reason, you need to cancel an entire transaction and receive a refund (refund can take up to 3 business days depending on your financial institution), you can use the cancel command. Just provide the transaction ID, and we'll take care of the cancellation process.
+
+We're here to ensure that your experience with us is as smooth and enjoyable as possible. Feel free to use these commands to explore, contribute, purchase, and manage your transactions. Our team of experts is always ready to assist you in any way we can, whether you're a seasoned plant enthusiast or just starting your botanical journey.
+
+Certainly, here's a modified README section for your plant shop application to reflect the commands and their descriptions:
+
+---
+# Botanic Shop Application Usage
+
+Welcome to our Botanic Shop Application! With this user-friendly interface, you can easily donate plants to support our ecosystem, make plant purchases, view our extensive inventory, and perform various operations using terminal commands. To interact with the application seamlessly, simply use the following commands, and remember to use quotation marks when entering multi-word values.
+
+For instance:
+
+```bash
+npm run donatePlant "New Mexico Raspberry" pink
+```
+
+1. **Show Inventory**
+   - To get a comprehensive view of our store's inventory, execute this command:
+     ```bash
+     npm run inventory
+     ```
+
+2. **Donate a Plant**
+   - Contribute to our plant inventory by donating a new plant (provided it's a local species). Utilize the following command:
+     ```bash
+     npm run donatePlant <plantName> <color>
+     ```
+     (Please ensure you fill in all required fields.)
+
+3. **Show Plant**
+   - Discover detailed information about a plant by specifying its name and optionally filtering by its in-stock status. Execute this command:
+     ```bash
+     npm run showItem <plantName> <inStock>
+     ```
+     (The 'inStock' input is optional and allows you to check if the item is in stock by entering 'true' or 'false'.)
+
+4. **Purchase Plant**
+   - Make a purchase effortlessly by issuing this command:
+     ```bash
+     npm run purchasePlant <plantName> <color> <quantity> <customerFullName>
+     ```
+     (Ensure all four fields are filled out for a smooth transaction.)
+
+5. **Update Transaction**
+   - Modify an existing transaction using this command. Remember, the identifier is case-sensitive. To remove your name, simply leave the fifth field blank:
+     ```bash
+     npm run update <newPlantName> <newColor> <newQuantity> <identifier> <editCustomerFullName>
+     ```
+
+6. **Cancel Transaction**
+   - If you need to cancel an entire transaction, you can do so with this command. Make sure you fill in all the required fields:
+     ```bash
+     npm run cancel <transactionId>
+     ```
+
+7. **Other Functions**
+   - In addition to the core commands, you can also run tests using Jest for quality assurance by running:
+     ```bash
+     npm test
+     ```
+
+With these commands at your disposal, you can efficiently manage our plant shop's inventory, donate plants, access plant details, enable customers to make purchases, update transactions, and cancel transactions. Thank you for supporting our mission! 🌿
+
+## Author
+
+- Julissa Garcia
+
+## License
+
+This project is licensed under the ISC License.
+
+## Dependencies
+
+### Runtime Dependencies
+
+- `lolcats` (^2.0.1)
+
+### Development Dependencies
+
+- `@faker-js/faker` (^8.1.0)
+- `jest` (^29.7.0)
+```
+
+**For the "PlantShop - Just a Regular Flower Shop Project" README:**
+
+```markdown
+# PlantShop - Just a Regular Flower Shop Project
+
+![PlantShop](https://your-image-url.com)
+
+Welcome to the **PlantShop**, a simple flower shop project developed by Julissa Garcia. This project allows you to manage a list of plants, perform various actions such as creating, updating, and deleting items, and also includes a shopping cart feature.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [File Structure](#file-structure)
+- [License](#license)
+
+## Installation
+
+To get started with the PlantShop, follow these steps:
+
+1. Clone the repository to your local machine.
+
+   ```bash
+   git clone https://github.com/your-username/just-a-regular-flower-shop-project.git
+   ```
+
+2. Navigate to the project directory.
+
+   ```bash
+   cd just-a-regular-flower-shop-project
+   ```
+
+3. Install the project dependencies.
+
+   ```bash
+   npm install
+   ```
+
+4. Run the project.
+
+   ```bash
+   npm start
+   ```
+
+## Usage
+
+Once the project is up and running, you can access it by opening your web browser and navigating to [http://localhost:3000](http://localhost:3000).
+
+## Features
+
+- **Create a New Item:** Users can create a new item by providing details such as plant name, dominant color, price, and availability.
+
+- **List All Items:** Users can view a list of all available items in the shop.
+
+- **View Item Details:** Users can see the details of a specific item by selecting it from the list.
+
+- **Delete an Item:** Users have the ability to delete an item from the inventory.
+
+- **Update an Item:** Users can update the details of an item in the inventory.
+
+- **Data Integrity:** The project ensures that data is not corrupted by preventing write operations if the JSON data is malformed.
+
+- **Unique IDs:** A unique ID is assigned to each newly created item.
+
+- **Shopping Cart:** Users can add items to the shopping cart and see the total price and the total number of each item in the cart.
+
+- **Cancel Cart:** Users can empty the shopping cart.
+
 
