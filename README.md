@@ -224,4 +224,3 @@ With these commands at your disposal, you can efficiently manage our plant shop'
 ### Development Dependencies
 
 - `@faker-js/faker` (^8.1.0)
-```
