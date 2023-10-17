@@ -75,7 +75,7 @@
     "plantName": "Smooth Rose",
     "dominantColor": "Turquoise",
     "priceInCents": 4377,
-    "inStock": false
+    "inStock": true
   },
   {
     "plantName": "Wheat Sedge",
@@ -669,6 +669,12 @@
     "plantName": "Globe Cactus",
     "dominantColor": "Orange",
     "priceInCents": 558,
+    "inStock": true
+  },
+  {
+    "plantName": "Globe Cactus",
+    "dominantColor": "Teal",
+    "priceInCents": 4202,
     "inStock": true
   }
 ]

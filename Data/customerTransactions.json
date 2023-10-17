@@ -1,8 +1,8 @@
 [
   {
     "transactionId": "FaUtE",
-    "customerFullName": "Paris Hilton",
-    "totalCostUSD": "$186.50",
+    "customerFullName": "Granddad Freeman",
+    "totalCostUSD": "$186.50 + $87.54",
     "itemsPurchased": [
       {
         "plantName": "Gray's Lily",
@@ -28,6 +28,16 @@
         "plantName": "Gray's Lily",
         "dominantColor": "Magenta",
         "priceInUSD": "$37.30"
+      },
+      {
+        "plantName": "Smooth Rose",
+        "dominantColor": "turquoise",
+        "priceInUSD": "$87.54"
+      },
+      {
+        "plantName": "Smooth Rose",
+        "dominantColor": "turquoise",
+        "priceInUSD": "$87.54"
       }
     ]
   },
@@ -123,6 +133,43 @@
         "plantName": "Southern Swamp Aster",
         "dominantColor": "Pink",
         "priceInUSD": "$25.14"
+      }
+    ]
+  },
+  {
+    "transactionId": "svBve",
+    "customerFullName": "The Godfather",
+    "totalCostUSD": "$207.36",
+    "itemsPurchased": [
+      {
+        "plantName": "Rosy Pussytoes",
+        "dominantColor": "Maroon",
+        "priceInUSD": "$34.56"
+      },
+      {
+        "plantName": "Rosy Pussytoes",
+        "dominantColor": "Maroon",
+        "priceInUSD": "$34.56"
+      },
+      {
+        "plantName": "Rosy Pussytoes",
+        "dominantColor": "Maroon",
+        "priceInUSD": "$34.56"
+      },
+      {
+        "plantName": "Rosy Pussytoes",
+        "dominantColor": "Maroon",
+        "priceInUSD": "$34.56"
+      },
+      {
+        "plantName": "Rosy Pussytoes",
+        "dominantColor": "Maroon",
+        "priceInUSD": "$34.56"
+      },
+      {
+        "plantName": "Rosy Pussytoes",
+        "dominantColor": "Maroon",
+        "priceInUSD": "$34.56"
       }
     ]
   }

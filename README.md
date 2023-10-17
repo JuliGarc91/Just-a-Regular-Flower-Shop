@@ -1,5 +1,7 @@
-# Welcome to *Botanic Haven*!
-<img src="https://www.bbg.org/img/uploads/lightbox/_lightbox_retina/Chrysanthemum_50509390263_MS.jpg" alt="Chrysanthemum" width="500">
+<div align="center">
+  <h1>Welcome to <em>Botanic Haven</em>!</h1>
+</div>
+<div style="text-align: center;"><img src="https://www.bbg.org/img/uploads/lightbox/_lightbox_retina/Chrysanthemum_50509390263_MS.jpg" alt="Chrysanthemum" width="500"></div>
 
 ###### photo credit: *Chrysanthemum* 'Hillside Sheffield Pink' in the Rose Arc Pool by Michael Stewart
 
@@ -185,7 +187,7 @@ Feel free to use this command to explore and retrieve information about differen
      (Ensure all four fields are filled out for a smooth transaction.)
 
 5. **Update Transaction**
-   - Modify an existing transaction using this command. Remember, the identifier is case-sensitive. To remove your name, simply leave the fifth field blank:
+   - If you want to make changes to a previous transaction, please use the following command. Keep in mind that the transaction identifier is case-sensitive. Using this command will allow you to add a new plant item to your existing transaction. If you wish to remove items from the transaction, you will need to cancel the entire transaction. To remove your name from the existing transaction, just leave the fifth field blank.
      ```bash
      npm run update <newPlantName> <newColor> <newQuantity> <identifier> <editCustomerFullName>
      ```
