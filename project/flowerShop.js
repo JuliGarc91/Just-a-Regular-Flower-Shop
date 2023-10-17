@@ -165,13 +165,9 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
   return customerTransaction;
 };
 
+// update FX - allows user to edit a past transaction
 // ------ Requires user input ------
-
-const identifier = "FaUtE"
-const newPlantName = "Dentate False Pennyroyal";
-const newColor = "red";
-const newQuantity = 3;
-const editCustomerFullName = "Matilda"
+// npm run update <newPlantName> <newColor> <newQuantity> <identifier> <editCustomerFullName>
 const update = (customerTransactions, newPlantName,  newColor, newQuantity, identifier, editCustomerFullName) => {
   const index = customerTransactions.findIndex((transaction) => transaction.transactionId.toLowerCase() === identifier.toLowerCase());
 
@@ -196,16 +192,7 @@ const update = (customerTransactions, newPlantName,  newColor, newQuantity, iden
     inform('Existing order not found. No action taken');
     return {};
   }
-}
-
-
-// console.log((update(customerTransactions, newPlantName,  newColor, newQuantity, identifier, editCustomerFullName)))
-
-
-
-
-
-
+};
 
 
 // ------ Requires user input ------
@@ -269,18 +256,21 @@ const donatePlant = (plantInventory, plantName, color) => {
 // npm run showItem <plantName> <inStock> (inStock input is optional and allows user to view if item is in stock or not instock by inputting true or false)
 const showItem = (plantInventory, plantName, inStock) => {
   const lowerCasePlantName = plantName.toLowerCase(); // Makes user input case insensitive
-
-  if (inStock === undefined) { // If user didn't make input
+  if (inStock === undefined) { // If the user didn't make an input
     return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName);
   } else {
     if (inStock.toLowerCase() === "true") {
-      inStock = true; // Interpret user input as boolean
+      inStock = true; // Interpret user input as a boolean
     } else if (inStock.toLowerCase() === "false") {
-      inStock = false; // Interpret user input as boolean
-    } 
-    return plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName && plant.inStock === inStock);
+      inStock = false; // Interpret user input as a boolean
+    }
+    let filteredItems = plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName && plant.inStock === inStock).length !== 0 ? 
+      plantInventory.filter(plant => plant.plantName.toLowerCase() === lowerCasePlantName && plant.inStock === inStock) : "There are no items with the given criteria to display. Please try searching again with valid inputs: npm run showItem <plantName> <inStock>";
+
+    return filteredItems;
   }
 };
+
 
 // Exporting functions to index.js so user can input and run fx from terminal
 module.exports = {

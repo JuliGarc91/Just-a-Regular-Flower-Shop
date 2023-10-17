@@ -90,74 +90,39 @@ function run() {
 
     default:
       inform('There was an error.'); // error input (invalid argument)
-  }
+  };
 
 
 
 
 
 // uses fx on helpers.js
-//   if (writeToPlantInventory) {
-//     writeJSONFile('./data', 'plantInventory.json', updatedPlants); // At the end of the function, we now need write logic to check the writeToPlantInventory variable. If the variable is true, we update the plantInventory.json file with the new plant data.
-//   } 
-//   if (writeToCustomerTransactions) { // for purchasePlants and purchasePlantsResultFX
-//     let existingData = readJSONFile('./data', 'customerTransactions.json'); // Read the existing data from customerTransactions.json
-//     if (!Array.isArray(existingData)) {     // Ensure that existingData is an array; if not, initialize it as an empty array
-//       existingData = [];
-//     } // for purchasePlants and purchasePlantsResultFX
-//     if (typeof customerTransaction === "object" && Object.keys(customerTransaction).length !== 0) { // checks if variable contains object that is not empty:  Object.keys(updatedCustomerTransaction).length !== 0
-//       existingData = existingData.concat(customerTransaction); // Merge the existing data with the new transactions
-//       writeJSONFile('./data', 'customerTransactions.json', existingData); // Update customerTransactions.json with the merged data
-//     }  // for update
-//     // if (typeof updatedCustomerTransaction === "object" && updatedCustomerTransaction.transactionId === process.argv[6]) {
-//     //   // Check if updatedCustomerTransaction is an object and has a transactionId matching the identifier.
-//     //   if (existingData[process.argv[6]]) {
-//     //     // Check if the identifier exists in the existing data.
-//     //     existingData[process.argv[6]] = updatedCustomerTransaction; // Update the data at the identifier.  
-//     //     writeJSONFile('./data', 'customerTransactions.json', existingData); // Update customerTransactions.json with the merged data. 
-//     //     inform ("Data successfully updated.");
-//     //   }
-//     // }
-//     existingData[process.argv[6]] = updatedCustomerTransaction;
-// //    existingData = existingData.concat(customerTransaction); // Merge the existing data with the new transactions
-//     writeJSONFile('./data', 'customerTransactions.json', existingData); // Update customerTransactions.json with the merged data
-//   }
-// };
+  if (writeToPlantInventory) {
+    writeJSONFile('./data', 'plantInventory.json', updatedPlants); // At the end of the function, we now need write logic to check the writeToPlantInventory variable. If the variable is true, we update the plantInventory.json file with the new plant data.
+  } 
+  if (writeToCustomerTransactions) { // for purchasePlants and purchasePlantsResultFX
+    let existingData = readJSONFile('./data', 'customerTransactions.json'); // Read the existing data from customerTransactions.json
+    if (!Array.isArray(existingData)) {     // Ensure that existingData is an array; if not, initialize it as an empty array
+      existingData = [];
+    } // for purchasePlants and purchasePlantsResultFX
+    if (typeof customerTransaction === "object" && Object.keys(customerTransaction).length !== 0) { // checks if variable contains object that is not empty:  Object.keys(updatedCustomerTransaction).length !== 0
+      existingData = existingData.concat(customerTransaction); // Merge the existing data with the new transactions
+      writeJSONFile('./data', 'customerTransactions.json', existingData); // Update customerTransactions.json with the merged data
+    }  // for update
 
-
-
-// if (writeToCustomerTransactions) { // for purchasePlants and purchasePlantsResultFX
-//   let existingData = readJSONFile('./data', 'customerTransactions.json'); // Read the existing data from customerTransactions.json
-//   if (!Array.isArray(existingData)) {     // Ensure that existingData is an array; if not, initialize it as an empty array
-//     existingData = [];
-//   } 
-// existingData[process.argv[6]] = updatedCustomerTransaction;
-// //    existingData = existingData.concat(customerTransaction); // Merge the existing data with the new transactions
-//     writeJSONFile('./data', 'customerTransactions.json', existingData); // Update customerTransactions.json with the merged data
-//   }}
 
 const customerTransactionIdToUpdate = process.argv[6];
 
 if (writeToCustomerTransactions) {
   let existingData = readJSONFile('./data', 'customerTransactions.json');
+  const indexToUpdate = existingData.findIndex(transaction => transaction.transactionId === customerTransactionIdToUpdate); // Find the index of the transaction to update so we don't accidently overwrite the entire file, just specifically at the index where the id exists
 
-  // Find the index of the transaction to update
- // const indexToUpdate = existingData.findIndex(transaction => transaction.itemsPurchased === customerTransactionIdToUpdate);
-
-  // Find the index of the transaction to update
-  const indexToUpdate = existingData.findIndex(transaction => transaction.transactionId === customerTransactionIdToUpdate);
-
-  if (indexToUpdate !== -1) {
+  if (indexToUpdate !== -1) { // value is -1 if what we're looking for doesn't exist in array existingData (which is actually the data in customerTransactions.json)
     // Update the object properties as needed
-    existingData[indexToUpdate].customerFullName = process.argv[7]; // Assuming it should be updated as well
-
-    // Update the itemsPurchased object to match your desired structure
-    // existingData[indexToUpdate].itemsPurchased[0] = {
-    //   plantName: plantName,
-    //   dominantColor: color,
-    //   priceInUSD: `$${selectPlant(plantInventory, plantName, color)[0].priceInCents * quantity / 100}`
-    // };
-    const priceInUSD = selectPlant(plantInventory, plantName, color)[0].priceInCents * quantity / 100;
+    // const newCustomerFullName = process.argv[7]; // Define customerFullName
+    existingData[indexToUpdate].customerFullName = process.argv[7] !== undefined ? process.argv[7] : null; // Assuming it should be updated as well
+ // Assuming it should be updated as well
+    const priceInUSD = selectPlant(plantInventory, plantName, color)[0].priceInCents * quantity / 100; // uses callback from flowerShop file that selects plants in order to get the price which is inside itemsPurchased key (which is an array of plantItem objects. Index 0 because you can only select one plant item at a time in the callback)
     existingData[indexToUpdate].itemsPurchased[0] = {
       plantName: plantName,
       dominantColor: color,
@@ -169,6 +134,6 @@ if (writeToCustomerTransactions) {
   } else {
     inform("Transaction not found for the provided transactionId.");
   }
-}}
+}}}
 
   run();

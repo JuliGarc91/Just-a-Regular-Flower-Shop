@@ -1,9 +1,75 @@
 [
   {
+    "transactionId": "FaUtE",
+    "customerFullName": "Paris Hilton",
+    "totalCostUSD": "$186.50",
+    "itemsPurchased": [
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      },
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      },
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      },
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      },
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      }
+    ]
+  },
+  {
+    "transactionId": "APmRT",
+    "customerFullName": "Tony 'Scarface' Montana",
+    "totalCostUSD": "$74.60",
+    "itemsPurchased": [
+      {
+        "plantName": "Globe Cactus",
+        "dominantColor": "yellow",
+        "priceInUSD": "$14.35"
+      },
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      }
+    ]
+  },
+  {
     "transactionId": "GctvP",
-    "customerFullName": "Kat",
+    "customerFullName": "Yo Yo Ma",
     "totalCostUSD": "$35.67",
     "itemsPurchased": [
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      }
+    ]
+  },
+  {
+    "transactionId": "kUSzO",
+    "customerFullName": "Tony Soprano",
+    "totalCostUSD": "$74.60",
+    "itemsPurchased": [
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      },
       {
         "plantName": "Gray's Lily",
         "dominantColor": "Magenta",
