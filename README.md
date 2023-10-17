@@ -202,7 +202,7 @@ Feel free to use this command to explore and retrieve information about differen
      npm test
      ```
 
-With these commands at your disposal, you can efficiently manage our plant shop's inventory, donate plants, access plant details, enable customers to make purchases, update transactions, and cancel transactions. Thank you for supporting our mission! 🌿
+With these commands at your disposal, you can efficiently manage our plant shop's inventory, donate plants, access plant details, make purchases, update transactions, and cancel transactions. Thank you for supporting our mission! 🌿
 
 ### Author
 
