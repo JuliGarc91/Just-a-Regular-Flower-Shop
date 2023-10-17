@@ -624,6 +624,24 @@
     "inStock": true
   },
   {
+    "plantName": "Hillside Sheffield Pink",
+    "dominantColor": "Magenta",
+    "priceInCents": 890,
+    "inStock": false
+  },
+  {
+    "plantName": "Hillside Sheffield Pink",
+    "dominantColor": "Orange",
+    "priceInCents": 1896,
+    "inStock": true
+  },
+  {
+    "plantName": "Hillside Sheffield Pink",
+    "dominantColor": "Pink",
+    "priceInCents": 2096,
+    "inStock": true
+  },
+  {
     "plantName": "Parrot-lily",
     "dominantColor": "Orange",
     "priceInCents": 2096,
