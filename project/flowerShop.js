@@ -172,7 +172,7 @@ const newPlantName = "Dentate False Pennyroyal";
 const newColor = "red";
 const newQuantity = 3;
 const editCustomerFullName = "Matilda"
-const update = (customerTransactions, identifier, newQuantity, newPlantName, newColor, editCustomerFullName) => {
+const update = (customerTransactions, newPlantName,  newColor, newQuantity, identifier, editCustomerFullName) => {
   const index = customerTransactions.findIndex((transaction) => transaction.transactionId.toLowerCase() === identifier.toLowerCase());
 
   if (index > -1) {
@@ -194,12 +194,12 @@ const update = (customerTransactions, identifier, newQuantity, newPlantName, new
     return customerTransactions[index];
   } else {
     inform('Existing order not found. No action taken');
-    return customerTransactions;
+    return {};
   }
 }
 
 
-console.log((update(customerTransactions, identifier, newQuantity, newPlantName, newColor, editCustomerFullName)))
+// console.log((update(customerTransactions, newPlantName,  newColor, newQuantity, identifier, editCustomerFullName)))
 
 
 

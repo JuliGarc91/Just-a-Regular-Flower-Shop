@@ -8,7 +8,7 @@
     "donatePlant": "node index.js donatePlant",
     "showItem": "node index.js showItem",
     "purchasePlant": "node index.js purchasePlant",
-    "update": "node index.js updateOrder",
+    "update": "node index.js update",
     "cancel": "node index.js cancelOrder"
   },
   "author": "Julissa Garcia",

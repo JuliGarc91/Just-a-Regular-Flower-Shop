@@ -628,5 +628,11 @@
     "dominantColor": "Orange",
     "priceInCents": 2096,
     "inStock": true
+  },
+  {
+    "plantName": "Gray's Lily",
+    "dominantColor": "Pink",
+    "priceInCents": 4105,
+    "inStock": true
   }
 ]

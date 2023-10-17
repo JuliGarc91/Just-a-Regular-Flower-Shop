@@ -5,7 +5,7 @@ const { readJSONFile, writeJSONFile } = require('./project/helpers');
 
 // --- Import Data ---
 const plantInventory = readJSONFile('./data', 'plantInventory.json');
-const customerTransactions = require('./Data/customerTransactions.json') // for purchasePlant, update, and cancel fx
+const customerTransactions = readJSONFile('./Data','customerTransactions.json') // for purchasePlant, update, and cancel fx
 
 // console.log (plantInventory); // test if data imported successfully
 const { inventory, donatePlant, showItem, purchasePlant, purchaseResultFX, update, cancel } = require('./project/flowerShop');
@@ -20,14 +20,15 @@ const inform = console.log;
 function run() {
   let action = process.argv[2]; // Command stored in the first index
   let plantName = process.argv[3]; // Customer fx arg 1
-  let color = process.argv[4];
-  let inStock = process.argv[4]; // Customer fx arg 2 - color and inStock will be separate variables containing the values needed for run fx.
+  let color = process.argv[4];  // Customer fx arg 2
   let quantity = process.argv[5]; // Customer fx arg 3
-  let customerFullName = process.argv[6]; // Customer fx arg 4
+  // let identifier = process.argv[6]
+  // let customerFullName = process.argv[6]; // Customer fx arg 4
 
   let writeToPlantInventory = false;
   let updatedPlants = [];
   let writeToCustomerTransactions = false;
+  let updatedCustomerTransaction = [];
   
 
   switch (action) {
@@ -44,9 +45,9 @@ function run() {
       break;
 
     case 'showItem': // shows an item based on name, if it doesn't exist, it should show it doesn't exist, create it while returning "Not available, check back later"
-      const viewInventoryItem = showItem(plantInventory, plantName, inStock);
+      const viewInventoryItem = showItem(plantInventory, plantName, process.argv[4]);
       inform(viewInventoryItem);
-      inform(`\nCustomer Input:\n------\nAction: ${action} Plant: ${plantName} In Stock? ${inStock}`);
+      inform(`\nCustomer Input:\n------\nAction: ${action} Plant: ${plantName} In Stock? ${process.argv[4]}`);
       break;
 
     case 'purchasePlant': // customer can purchase 1 or more plants of a type per transaction
@@ -57,25 +58,23 @@ function run() {
       inform(`Customer Input:\n------\nAction: ${action} Plant: ${plantName} Color: ${color} Quantity: ${quantity} Full Name: ${customerFullName}`);
       writeToCustomerTransactions = true;
       break;
-
+    case 'update':
+      updatedCustomerTransaction = update(customerTransactions, plantName,  color, quantity, process.argv[6], process.argv[7]) // process.argv[7] input is for editing or entering customer name
+      inform(`Customer Input:\n------\nAction: ${action} Plant: ${plantName} Color: ${color} Quantity: ${quantity}, transactionId: ${process.argv[6]}, Full Name: ${process.argv[7]}`);
+      writeToCustomerTransactions = true;
 
 
 
 
 
       
-    case 'update':
-      updatedCustomerTransaction = update(customerTransactions, identifier, quantity, customerFullName)
-      writeToCustomerTransactions = true;
-      inform(`Customer Input:\n------\nAction: ${action} Plant: ${plantName}`);
-      // Add logic to update customer transactions (not provided in the code)
-      break;
-
-
-
-
-
-
+    // case 'update':
+    // const updatedCustomerTransaction = update(customerTransactions, plantName,  color, quantity, identifier, process.argv[7]) // process.argv[7] input is for editing or entering customer name
+    //   writeToCustomerTransactions = true;
+    //   inform(`Customer Input:\n------\nAction: ${action} Plant: ${plantName}`);
+    //   // Add logic to update customer transactions (not provided in the code)
+    //   break;
+    // case 'update':
 
     case 'cancel':
       inform(`Customer Input:\n------\nAction: ${action} Plant: ${plantName}`);
@@ -93,21 +92,24 @@ function run() {
   if (writeToPlantInventory) {
     writeJSONFile('./data', 'plantInventory.json', updatedPlants); // At the end of the function, we now need write logic to check the writeToPlantInventory variable. If the variable is true, we update the plantInventory.json file with the new plant data.
   } 
-  if (writeToCustomerTransactions) {
+  if (writeToCustomerTransactions) { // for purchasePlants and purchasePlantsResultFX
     let existingData = readJSONFile('./data', 'customerTransactions.json'); // Read the existing data from customerTransactions.json
     if (!Array.isArray(existingData)) {     // Ensure that existingData is an array; if not, initialize it as an empty array
       existingData = [];
-    }
+    } // for purchasePlants and purchasePlantsResultFX
     if (typeof customerTransaction === "object" && Object.keys(customerTransaction).length !== 0) { // checks if variable contains object that is not empty:  Object.keys(updatedCustomerTransaction).length !== 0
       existingData = existingData.concat(customerTransaction); // Merge the existing data with the new transactions
       writeJSONFile('./data', 'customerTransactions.json', existingData); // Update customerTransactions.json with the merged data
-    }  
-    // --- fix --
-    // if (typeof updatedCustomerTransaction === "object" && Object.keys(updatedCustomerTransaction).length !== 0) { // checks if variable contains object that is not empty:  Object.keys(updatedCustomerTransaction).length !== 0
-    //   existingData = existingData.replace(updatedCustomerTransaction); // Merge the existing data with the new transactions
-    //   writeJSONFile('./data', 'customerTransactions.json', existingData); // Update customerTransactions.json with the merged data
-    // }  
-  
+    }  // for update
+    if (typeof updatedCustomerTransaction === "object" && Object.keys(updatedCustomerTransaction).length !== 0 && updatedCustomerTransaction.transactionId === process.argv[6]) {
+      // Check if updatedCustomerTransaction is an object and has a transactionId matching the identifier.
+      if (existingData[process.argv[6]]) {
+        // Check if the identifier exists in the existing data.
+        existingData[process.argv[6]] = updatedCustomerTransaction; // Update the data at the identifier.  
+        writeJSONFile('./data', 'customerTransactions.json', existingData); // Update customerTransactions.json with the merged data. 
+        inform ("Data successfully updated.");
+      }
+    }
   }
 };
 

@@ -59,5 +59,34 @@
         "priceInUSD": "$35.67"
       }
     ]
+  },
+  {
+    "transactionId": "kUSzO",
+    "customerFullName": "Tony Soprano",
+    "totalCostUSD": "$74.60",
+    "itemsPurchased": [
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      },
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      }
+    ]
+  },
+  {
+    "transactionId": "jkvcz",
+    "customerFullName": "Carmela Soprano",
+    "totalCostUSD": "$37.30",
+    "itemsPurchased": [
+      {
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
+      }
+    ]
   }
 ]
