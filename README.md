@@ -2,7 +2,7 @@
   <h1>Welcome to <em>Botanic Haven</em>!</h1>
 </div>
 <div style="text-align: center;">
-<img src="https://www.bbg.org/img/uploads/lightbox/_lightbox_retina/Chrysanthemum_50509390263_MS.jpg" alt="Chrysanthemum" width="700"></div>
+<img src="https://www.bbg.org/img/uploads/lightbox/_lightbox_retina/Chrysanthemum_50509390263_MS.jpg" alt="Chrysanthemum" width="1000"></div>
 
 ###### photo credit: *Chrysanthemum* 'Hillside Sheffield Pink' in the Rose Arc Pool by Michael Stewart
 
