@@ -190,7 +190,7 @@ const update = (customerTransactions, newPlantName,  newColor, newQuantity, iden
       }
     }
     
-    inform('Transaction successfully updated');
+    inform('Transaction Found');
     return customerTransactions[index];
   } else {
     inform('Existing order not found. No action taken');
