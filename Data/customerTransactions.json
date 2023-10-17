@@ -138,8 +138,8 @@
   },
   {
     "transactionId": "svBve",
-    "customerFullName": "The Godfather",
-    "totalCostUSD": "$207.36",
+    "customerFullName": "Michael Jackson",
+    "totalCostUSD": "$207.36 + $175.08",
     "itemsPurchased": [
       {
         "plantName": "Rosy Pussytoes",
@@ -161,6 +161,60 @@
         "dominantColor": "Maroon",
         "priceInUSD": "$34.56"
       },
+      {
+        "plantName": "Rosy Pussytoes",
+        "dominantColor": "Maroon",
+        "priceInUSD": "$34.56"
+      },
+      {
+        "plantName": "Rosy Pussytoes",
+        "dominantColor": "Maroon",
+        "priceInUSD": "$34.56"
+      },
+      {
+        "plantName": "Smooth Rose",
+        "dominantColor": "turquoise",
+        "priceInUSD": "$175.08"
+      },
+      {
+        "plantName": "Smooth Rose",
+        "dominantColor": "turquoise",
+        "priceInUSD": "$175.08"
+      },
+      {
+        "plantName": "Smooth Rose",
+        "dominantColor": "turquoise",
+        "priceInUSD": "$175.08"
+      },
+      {
+        "plantName": "Smooth Rose",
+        "dominantColor": "turquoise",
+        "priceInUSD": "$175.08"
+      }
+    ]
+  },
+  {
+    "transactionId": "hhSiH",
+    "customerFullName": "Britney Spears",
+    "totalCostUSD": "$69.12",
+    "itemsPurchased": [
+      {
+        "plantName": "Rosy Pussytoes",
+        "dominantColor": "Maroon",
+        "priceInUSD": "$34.56"
+      },
+      {
+        "plantName": "Rosy Pussytoes",
+        "dominantColor": "Maroon",
+        "priceInUSD": "$34.56"
+      }
+    ]
+  },
+  {
+    "transactionId": "QzNPC",
+    "customerFullName": "Britney Spears",
+    "totalCostUSD": "$69.12",
+    "itemsPurchased": [
       {
         "plantName": "Rosy Pussytoes",
         "dominantColor": "Maroon",

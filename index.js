@@ -1,7 +1,5 @@
 // --- Importing helper functions ---
-const { readJSONFile, writeJSONFile } = require('./project/helpers');
-
-// Import the readJSONFile and writeJSONFile functions from the helpers.js file into index.js.
+const { readJSONFile, writeJSONFile } = require('./project/helpers'); // Import the readJSONFile and writeJSONFile functions from the helpers.js file into index.js.
 
 // --- Import Data ---
 const plantInventory = readJSONFile('./data', 'plantInventory.json');
@@ -116,8 +114,6 @@ function run() {
       // Write the modified array back to the JSON file
       writeJSONFile('./data', 'customerTransactions.json', existingData);
       inform("Data successfully updated.");
-    } else {
-      inform("Transaction not found for the provided transactionId.");
     }
   }
   //--- for cancel fx ---
@@ -132,8 +128,6 @@ function run() {
       // Write the modified array back to the JSON file
       writeJSONFile('./data', 'customerTransactions.json', existingData);
       inform("Transaction successfully deleted.");
-    } else {
-      inform("Transaction not found for the provided transactionId.");
     }
   }
 };

@@ -106,7 +106,7 @@ const purchasePlant = (plantInventory, plantName, color, quantity, customerFullN
     }
   }
   const totalCostInCents = order.reduce((total, plant) => total + plant.priceInCents, 0); // calculates total to later format a receipt for the user to see in terminal as an output
-  return `\n${new Date()}\n------\n\n${lolcats.rainbow("WELCOME To Our Botanic Shop!")}\nFind a variety of local plant species that enrich our ecosystem :-)\n\n------\nTransactionID: ${generateRandomId(5)}\nCustomer Full Name: ${customerFullName}\nTotal Cost USD: $${(totalCostInCents/100).toFixed(2)}\n---\nItem(s) Purchased\n---\n${order.map((plant) => {
+  return `\n${new Date()}\n------\n\n${lolcats.rainbow("WELCOME To BOTANIC HAVEN!")}\nFind a variety of local plant species that enrich our ecosystem :-)\n\n------\nTransactionID: ${generateRandomId(5)}\nCustomer Full Name: ${customerFullName}\nTotal Cost USD: $${(totalCostInCents/100).toFixed(2)}\n---\nItem(s) Purchased\n---\n${order.map((plant) => {
     return `Plant Name: '${plant.plantName}' Dominant Color: '${plant.dominantColor}' Price In USD: $${(plant.priceInCents / 100).toFixed(2)}\n`;
   }).join('')}\n------\nRefunds or exchanges for same day purchases only\n\n${lolcats.rainbow("THANK YOU FOR YOUR PURCHASE! Have a wonderful day!")}`;
 };
@@ -209,11 +209,6 @@ const cancel = (customerTransactions, transactionId) => {
   }
   return false; // Indicate transaction not found
 };
-
-
-
-
-
 
 
 //-------------------------------------------------------- I N V E N T O R Y --------------------------------------------------------
