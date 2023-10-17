@@ -1,6 +1,4 @@
-# Just-a-Regular-Flower-Shop
-
-Welcome to our Botanic Haven!
+# Welcome to our Botanic Haven!
 ## Description
 At our plant shop, you'll discover a diverse and vibrant collection of botanical wonders that encompass a wide spectrum of colors, shapes, and sizes. Whether you're an avid green thumb or just beginning your journey into the world of plants, we have something for everyone.
 
@@ -33,22 +31,20 @@ While some of our plants are currently out of stock, our dedicated team is alway
 So, whether you're a seasoned horticulturist or a novice gardener, our botanical shop is the ideal destination for all your plant-related desires. Explore our vast array of plants, and let nature's splendor fill your life with color and serenity.
 
 ## Botanical Shop Features
-### our plant shop provides a range of services to cater to your botanical needs. Here's how you can interact with our store:
-Inventory: To explore our complete inventory, simply use the inventory command. This will provide you with a comprehensive list of all the plants available in our store.
+**Our plant shop provides a range of services to cater to your botanical needs. Here's how you can interact with our store:**
+**Inventory**: To explore our complete inventory, simply use the inventory command. This will provide you with a comprehensive list of all the plants available in our store.
 
-Donate a Plant: If you have a local plant species to contribute, you can use the donatePlant command to add it to our inventory. We appreciate your efforts in preserving local flora.
+**Donate a Plant:** If you have a local plant species to contribute, you can use the donatePlant command to add it to our inventory. We appreciate your efforts in preserving local flora.
 
-Show a Plant: If you're looking for a specific plant or want to filter plants based on their availability, you can use the showItem command. Just specify the plant name and, if desired, an in-stock filter to narrow down your search.
+**Show a Plant:** If you're looking for a specific plant or want to filter plants based on their availability, you can use the showItem command. Just specify the plant name and, if desired, an in-stock filter to narrow down your search.
 
-Purchase a Plant: Ready to bring some greenery into your life? The purchasePlant command allows you to buy plants from our store. Select the plant you desire, and our team will assist you with the purchase process.
+**Purchase a Plant:** Ready to bring some greenery into your life? The purchasePlant command allows you to buy plants from our store. Select the plant you desire, and our team will assist you with the purchase process.
 
-Update Transaction: In case you need to modify a previous transaction, the update command comes in handy. Provide the transaction ID, and we'll help you make the necessary adjustments.
+**Update Transaction:** In case you need to modify a previous transaction, the update command comes in handy. Provide the transaction ID, and we'll help you make the necessary adjustments.
 
-Cancel Transaction: If, for any reason, you need to cancel an entire transaction and receive a refund (refund can take up to 3 business days depending on your financial institution), you can use the cancel command. Just provide the transaction ID, and we'll take care of the cancellation process.
+**Cancel Transaction:** If, for any reason, you need to cancel an entire transaction and receive a refund (refund can take up to 3 business days depending on your financial institution), you can use the cancel command. Just provide the transaction ID, and we'll take care of the cancellation process.
 
 We're here to ensure that your experience with us is as smooth and enjoyable as possible. Feel free to use these commands to explore, contribute, purchase, and manage your transactions. Our team of experts is always ready to assist you in any way we can, whether you're a seasoned plant enthusiast or just starting your botanical journey.
-
-Certainly, here's a modified README section for your plant shop application to reflect the commands and their descriptions:
 
 ---
 # Botanic Shop Application Usage
@@ -112,10 +108,6 @@ With these commands at your disposal, you can efficiently manage our plant shop'
 
 - Julissa Garcia
 
-## License
-
-This project is licensed under the ISC License.
-
 ## Dependencies
 
 ### Runtime Dependencies
@@ -127,12 +119,3 @@ This project is licensed under the ISC License.
 - `@faker-js/faker` (^8.1.0)
 - `jest` (^29.7.0)
 ```
-
-**For the "PlantShop - Just a Regular Flower Shop Project" README:**
-
-```markdown
-# PlantShop - Just a Regular Flower Shop Project
-
-![PlantShop](https://your-image-url.com)
-
-
