@@ -1,5 +1,6 @@
 # Welcome to our Botanic Haven!
 <img src="https://www.bbg.org/img/uploads/lightbox/_lightbox_retina/Chrysanthemum_50509390263_MS.jpg" alt="Chrysanthemum" width="500">
+
 ## Description
 At our plant shop, you'll discover a diverse and vibrant collection of botanical wonders that encompass a wide spectrum of colors, shapes, and sizes. Whether you're an avid green thumb or just beginning your journey into the world of plants, we have something for everyone.
 
@@ -33,22 +34,23 @@ So, whether you're a seasoned horticulturist or a novice gardener, our botanical
 
 ## Botanical Shop Features
 **Our plant shop provides a range of services to cater to your botanical needs. Here's how you can interact with our store:**
-**Inventory**: To explore our complete inventory, simply use the inventory command. This will provide you with a comprehensive list of all the plants available in our store.
 
-**Donate a Plant:** If you have a local plant species to contribute, you can use the donatePlant command to add it to our inventory. We appreciate your efforts in preserving local flora.
+- **Inventory**: To explore our complete inventory, simply use the inventory command. This will provide you with a comprehensive list of all the plants available in our store.
 
-**Show a Plant:** If you're looking for a specific plant or want to filter plants based on their availability, you can use the showItem command. Just specify the plant name and, if desired, an in-stock filter to narrow down your search.
+- **Donate a Plant:** If you have a local plant species to contribute, you can use the donatePlant command to add it to our inventory. We appreciate your efforts in preserving local flora.
 
-**Purchase a Plant:** Ready to bring some greenery into your life? The purchasePlant command allows you to buy plants from our store. Select the plant you desire, and our team will assist you with the purchase process.
+- **Show a Plant:** If you're looking for a specific plant or want to filter plants based on their availability, you can use the showItem command. Just specify the plant name and, if desired, an in-stock filter to narrow down your search.
 
-**Update Transaction:** In case you need to modify a previous transaction, the update command comes in handy. Provide the transaction ID, and we'll help you make the necessary adjustments.
+- **Purchase a Plant:** Ready to bring some greenery into your life? The purchasePlant command allows you to buy plants from our store. Select the plant you desire, and our team will assist you with the purchase process.
 
-**Cancel Transaction:** If, for any reason, you need to cancel an entire transaction and receive a refund (refund can take up to 3 business days depending on your financial institution), you can use the cancel command. Just provide the transaction ID, and we'll take care of the cancellation process.
+- **Update Transaction:** In case you need to modify a previous transaction, the update command comes in handy. Provide the transaction ID, and we'll help you make the necessary adjustments.
+
+- **Cancel Transaction:** If, for any reason, you need to cancel an entire transaction and receive a refund (refund can take up to 3 business days depending on your financial institution), you can use the cancel command. Just provide the transaction ID, and we'll take care of the cancellation process.
 
 We're here to ensure that your experience with us is as smooth and enjoyable as possible. Feel free to use these commands to explore, contribute, purchase, and manage your transactions. Our team of experts is always ready to assist you in any way we can, whether you're a seasoned plant enthusiast or just starting your botanical journey.
 
 ---
-# Botanic Shop Application Usage
+## Botanic Shop Application Usage
 
 Welcome to our Botanic Shop Application! With this user-friendly interface, you can easily donate plants to support our ecosystem, make plant purchases, view our extensive inventory, and perform various operations using terminal commands. To interact with the application seamlessly, simply use the following commands, and remember to use quotation marks when entering multi-word values.
 
@@ -105,11 +107,11 @@ npm run donatePlant "New Mexico Raspberry" pink
 
 With these commands at your disposal, you can efficiently manage our plant shop's inventory, donate plants, access plant details, enable customers to make purchases, update transactions, and cancel transactions. Thank you for supporting our mission! 🌿
 
-## Author
+### Author
 
 - Julissa Garcia
 
-## Dependencies
+### Dependencies
 
 ### Runtime Dependencies
 
