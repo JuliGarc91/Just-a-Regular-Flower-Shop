@@ -34,29 +34,44 @@
   {
     "transactionId": "APmRT",
     "customerFullName": "Tony 'Scarface' Montana",
-    "totalCostUSD": "$74.60",
+    "totalCostUSD": "$74.60 + $43.05",
     "itemsPurchased": [
       {
-        "plantName": "Globe Cactus",
-        "dominantColor": "yellow",
-        "priceInUSD": "$14.35"
+        "plantName": "Gray's Lily",
+        "dominantColor": "Magenta",
+        "priceInUSD": "$37.30"
       },
       {
         "plantName": "Gray's Lily",
         "dominantColor": "Magenta",
         "priceInUSD": "$37.30"
+      },
+      {
+        "plantName": "Globe Cactus",
+        "dominantColor": "yellow",
+        "priceInUSD": "$43.05"
+      },
+      {
+        "plantName": "Globe Cactus",
+        "dominantColor": "yellow",
+        "priceInUSD": "$43.05"
+      },
+      {
+        "plantName": "Globe Cactus",
+        "dominantColor": "yellow",
+        "priceInUSD": "$43.05"
       }
     ]
   },
   {
     "transactionId": "GctvP",
-    "customerFullName": "Yo Yo Ma",
+    "customerFullName": "Tony 'Scarface' Montana",
     "totalCostUSD": "$35.67",
     "itemsPurchased": [
       {
-        "plantName": "Gray's Lily",
-        "dominantColor": "Magenta",
-        "priceInUSD": "$37.30"
+        "plantName": "Dentate False Pennyroyal",
+        "dominantColor": "Red",
+        "priceInUSD": "$35.67"
       }
     ]
   },
@@ -74,6 +89,102 @@
         "plantName": "Gray's Lily",
         "dominantColor": "Magenta",
         "priceInUSD": "$37.30"
+      }
+    ]
+  },
+  {
+    "transactionId": "jmhRh",
+    "customerFullName": "Madonna",
+    "totalCostUSD": "$50.28 + $75.42 + $75.42 + $75.42",
+    "itemsPurchased": [
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "Pink",
+        "priceInUSD": "$25.14"
+      },
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "Pink",
+        "priceInUSD": "$25.14"
+      },
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "pink",
+        "priceInUSD": "$75.42"
+      },
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "pink",
+        "priceInUSD": "$75.42"
+      },
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "pink",
+        "priceInUSD": "$75.42"
+      },
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "pink",
+        "priceInUSD": "$75.42"
+      },
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "pink",
+        "priceInUSD": "$75.42"
+      },
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "pink",
+        "priceInUSD": "$75.42"
+      },
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "pink",
+        "priceInUSD": "$75.42"
+      },
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "pink",
+        "priceInUSD": "$75.42"
+      },
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "pink",
+        "priceInUSD": "$75.42"
+      }
+    ]
+  },
+  {
+    "transactionId": "dSqUJ",
+    "customerFullName": "The Notorious B.I.G",
+    "totalCostUSD": "$50.28",
+    "itemsPurchased": [
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "Pink",
+        "priceInUSD": "$25.14"
+      },
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "Pink",
+        "priceInUSD": "$25.14"
+      }
+    ]
+  },
+  {
+    "transactionId": "qxQUw",
+    "customerFullName": "The Notorious B.I.G",
+    "totalCostUSD": "$50.28",
+    "itemsPurchased": [
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "Pink",
+        "priceInUSD": "$25.14"
+      },
+      {
+        "plantName": "Southern Swamp Aster",
+        "dominantColor": "Pink",
+        "priceInUSD": "$25.14"
       }
     ]
   }

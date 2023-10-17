@@ -19,7 +19,7 @@ function generateRandomId(length) {
   }
   return id;
 };
-generateRandomId(5); // to use for purchase fx
+generateRandomId(5); // to use for purchase, update and cancel fx - transactionIds are case sensitive
 
 // -------------------------------------------------------- C A S H I E R --------------------------------------------------------
 
@@ -60,6 +60,7 @@ function selectPlant(plantInventory, plantName, color) {
 
 // purchasePlant function - allows customer to make a purchase. Calculates total and makes a reciept to print in console. Customer can only purchase one plant species per transaction. Works with index.js to read data of plantInventory.json file and uses selectPlant fx as call back fx.
 // ------ Requires user input ------
+// all 4 fields are required
 // npm run purchasePlant <plantName> <color> <quantity> <customerFullName>
 const purchasePlant = (plantInventory, plantName, color, quantity, customerFullName) => {
   if (
@@ -167,6 +168,8 @@ const purchaseResultFX = (plantInventory, plantName, color, quantity, customerFu
 
 // update FX - allows user to edit a past transaction
 // ------ Requires user input ------
+// identifier is case sensitive
+// to remove your name leave 5th input blank
 // npm run update <newPlantName> <newColor> <newQuantity> <identifier> <editCustomerFullName>
 const update = (customerTransactions, newPlantName,  newColor, newQuantity, identifier, editCustomerFullName) => {
   const index = customerTransactions.findIndex((transaction) => transaction.transactionId.toLowerCase() === identifier.toLowerCase());
@@ -196,7 +199,15 @@ const update = (customerTransactions, newPlantName,  newColor, newQuantity, iden
 
 
 // ------ Requires user input ------
-const cancel = () => {};
+const cancel = (customerTransactions, transactionId) => {
+  const indexToDelete = existingData.findIndex(transaction => transaction.transactionId === transactionId);
+
+  if (indexToDelete !== -1) {
+    existingData.splice(indexToDelete, 1);
+    return true; // Indicate success
+  }
+  return false; // Indicate transaction not found
+};
 
 
 
@@ -207,6 +218,7 @@ const cancel = () => {};
 //-------------------------------------------------------- I N V E N T O R Y --------------------------------------------------------
 // inventory FX - Shows Shop inventory. Works with index.js to read data of plantInventory.json file
 // ------ Requires user input ------
+// all fields are required - user must enter an action
 // npm run inventory
 const inventory = (plantInventory) => {
   return plantInventory.reduce((result, obj, index) => {
@@ -216,6 +228,7 @@ const inventory = (plantInventory) => {
 
 // donatePlant FX - Allows user to add a plant of a different color to plantInventory.json or update value of inStock key to true if plant of same color exists in inventory but is out of stock. Works with index.js to write data onto plantInventory.json file
 // ------ Requires user input ------
+// all fields are required
 // npm run donatePlant <plantName> <color>
 const donatePlant = (plantInventory, plantName, color) => {
   if (color) { // if user input color proceed with fx

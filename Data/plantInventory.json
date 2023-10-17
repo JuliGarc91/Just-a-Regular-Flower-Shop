@@ -634,5 +634,17 @@
     "dominantColor": "Pink",
     "priceInCents": 4105,
     "inStock": true
+  },
+  {
+    "plantName": "Globe Cactus",
+    "dominantColor": "Black",
+    "priceInCents": 3297,
+    "inStock": true
+  },
+  {
+    "plantName": "Globe Cactus",
+    "dominantColor": "Gray",
+    "priceInCents": 4452,
+    "inStock": true
   }
 ]
