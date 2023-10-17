@@ -1,5 +1,5 @@
 # Welcome to our Botanic Haven!
-<img src="https://www.bbg.org/img/uploads/lightbox/_lightbox_retina/Chrysanthemum_50509390263_MS.jpg" alt="Chrysanthemum" width="200">
+<img src="https://www.bbg.org/img/uploads/lightbox/_lightbox_retina/Chrysanthemum_50509390263_MS.jpg" alt="Chrysanthemum" width="500">
 ## Description
 At our plant shop, you'll discover a diverse and vibrant collection of botanical wonders that encompass a wide spectrum of colors, shapes, and sizes. Whether you're an avid green thumb or just beginning your journey into the world of plants, we have something for everyone.
 
