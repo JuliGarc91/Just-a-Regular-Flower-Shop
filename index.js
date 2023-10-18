@@ -69,26 +69,30 @@ function run() {
       break;
 
     default:
-      inform('There was an error.'); // error input (invalid argument inputted by customer)
+      inform('There was an input error.'); // error input (invalid argument inputted by customer)
   };
-  
   if (writeToPlantInventory) {
-    writeJSONFile('./data', 'plantInventory.json', updatedPlants); // At the end of the function, we now need write logic to check the writeToPlantInventory variable. If the variable is true, we update the plantInventory.json file with the new plant data.
+    writeJSONFile('./data', 'plantInventory.json', updatedPlants); 
+    // At the end of the function, we now need write logic to check the writeToPlantInventory variable. If the variable is true, we update the plantInventory.json file with the new plant data.
   }
-  if (writeToCustomerTransactions) { // for purchasePlants and purchasePlantsResultFX
-    let existingData = readJSONFile('./data', 'customerTransactions.json'); // Read the existing data from customerTransactions.json
-    if (!Array.isArray(existingData)) {     // Ensure that existingData is an array; if not, initialize it as an empty array
-      existingData = [];
-    } }
+  if (writeToCustomerTransactions) { 
     // for purchasePlants and purchasePlantsResultFX
-    if (typeof customerTransaction === "object" && Object.keys(customerTransaction).length !== 0) { // checks if variable contains object that is not empty:  Object.keys(updatedCustomerTransaction).length !== 0
+    let existingData = readJSONFile('./data', 'customerTransactions.json'); 
+    // Read the existing data from customerTransactions.json
+    if (!Array.isArray(existingData)) {
+      // Ensure that existingData is an array; if not, initialize it as an empty array
+      existingData = [];
+    }
+  }
+  // for purchasePlants and purchasePlantsResultFX
+  if (typeof customerTransaction === "object" && Object.keys(customerTransaction).length !== 0) { // checks if variable contains object that is not empty:  Object.keys(updatedCustomerTransaction).length !== 0
       let existingData = readJSONFile('./data', 'customerTransactions.json');
       existingData = existingData.concat(customerTransaction); // Merge the existing data with the new transactions
       writeJSONFile('./data', 'customerTransactions.json', existingData); // Update customerTransactions.json with the merged data
-    }  
-    // for update fx
-    if (writeToCustomerTransactions) {
-      let existingData = readJSONFile('./data', 'customerTransactions.json');
+  }
+  // for update fx
+  if (writeToCustomerTransactions) {
+    let existingData = readJSONFile('./data', 'customerTransactions.json');
     let customerTransactionIdToUpdate = process.argv[6];
     const indexToUpdate = existingData.findIndex(transaction => transaction.transactionId === customerTransactionIdToUpdate); // Find the index of the transaction to update so we don't accidently overwrite the entire file, just specifically at the index where the id exists
     if (indexToUpdate !== -1) { // value is -1 if what we're looking for doesn't exist in array existingData (which is actually the data in customerTransactions.json)
