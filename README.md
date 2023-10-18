@@ -7,6 +7,7 @@
 <div align="center">
   <h6>Photo Credit: <em>Chrysanthemum</em> 'Hillside Sheffield Pink' in the Rose Arc Pool by Michael Stewart</h6>
 </div>
+```
 
 ## Description
 At our plant shop, you'll discover a diverse and vibrant collection of botanical wonders that encompass a wide spectrum of colors, shapes, and sizes. Whether you're an avid green thumb or just beginning your journey into the world of plants, we have something for everyone.
@@ -47,7 +48,6 @@ So, whether you're a seasoned horticulturist or a novice gardener, our botanical
 
 We're here to ensure that your experience with us is as smooth and enjoyable as possible. Feel free to use these commands to explore, contribute, purchase, and manage your transactions. Our team of experts is always ready to assist you in any way we can, whether you're a seasoned plant enthusiast or just starting your botanical journey.
 
----
 ## Getting started
 Welcome to our Botanic Shop Application! With this user-friendly interface, you can easily donate plants to support our ecosystem, make plant purchases, view our extensive inventory, and perform various operations using terminal commands. To interact with the application seamlessly, simply use the following commands, and remember to use quotation marks when entering multi-word values.
 
@@ -150,7 +150,9 @@ npm run donatePlant "New Mexico Raspberry" pink
          plantName: 'Globe Cactus',
          dominantColor: 'Gray',
          priceInCents: 4452,
-         inStock: true
+         in
+
+Stock: true
        },
        {
          plantName: 'Globe Cactus',
