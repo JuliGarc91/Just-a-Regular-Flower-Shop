@@ -91,16 +91,16 @@ npm run donatePlant "New Mexico Raspberry" pink
 
    - The `inStock` input is optional and allows you to filter plants by their in-stock status. You can specify it as 'true' or 'false' to check the availability of the item.
 
-#### Example Usage
+  #### Example Usage
 
-1. **Show all available variants of a plant:**
+  1. **Show all available variants of a plant:**
 
-   - Input:
+    - Input:
      ```bash
      npm run showItem "Globe Cactus"
      ```
 
-   - Output:
+    - Output:
      ```javascript
      [
        {
@@ -130,14 +130,14 @@ npm run donatePlant "New Mexico Raspberry" pink
      ]
      ```
 
-2. **Show only in-stock variants of a plant:**
+  2. **Show only in-stock variants of a plant:**
 
-   - Input:
+    - Input:
      ```bash
      npm run showItem "Globe Cactus" true
      ```
 
-   - Output:
+      - Output:
      ```javascript
      [
        {
@@ -161,14 +161,14 @@ npm run donatePlant "New Mexico Raspberry" pink
      ]
      ```
 
-3. **Show only out-of-stock variants of a plant:**
+  3. **Show only out-of-stock variants of a plant:**
 
-   - Input:
+    - Input:
      ```bash
      npm run showItem "Globe Cactus" false
      ```
 
-   - Output:
+    - Output:
      ```javascript
      [
        {
