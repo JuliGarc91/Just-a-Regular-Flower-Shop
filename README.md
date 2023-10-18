@@ -7,7 +7,6 @@
 <div align="center">
   <h6>Photo Credit: <em>Chrysanthemum</em> 'Hillside Sheffield Pink' in the Rose Arc Pool by Michael Stewart</h6>
 </div>
-```
 
 ## Description
 At our plant shop, you'll discover a diverse and vibrant collection of botanical wonders that encompass a wide spectrum of colors, shapes, and sizes. Whether you're an avid green thumb or just beginning your journey into the world of plants, we have something for everyone.
@@ -94,13 +93,12 @@ npm run donatePlant "New Mexico Raspberry" pink
   #### Example Usage
 
   1. **Show all available variants of a plant:**
-
-    - Input:
+     - Input:
      ```bash
      npm run showItem "Globe Cactus"
      ```
-
-    - Output:
+     - Output:
+    
      ```javascript
      [
        {
@@ -132,7 +130,7 @@ npm run donatePlant "New Mexico Raspberry" pink
 
   2. **Show only in-stock variants of a plant:**
 
-    - Input:
+     - Input:
      ```bash
      npm run showItem "Globe Cactus" true
      ```
@@ -150,9 +148,7 @@ npm run donatePlant "New Mexico Raspberry" pink
          plantName: 'Globe Cactus',
          dominantColor: 'Gray',
          priceInCents: 4452,
-         in
-
-Stock: true
+         inStock: true
        },
        {
          plantName: 'Globe Cactus',
@@ -165,12 +161,12 @@ Stock: true
 
   3. **Show only out-of-stock variants of a plant:**
 
-    - Input:
+     - Input:
      ```bash
      npm run showItem "Globe Cactus" false
      ```
 
-    - Output:
+     - Output:
      ```javascript
      [
        {
