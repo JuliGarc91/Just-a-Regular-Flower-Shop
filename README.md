@@ -62,6 +62,7 @@ This will install the libraries needed to run the dependencies required to run t
 Open up the repository in VSCode or any text editor with node.js to be able to use the following commands and perform various actions.  
 
 ## Botanic Shop Application Usage
+Please use double quotes when entering the names of plants with spaces in their names. For example:
 
 ```bash
 npm run donatePlant "New Mexico Raspberry" pink
