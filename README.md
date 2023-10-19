@@ -70,9 +70,10 @@ npm run donatePlant "New Mexico Raspberry" pink
 
 1. **Show Inventory**
    - To get a comprehensive view of our store's inventory, execute this command:
-     ```bash
-     npm run inventory
-     ```
+   ```bash
+  npm run inventory
+   ```
+  
 
 2. **Donate a Plant**
    - Contribute to our plant inventory by donating a new plant (provided it's a local species). Utilize the following command:
