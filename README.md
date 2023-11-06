@@ -53,7 +53,6 @@ Welcome to our Botanic Shop Application! With this user-friendly interface, you 
 1. Fork and clone this repository.
 
 2. Navigate to the cloned repository's directory on your command line. Then, run the following command:
-
 ```bash
 npm install
 ```
@@ -67,41 +66,35 @@ Please use double quotes when entering the names of plants with spaces in their 
 ```bash
 npm run donatePlant "New Mexico Raspberry" pink
 ```
-
 1. **Show Inventory**
-   - To get a comprehensive view of our store's inventory, execute this command:
-   ```bash
-  npm run inventory
-   ```
-  
-
+- To get a comprehensive view of our store's inventory, execute this command:
+```bash
+npm run inventory
+```
 2. **Donate a Plant**
-   - Contribute to our plant inventory by donating a new plant (provided it's a local species). Utilize the following command:
-     ```bash
-     npm run donatePlant <plantName> <color>
-     ```
-     (Please ensure you fill in all required fields.)
+- Contribute to our plant inventory by donating a new plant (provided it's a local species). Utilize the following command:
+ ```bash
+npm run donatePlant <plantName> <color>
+```
+Please ensure you fill in all required fields.
 
 3. **Show Plant**
-    - Discover detailed information about a plant by specifying its name and optionally filtering by its in-stock status.
-
-    To use this feature, execute the following command in your terminal:
-    ```bash
-    npm run showItem <plantName> [inStock]
-    ```
-
-   - The `inStock` input is optional and allows you to filter plants by their in-stock status. You can specify it as 'true' or 'false' to check the availability of the item.
+- Discover detailed information about a plant by specifying its name and optionally filtering by its in-stock status. To use this feature, execute the following command in your terminal:
+```bash
+npm run showItem <plantName> [inStock]
+```
+The `inStock` input is optional and allows you to filter plants by their in-stock status. You can specify it as 'true' or 'false' to check the availability of the item.
 
   #### Example Usage
 
   1. **Show all available variants of a plant:**
      - Input:
-     ```bash
-     npm run showItem "Globe Cactus"
-     ```
-     - Output:
+    ```bash
+    npm run showItem "Globe Cactus"
+    ```
+    - Output:
     
-     ```javascript
+    ```javascript
      [
        {
          plantName: 'Globe Cactus',
@@ -133,9 +126,9 @@ npm run donatePlant "New Mexico Raspberry" pink
   2. **Show only in-stock variants of a plant:**
 
      - Input:
-     ```bash
-     npm run showItem "Globe Cactus" true
-     ```
+    ```bash
+    npm run showItem "Globe Cactus" true
+    ```
 
       - Output:
      ```javascript
@@ -165,8 +158,8 @@ npm run donatePlant "New Mexico Raspberry" pink
 
      - Input:
      ```bash
-     npm run showItem "Globe Cactus" false
-     ```
+    npm run showItem "Globe Cactus" false
+    ```
 
      - Output:
      ```javascript
@@ -180,34 +173,32 @@ npm run donatePlant "New Mexico Raspberry" pink
      ]
      ```
 
-Feel free to use this command to explore and retrieve information about different plant variants.
+    Feel free to use this command to explore and retrieve information about different plant variants.
 
 4. **Purchase Plant**
-   - Make a purchase effortlessly by issuing this command:
-     ```bash
-     npm run purchasePlant <plantName> <color> <quantity> <customerFullName>
-     ```
-     (Ensure all four fields are filled out for a smooth transaction.)
+- Make a purchase effortlessly by issuing this command:
+```bash
+npm run purchasePlant <plantName> <color> <quantity> <customerFullName>
+```
+     Ensure all four fields are filled out for a smooth transaction.
 
 5. **Update Transaction**
-   - If you want to make changes to a previous transaction, please use the following command. Keep in mind that the transaction identifier is case-sensitive. Using this command will allow you to add a new plant item to your existing transaction. If you wish to remove items from the transaction, you will need to cancel the entire transaction. To remove your name from the existing transaction, just leave the fifth field blank.
-     ```bash
-     npm run update <newPlantName> <newColor> <newQuantity> <identifier> <editCustomerFullName>
-     ```
+- If you want to make changes to a previous transaction, please use the following command. Keep in mind that the transaction identifier is case-sensitive. Using this command will allow you to add a new plant item to your existing transaction. If you wish to remove items from the transaction, you will need to cancel the entire transaction. To remove your name from the existing transaction, just leave the fifth field blank.
+```bash
+npm run update <newPlantName> <newColor> <newQuantity> <identifier> <editCustomerFullName>
+```
 
 6. **Cancel Transaction**
    - If you need to cancel an entire transaction, you can do so with this command. Make sure you fill in all the required fields:
-     ```bash
-     npm run cancel <transactionId>
-     ```
-
+```bash
+npm run cancel <transactionId>
+```
 7. **Other Functions**
-   - To see a list of supported npm commands run:
-  
-     ```bash
-     npm run
-     npm help
-     ```
+- To see a list of supported npm commands run:  
+```bash
+npm run
+npm help
+```
 
 With these commands at your disposal, you can efficiently manage our plant shop's inventory, donate plants, access plant details, make purchases, update transactions, and cancel transactions. Thank you for supporting our mission! 🌿
 
